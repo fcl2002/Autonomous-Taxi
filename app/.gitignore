@@ -31,10 +31,15 @@ yarn-error.*
 *.pem
 
 # local env files
-.env*.local
+.env*
 
 # typescript
 *.tsbuildinfo
+
+# editor/OS temporary files
+Thumbs.db
+*.tmp
+*.swp
 
 example
 
@@ -43,4 +48,7 @@ example
 /android
 
 .vscode/
-assets
+assets/*
+!assets/images/
+assets/images/*
+!assets/images/vazy-taxi-passenger.png
