@@ -48,11 +48,3 @@ example
 /android
 
 .vscode/
-assets/*
-!assets/images/
-assets/images/*
-!assets/images/vazy-taxi-passenger.png
-!assets/images/onboarding-taxi-passenger.png
-!assets/images/onboarding-status-badge.png
-!assets/images/onboarding-progress-active.png
-!assets/images/onboarding-progress-dot.png

@@ -1,9 +1,8 @@
-import { router } from "expo-router";
 import { StatusBar } from "expo-status-bar";
-import { Image, Pressable, StyleSheet, Text, View } from "react-native";
+import { Image, StyleSheet, Text, View } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 
-export default function Onboarding() {
+export default function OnboardingTracking() {
   return (
     <SafeAreaView style={styles.screen}>
       <StatusBar style="dark" />
@@ -15,7 +14,7 @@ export default function Onboarding() {
           numberOfLines={1}
           style={styles.title}
         >
-          Accept a job
+          Tracking Realtime
         </Text>
         <Text style={styles.description}>
           Lorem Ipsum is simply dummy text of the printing and typesetting
@@ -28,20 +27,12 @@ export default function Onboarding() {
         importantForAccessibility="no-hide-descendants"
         style={styles.artwork}
       >
-        <View style={styles.artworkFrame}>
-          <Image
-            accessible={false}
-            resizeMode="contain"
-            source={require("../../assets/images/onboarding-taxi-passenger.png")}
-            style={styles.illustration}
-          />
-          <Image
-            accessible={false}
-            resizeMode="contain"
-            source={require("../../assets/images/onboarding-status-badge.png")}
-            style={styles.badge}
-          />
-        </View>
+        <Image
+          accessible={false}
+          resizeMode="contain"
+          source={require("../../assets/images/onboarding-tracking.png")}
+          style={styles.illustration}
+        />
       </View>
 
       <View
@@ -52,34 +43,28 @@ export default function Onboarding() {
         <View style={styles.progress}>
           <Image
             accessible={false}
+            source={require("../../assets/images/onboarding-progress-dot.png")}
+            style={styles.progressDot}
+          />
+          <Image
+            accessible={false}
             source={require("../../assets/images/onboarding-progress-active.png")}
             style={styles.progressActive}
           />
           <Image
             accessible={false}
             source={require("../../assets/images/onboarding-progress-dot.png")}
-            style={styles.progressDotOne}
-          />
-          <Image
-            accessible={false}
-            source={require("../../assets/images/onboarding-progress-dot.png")}
-            style={styles.progressDotTwo}
+            style={styles.progressLastDot}
           />
         </View>
       </View>
 
       <View style={styles.actionArea}>
-        <Pressable
-          accessible
-          accessibilityLabel="Continue to tracking introduction"
-          accessibilityRole="button"
-          onPress={() => router.navigate("/onboarding-tracking")}
-          style={styles.action}
-        >
+        <View style={styles.action}>
           <Text adjustsFontSizeToFit numberOfLines={1} style={styles.actionText}>
             Get Started
           </Text>
-        </Pressable>
+        </View>
       </View>
     </SafeAreaView>
   );
@@ -113,55 +98,43 @@ const styles = StyleSheet.create({
     textAlign: "center",
   },
   artwork: {
-    flex: 42,
+    flex: 44,
     alignItems: "center",
-    justifyContent: "flex-end",
+    justifyContent: "flex-start",
     width: "100%",
-  },
-  artworkFrame: {
-    width: "91%",
-    maxWidth: 390,
-    aspectRatio: 390 / 290,
   },
   illustration: {
     width: "100%",
-    height: "100%",
-  },
-  badge: {
-    position: "absolute",
-    top: "6.6%",
-    right: "11.8%",
-    width: "5.65%",
-    aspectRatio: 1,
+    maxWidth: 427,
+    aspectRatio: 427 / 388,
   },
   progressArea: {
-    flex: 15,
+    flex: 14,
     alignItems: "center",
     justifyContent: "center",
-    paddingTop: 30,
   },
   progress: {
     flexDirection: "row",
     alignItems: "center",
-    width: 102,
+    width: 104,
+    height: 14,
+  },
+  progressDot: {
+    width: 14,
     height: 14,
   },
   progressActive: {
     width: 56,
     height: 14,
+    marginLeft: 10,
   },
-  progressDotOne: {
-    width: 14,
-    height: 14,
-    marginLeft: 8,
-  },
-  progressDotTwo: {
+  progressLastDot: {
     width: 14,
     height: 14,
     marginLeft: 10,
   },
   actionArea: {
-    flex: 20,
+    flex: 19,
     alignItems: "center",
     justifyContent: "flex-end",
   },
