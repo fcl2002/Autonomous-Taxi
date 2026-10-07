@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { router } from "expo-router";
 import {
   KeyboardAvoidingView,
   Platform,
@@ -65,10 +66,15 @@ export default function Login() {
             <ThemedButton label="Send Code" style={styles.action} />
           </View>
 
-          {/* ponytail: visual-only; add navigation after the sign-up destination is specified. */}
           <ThemedText style={styles.signupPrompt} variant="bodyPrimary">
             Don’t have an account?{" "}
-            <ThemedText variant="link">Sign Up</ThemedText>
+            <ThemedText
+              accessibilityRole="link"
+              onPress={() => router.navigate("/signup")}
+              variant="link"
+            >
+              Sign Up
+            </ThemedText>
           </ThemedText>
         </View>
       </KeyboardAvoidingView>
