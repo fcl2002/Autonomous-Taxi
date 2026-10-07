@@ -20,7 +20,7 @@ export default function RootLayout() {
     }
   }, [fontsLoaded, fontError]);
     
-  if (!fontError) {
+  if (fontError) {
     console.error("Font loading error: ", fontError);
   }
 
