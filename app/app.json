@@ -19,7 +19,37 @@
         {
           "backgroundColor": "#F8F8FF"
         }
-      ]
+      ],
+      "expo-font",
+      {
+        "fonts": [
+          "./assets/fonts/Medel/Medel.ttf"
+        ],
+        "android": {
+          "fontFamily": "Poppins",
+          "fonDefinitions": [
+            {
+              "path": "./assets/fonts/Poppins/Poppins-Regular.ttf",
+              "weight": 400
+            },
+            {
+              "path": "./assets/fonts/Poppins/Poppins-Medium.ttf",
+              "weight": 500
+            },
+            {
+              "path": "./assets/fonts/Poppins/Poppins-SemiBold.ttf",
+              "weight": 600
+            }
+          ]
+        },
+        "ios": {
+          "fonts": [
+              "./assets/fonts/Poppins/Poppins-Regular.ttf",
+              "./assets/fonts/Poppins/Poppins-Medium.ttf",
+              "./assets/fonts/Poppins/Poppins-SemiBold.ttf"
+            ]
+        }
+      }
     ],
     "experiments": {
       "typedRoutes": true,
