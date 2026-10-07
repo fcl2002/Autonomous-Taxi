@@ -98,11 +98,12 @@ const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "flex-start",
     width: "100%",
+    paddingBottom: 12,
   },
   illustration: {
+    flex: 1,
     width: "100%",
     maxWidth: 427,
-    aspectRatio: 427 / 388,
   },
   progressArea: {
     flex: 14,
