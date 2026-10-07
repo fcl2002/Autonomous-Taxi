@@ -1,5 +1,6 @@
+import { router } from "expo-router";
 import { StatusBar } from "expo-status-bar";
-import { Image, StyleSheet, Text, View } from "react-native";
+import { Image, Pressable, StyleSheet, Text, View } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 
 export default function OnboardingTracking() {
@@ -43,28 +44,34 @@ export default function OnboardingTracking() {
         <View style={styles.progress}>
           <Image
             accessible={false}
-            source={require("../../assets/images/onboarding-progress-dot.png")}
+            source={require("../../assets/images/tabIcons/onboarding-progress-dot.png")}
             style={styles.progressDot}
           />
           <Image
             accessible={false}
-            source={require("../../assets/images/onboarding-progress-active.png")}
+            source={require("../../assets/images/tabIcons/onboarding-progress-active.png")}
             style={styles.progressActive}
           />
           <Image
             accessible={false}
-            source={require("../../assets/images/onboarding-progress-dot.png")}
+            source={require("../../assets/images/tabIcons/onboarding-progress-dot.png")}
             style={styles.progressLastDot}
           />
         </View>
       </View>
 
       <View style={styles.actionArea}>
-        <View style={styles.action}>
+        <Pressable
+          accessible
+          accessibilityLabel="Continue to location privacy introduction"
+          accessibilityRole="button"
+          onPress={() => router.navigate("/onboarding-location")}
+          style={styles.action}
+        >
           <Text adjustsFontSizeToFit numberOfLines={1} style={styles.actionText}>
             Get Started
           </Text>
-        </View>
+        </Pressable>
       </View>
     </SafeAreaView>
   );
