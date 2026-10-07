@@ -1,7 +1,10 @@
 import { router } from "expo-router";
 import { StatusBar } from "expo-status-bar";
-import { Image, Pressable, StyleSheet, Text, View } from "react-native";
+import { Image, StyleSheet, View } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
+
+import { ThemedButton } from "@/components/themed-button";
+import { ThemedText } from "@/components/themed-text";
 
 export default function OnboardingTracking() {
   return (
@@ -9,18 +12,18 @@ export default function OnboardingTracking() {
       <StatusBar style="dark" />
 
       <View style={styles.intro}>
-        <Text
+        <ThemedText
           accessibilityRole="header"
           adjustsFontSizeToFit
-          numberOfLines={1}
+          numberOfLines={2}
           style={styles.title}
+          variant="title"
         >
-          Tracking Realtime
-        </Text>
-        <Text style={styles.description}>
-          Lorem Ipsum is simply dummy text of the printing and typesetting
-          industry.
-        </Text>
+          Track your ride in real time
+        </ThemedText>
+        <ThemedText style={styles.description} variant="body">
+          Follow the taxi’s location and stay updated on every step of your journey.
+        </ThemedText>
       </View>
 
       <View
@@ -61,17 +64,12 @@ export default function OnboardingTracking() {
       </View>
 
       <View style={styles.actionArea}>
-        <Pressable
-          accessible
+        <ThemedButton
           accessibilityLabel="Continue to location privacy introduction"
-          accessibilityRole="button"
+          label="Get Started"
           onPress={() => router.navigate("/onboarding-location")}
           style={styles.action}
-        >
-          <Text adjustsFontSizeToFit numberOfLines={1} style={styles.actionText}>
-            Get Started
-          </Text>
-        </Pressable>
+        />
       </View>
     </SafeAreaView>
   );
@@ -90,19 +88,10 @@ const styles = StyleSheet.create({
   },
   title: {
     width: "100%",
-    color: "#000",
-    fontSize: 42,
-    fontWeight: "400",
-    letterSpacing: -1,
-    lineHeight: 52,
-    textAlign: "center",
   },
   description: {
+    width: "100%",
     marginTop: 14,
-    color: "#525252",
-    fontSize: 16,
-    lineHeight: 24,
-    textAlign: "center",
   },
   artwork: {
     flex: 44,
@@ -146,18 +135,7 @@ const styles = StyleSheet.create({
     justifyContent: "flex-end",
   },
   action: {
-    alignItems: "center",
-    justifyContent: "center",
     width: "51.4%",
     maxWidth: 220,
-    height: 55,
-    borderRadius: 50,
-    backgroundColor: "#3422F2",
-  },
-  actionText: {
-    maxWidth: "85%",
-    color: "#FFF",
-    fontSize: 18,
-    fontWeight: "600",
   },
 });

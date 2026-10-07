@@ -1,7 +1,9 @@
 import { router } from "expo-router";
 import { StatusBar } from "expo-status-bar";
-import { Image, Pressable, StyleSheet, Text, View } from "react-native";
+import { Image, Pressable, StyleSheet, View } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
+
+import { ThemedText } from "@/components/themed-text";
 
 export default function Index() {
   return (
@@ -16,14 +18,15 @@ export default function Index() {
       >
         <SafeAreaView style={styles.content}>
           <View style={styles.brand}>
-            <Text
+            <ThemedText
               accessible={false}
               adjustsFontSizeToFit
               numberOfLines={1}
               style={styles.name}
+              variant="brand"
             >
               Vazy
-            </Text>
+            </ThemedText>
           </View>
           <View style={styles.artwork}>
             <Image
@@ -54,11 +57,6 @@ const styles = StyleSheet.create({
   },
   name: {
     width: "90%",
-    color: "#000",
-    fontSize: 54,
-    fontWeight: "700",
-    letterSpacing: -2,
-    textAlign: "center",
   },
   artwork: {
     flex: 2,

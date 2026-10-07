@@ -1,7 +1,10 @@
 import { router } from "expo-router";
 import { StatusBar } from "expo-status-bar";
-import { Image, Pressable, StyleSheet, Text, View } from "react-native";
+import { Image, StyleSheet, View } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
+
+import { ThemedButton } from "@/components/themed-button";
+import { ThemedText } from "@/components/themed-text";
 
 export default function OnboardingLocation() {
   return (
@@ -47,22 +50,24 @@ export default function OnboardingLocation() {
         </View>
       </View>
 
-      <Text style={styles.privacy}>Don&apos;t worry your data is private</Text>
+      <ThemedText style={styles.privacy} variant="bodyLarge">
+        Your location, your control
+      </ThemedText>
+      <ThemedText style={styles.privacy} variant="bodyPrimary">
+        We use your location to identify your pickup point and track your ride.
+        Your location data is only used to provide the service and is handled
+        according to our privacy policy.
+      </ThemedText>
 
       <View style={styles.spacer} />
 
       {/* ponytail: UI-only navigation; request location permission and record the consent outcome before continuing when the data flow is implemented. */}
-      <Pressable
-        accessible
+      <ThemedButton
         accessibilityLabel="Allow location and continue to phone login"
-        accessibilityRole="button"
+        label="Allow Location"
         onPress={() => router.navigate("/login")}
         style={styles.action}
-      >
-        <Text adjustsFontSizeToFit numberOfLines={1} style={styles.actionText}>
-          Allow Location
-        </Text>
-      </Pressable>
+      />
     </SafeAreaView>
   );
 }
@@ -121,31 +126,15 @@ const styles = StyleSheet.create({
     height: "11.47%",
   },
   privacy: {
-    width: "84%",
+    alignSelf: "stretch",
+    marginHorizontal: 32,
     marginTop: 28,
-    color: "#000",
-    fontSize: 20,
-    fontWeight: "500",
-    lineHeight: 30,
-    textAlign: "center",
   },
   spacer: {
     flex: 1,
   },
   action: {
-    alignItems: "center",
-    justifyContent: "center",
     width: "81.8%",
     maxWidth: 350,
-    minHeight: 55,
-    paddingHorizontal: 20,
-    borderRadius: 50,
-    backgroundColor: "#3422F2",
-  },
-  actionText: {
-    maxWidth: "100%",
-    color: "#FFF",
-    fontSize: 18,
-    fontWeight: "500",
   },
 });

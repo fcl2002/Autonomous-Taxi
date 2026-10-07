@@ -3,12 +3,14 @@ import {
   KeyboardAvoidingView,
   Platform,
   StyleSheet,
-  Text,
   TextInput,
   View,
 } from "react-native";
 import { StatusBar } from "expo-status-bar";
 import { SafeAreaView } from "react-native-safe-area-context";
+
+import { ThemedButton } from "@/components/themed-button";
+import { ThemedText } from "@/components/themed-text";
 
 export default function Login() {
   const [phoneNumber, setPhoneNumber] = useState("");
@@ -24,15 +26,26 @@ export default function Login() {
         <View style={styles.content}>
           <View style={styles.form}>
             {/* ponytail: text wordmark until an approved Vazy logo asset exists. */}
-            <Text adjustsFontSizeToFit numberOfLines={1} style={styles.brand}>
+            <ThemedText
+              adjustsFontSizeToFit
+              numberOfLines={1}
+              style={styles.brand}
+              variant="brand"
+            >
               Vazy
-            </Text>
+            </ThemedText>
 
-            <Text accessibilityRole="header" style={styles.title}>
+            <ThemedText
+              accessibilityRole="header"
+              style={styles.title}
+              variant="display"
+            >
               Login
-            </Text>
+            </ThemedText>
 
-            <Text style={styles.guidance}>Login with your phone number</Text>
+            <ThemedText style={styles.guidance} variant="bodyPrimary">
+              Login with your phone number
+            </ThemedText>
 
             <TextInput
               accessibilityLabel="Phone number"
@@ -49,18 +62,14 @@ export default function Login() {
             />
 
             {/* ponytail: visual-only; add validation, OTP delivery, Firebase Authentication, and result states when the login logic is specified. */}
-            <View style={styles.action}>
-              <Text adjustsFontSizeToFit numberOfLines={1} style={styles.actionText}>
-                Send Code
-              </Text>
-            </View>
+            <ThemedButton label="Send Code" style={styles.action} />
           </View>
 
           {/* ponytail: visual-only; add navigation after the sign-up destination is specified. */}
-          <Text style={styles.signupPrompt}>
+          <ThemedText style={styles.signupPrompt} variant="bodyPrimary">
             Don’t have an account?{" "}
-            <Text style={styles.signupText}>Sign Up</Text>
-          </Text>
+            <ThemedText variant="link">Sign Up</ThemedText>
+          </ThemedText>
         </View>
       </KeyboardAvoidingView>
     </SafeAreaView>
@@ -79,6 +88,7 @@ const styles = StyleSheet.create({
     flex: 1,
     alignItems: "center",
     paddingHorizontal: 39,
+    paddingBottom: 12,
   },
   form: {
     flex: 1,
@@ -91,28 +101,14 @@ const styles = StyleSheet.create({
   brand: {
     width: "100%",
     marginBottom: 88,
-    color: "#000",
     fontSize: 52,
-    fontWeight: "700",
-    letterSpacing: -2,
-    lineHeight: 60,
-    textAlign: "center",
   },
   title: {
     marginBottom: 52,
-    color: "#000",
-    fontSize: 36,
-    fontWeight: "400",
-    letterSpacing: -1.5,
-    lineHeight: 44,
-    textAlign: "center",
   },
   guidance: {
+    width: "100%",
     marginBottom: 25,
-    color: "#000",
-    fontSize: 16,
-    lineHeight: 24,
-    textAlign: "center",
   },
   input: {
     width: "100%",
@@ -126,29 +122,11 @@ const styles = StyleSheet.create({
     fontSize: 14,
   },
   action: {
-    alignItems: "center",
-    justifyContent: "center",
     width: "100%",
-    height: 55,
     marginTop: 30,
-    borderRadius: 50,
-    backgroundColor: "#3422F2",
-  },
-  actionText: {
-    maxWidth: "85%",
-    color: "#FFF",
-    fontSize: 18,
-    fontWeight: "500",
   },
   signupPrompt: {
+    width: "100%",
     marginBottom: 2,
-    color: "#000",
-    fontSize: 16,
-    lineHeight: 24,
-    textAlign: "center",
-  },
-  signupText: {
-    color: "#3422F2",
-    fontWeight: "700",
   },
 });
