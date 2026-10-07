@@ -44,17 +44,17 @@ export default function OnboardingTracking() {
         <View style={styles.progress}>
           <Image
             accessible={false}
-            source={require("../../assets/images/tabIcons/onboarding-progress-dot.png")}
+            source={require("../../assets/icons/onboarding-progress-dot.png")}
             style={styles.progressDot}
           />
           <Image
             accessible={false}
-            source={require("../../assets/images/tabIcons/onboarding-progress-active.png")}
+            source={require("../../assets/icons/onboarding-progress-active.png")}
             style={styles.progressActive}
           />
           <Image
             accessible={false}
-            source={require("../../assets/images/tabIcons/onboarding-progress-dot.png")}
+            source={require("../../assets/icons/onboarding-progress-dot.png")}
             style={styles.progressLastDot}
           />
         </View>

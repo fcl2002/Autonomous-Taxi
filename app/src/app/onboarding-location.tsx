@@ -1,5 +1,6 @@
+import { router } from "expo-router";
 import { StatusBar } from "expo-status-bar";
-import { Image, StyleSheet, Text, View } from "react-native";
+import { Image, Pressable, StyleSheet, Text, View } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 
 export default function OnboardingLocation() {
@@ -16,31 +17,31 @@ export default function OnboardingLocation() {
           <Image
             accessible={false}
             resizeMode="contain"
-            source={require("../../assets/images/tabIcons/onboarding-location-background.png")}
+            source={require("../../assets/icons/onboarding-location-background.png")}
             style={styles.background}
           />
           <Image
             accessible={false}
             resizeMode="contain"
-            source={require("../../assets/images/tabIcons/onboarding-location-person.png")}
+            source={require("../../assets/icons/onboarding-location-person.png")}
             style={styles.person}
           />
           <Image
             accessible={false}
             resizeMode="contain"
-            source={require("../../assets/images/tabIcons/onboarding-location-globe-ring.png")}
+            source={require("../../assets/icons/onboarding-location-globe-ring.png")}
             style={styles.globeRing}
           />
           <Image
             accessible={false}
             resizeMode="contain"
-            source={require("../../assets/images/tabIcons/onboarding-location-globe.png")}
+            source={require("../../assets/icons/onboarding-location-globe.png")}
             style={styles.globe}
           />
           <Image
             accessible={false}
             resizeMode="contain"
-            source={require("../../assets/images/tabIcons/onboarding-location-pin.png")}
+            source={require("../../assets/icons/onboarding-location-pin.png")}
             style={styles.pin}
           />
         </View>
@@ -50,11 +51,18 @@ export default function OnboardingLocation() {
 
       <View style={styles.spacer} />
 
-      <View style={styles.action}>
+      {/* ponytail: UI-only navigation; request location permission and record the consent outcome before continuing when the data flow is implemented. */}
+      <Pressable
+        accessible
+        accessibilityLabel="Allow location and continue to phone login"
+        accessibilityRole="button"
+        onPress={() => router.navigate("/login")}
+        style={styles.action}
+      >
         <Text adjustsFontSizeToFit numberOfLines={1} style={styles.actionText}>
           Allow Location
         </Text>
-      </View>
+      </Pressable>
     </SafeAreaView>
   );
 }
