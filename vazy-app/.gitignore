@@ -48,3 +48,4 @@ example
 /android
 
 .vscode/
+.env

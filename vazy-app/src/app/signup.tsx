@@ -1,4 +1,4 @@
-import { router } from "expo-router";
+import { router, type Href } from "expo-router";
 import { StatusBar } from "expo-status-bar";
 import { useState } from "react";
 import {
@@ -91,8 +91,12 @@ export default function SignUp() {
             value={phoneNumber}
           />
 
-          {/* ponytail: visual-only; add validation, account creation, Firebase Authentication, and result states when signup logic is specified. */}
-          <ThemedButton label="Sign Up" style={styles.action} />
+          {/* ponytail: prototype navigation only; add validation, account creation, Firebase Authentication, and result states when signup logic is specified. */}
+          <ThemedButton
+            label="Sign Up"
+            onPress={() => router.navigate("/map" as Href)}
+            style={styles.action}
+          />
 
           <ThemedText style={styles.loginPrompt} variant="bodyPrimary">
             Already have an account?{" "}
