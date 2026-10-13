@@ -32,9 +32,3 @@ google-services.json
 
 # Android Profiling
 *.hprof
-
-.specify/
-graphify-out/
-specs/
-
-app/assets/fonts/Poppins/

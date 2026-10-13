@@ -1,0 +1,326 @@
+{
+  ".codex/hooks.json": {
+    "mtime": 1791290928.6023898,
+    "seen": 1791316539.8564653,
+    "ast_hash": "5ebef3dd159986e465ab65e4014107ec",
+    "semantic_hash": ""
+  },
+  "app/app.json": {
+    "mtime": 1791385535.1890469,
+    "seen": 1791390117.6735702,
+    "ast_hash": "2bb9e38d943504fb378de35a9ba7fac3",
+    "semantic_hash": ""
+  },
+  "app/eslint.config.js": {
+    "mtime": 1791301867.435081,
+    "seen": 1791316539.8564847,
+    "ast_hash": "b713dd66aa3ad59ed5098d7b9f8dc202",
+    "semantic_hash": ""
+  },
+  "app/package.json": {
+    "mtime": 1791360962.948404,
+    "seen": 1791390117.6735802,
+    "ast_hash": "048fd9a306c922607ab05a80ca28d3ce",
+    "semantic_hash": ""
+  },
+  "app/src/app/_layout.tsx": {
+    "mtime": 1791386679.450552,
+    "seen": 1791390117.6735842,
+    "ast_hash": "37796ebcc25a5fac48a9a6a0f8513b56",
+    "semantic_hash": ""
+  },
+  "app/src/app/index.tsx": {
+    "mtime": 1791389361.7926,
+    "seen": 1791390117.6735866,
+    "ast_hash": "f8b54dc89f6dd6944d33b52b9909a433",
+    "semantic_hash": ""
+  },
+  "app/src/app/onboarding-tracking.tsx": {
+    "mtime": 1791391324.2701266,
+    "seen": 1791391365.2901883,
+    "ast_hash": "4d86ab578e8552baf615a6cdb4a3d3ba",
+    "semantic_hash": ""
+  },
+  "app/src/app/onboarding.tsx": {
+    "mtime": 1791389782.065338,
+    "seen": 1791390117.6735983,
+    "ast_hash": "a5540dfb06696714461a11734ab6589d",
+    "semantic_hash": ""
+  },
+  "app/tsconfig.json": {
+    "mtime": 1791301791.3409066,
+    "seen": 1791316539.8564959,
+    "ast_hash": "eb1b67ed33db31b272c6ef0867d0db06",
+    "semantic_hash": ""
+  },
+  ".agents/skills/speckit-analyze/SKILL.md": {
+    "mtime": 1791291025.0912654,
+    "seen": 1791316539.8564978,
+    "ast_hash": "4fc5f857440be564d63d9818ade42093",
+    "semantic_hash": ""
+  },
+  ".agents/skills/speckit-checklist/SKILL.md": {
+    "mtime": 1791291025.203106,
+    "seen": 1791316539.8564997,
+    "ast_hash": "4a1b574f5bb2fe909afe39ba04b43788",
+    "semantic_hash": ""
+  },
+  ".agents/skills/speckit-clarify/SKILL.md": {
+    "mtime": 1791291025.1147134,
+    "seen": 1791316539.8565016,
+    "ast_hash": "cd27127c6b606b15c3b6331e41875333",
+    "semantic_hash": ""
+  },
+  ".agents/skills/speckit-constitution/SKILL.md": {
+    "mtime": 1791291025.1296337,
+    "seen": 1791316539.856503,
+    "ast_hash": "67d83c5287fcaa28a36a69f5f1b2f3b7",
+    "semantic_hash": ""
+  },
+  ".agents/skills/speckit-converge/SKILL.md": {
+    "mtime": 1791291025.1647718,
+    "seen": 1791316539.8565047,
+    "ast_hash": "826874d023b4f7241191c8961eb95e5a",
+    "semantic_hash": ""
+  },
+  ".agents/skills/speckit-implement/SKILL.md": {
+    "mtime": 1791291025.1496923,
+    "seen": 1791316539.856506,
+    "ast_hash": "74ee8f446a7ca0af69ed588a9de1b612",
+    "semantic_hash": ""
+  },
+  ".agents/skills/speckit-plan/SKILL.md": {
+    "mtime": 1791291025.1870334,
+    "seen": 1791316539.856508,
+    "ast_hash": "c691c7aba1e0128968e44401c8680a07",
+    "semantic_hash": ""
+  },
+  ".agents/skills/speckit-specify/SKILL.md": {
+    "mtime": 1791291025.2131994,
+    "seen": 1791316539.8565094,
+    "ast_hash": "5643ed57e9ebd82c299c940b8fa00384",
+    "semantic_hash": ""
+  },
+  ".agents/skills/speckit-tasks/SKILL.md": {
+    "mtime": 1791291025.2392144,
+    "seen": 1791316539.856511,
+    "ast_hash": "269a2230bc3b735ad41c4b6cb5c35bb8",
+    "semantic_hash": ""
+  },
+  ".agents/skills/speckit-taskstoissues/SKILL.md": {
+    "mtime": 1791291025.258168,
+    "seen": 1791316539.856513,
+    "ast_hash": "a584b949c2bfb1d7848e8b9ba1528061",
+    "semantic_hash": ""
+  },
+  "AGENTS.md": {
+    "mtime": 1791388546.0415666,
+    "seen": 1791390117.6736448,
+    "ast_hash": "70bbeb5b987b1edd6ae67259c91ee4a8",
+    "semantic_hash": ""
+  },
+  "README.md": {
+    "mtime": 1791293991.8768597,
+    "seen": 1791316539.8565164,
+    "ast_hash": "09f8a9fa9778f87a23ffff4c336280f2",
+    "semantic_hash": ""
+  },
+  "app/AGENTS.md": {
+    "mtime": 1791291078.6700118,
+    "seen": 1791316539.8565235,
+    "ast_hash": "36309c593534892601e03ff151134ff8",
+    "semantic_hash": ""
+  },
+  "app/README.md": {
+    "mtime": 1790065329.1511,
+    "seen": 1791316539.8565266,
+    "ast_hash": "db37e01139db6cec80a338779325d5ae",
+    "semantic_hash": ""
+  },
+  "app/assets/images/onboarding-taxi-passenger.png": {
+    "mtime": 1791304922.4917855,
+    "seen": 1791316539.8565414,
+    "ast_hash": "95ed1eb7ff812c46bd9556ce9694cb36",
+    "semantic_hash": ""
+  },
+  "app/assets/images/onboarding-tracking.png": {
+    "mtime": 1791353522.0826564,
+    "seen": 1791354973.0621388,
+    "ast_hash": "b01e2978f3086add246548a0cd6b0ebb",
+    "semantic_hash": ""
+  },
+  "app/assets/images/vazy-taxi-passenger.png": {
+    "mtime": 1791301595.7819817,
+    "seen": 1791316539.8565445,
+    "ast_hash": "55e7749f6879a2fdeb0a7df714818392",
+    "semantic_hash": ""
+  },
+  "app/src/app/onboarding-location.tsx": {
+    "mtime": 1791389783.249679,
+    "seen": 1791390117.673593,
+    "ast_hash": "1ebd4cc1c7a58350f9014cf50d361c06",
+    "semantic_hash": ""
+  },
+  "app/src/app/login.tsx": {
+    "mtime": 1791392154.2715032,
+    "seen": 1791392175.7684278,
+    "ast_hash": "c257f7ded7aec141bc0826ff9c0a25fd",
+    "semantic_hash": ""
+  },
+  "app/src/components/themed-button.tsx": {
+    "mtime": 1791389312.1215384,
+    "seen": 1791390117.6736023,
+    "ast_hash": "cc09ddd6bc0f5c1b8868aee7d4257c39",
+    "semantic_hash": ""
+  },
+  "app/src/components/themed-text.tsx": {
+    "mtime": 1791389781.608416,
+    "seen": 1791390117.673605,
+    "ast_hash": "ea337a15e9816497a4b2360197e3b48f",
+    "semantic_hash": ""
+  },
+  "app/src/constants/theme.ts": {
+    "mtime": 1791390142.0585694,
+    "seen": 1791390169.3154302,
+    "ast_hash": "f55c6df0cfbd4d5f1231e4d036d03b9a",
+    "semantic_hash": ""
+  },
+  "app/assets/icons/onboarding-location-background.png": {
+    "mtime": 1791354903.0751257,
+    "seen": 1791390117.6736588,
+    "ast_hash": "c5e010c4360ae02b24c946bb156dcfbc",
+    "semantic_hash": ""
+  },
+  "app/assets/icons/onboarding-location-globe-ring.png": {
+    "mtime": 1791354942.598715,
+    "seen": 1791390117.673663,
+    "ast_hash": "494529780d53a72d9e04e5fa129ce94d",
+    "semantic_hash": ""
+  },
+  "app/assets/icons/onboarding-location-globe.png": {
+    "mtime": 1791354960.390331,
+    "seen": 1791390117.6736658,
+    "ast_hash": "80122c99ed921eed2f961d99a1a2efdf",
+    "semantic_hash": ""
+  },
+  "app/assets/icons/onboarding-location-person.png": {
+    "mtime": 1791354920.0035982,
+    "seen": 1791390117.673669,
+    "ast_hash": "aef837f04231aed013e215ce3fd9c166",
+    "semantic_hash": ""
+  },
+  "app/assets/icons/onboarding-location-pin.png": {
+    "mtime": 1791354982.6727397,
+    "seen": 1791390117.6736724,
+    "ast_hash": "dd5911f55890f3b5fec4d6b82b437839",
+    "semantic_hash": ""
+  },
+  "app/assets/icons/onboarding-progress-active.png": {
+    "mtime": 1791305046.7945619,
+    "seen": 1791390117.6736758,
+    "ast_hash": "94c79eeed769fc85b05c59efb21ad0d8",
+    "semantic_hash": ""
+  },
+  "app/assets/icons/onboarding-progress-dot.png": {
+    "mtime": 1791305047.51518,
+    "seen": 1791390117.673679,
+    "ast_hash": "660131987312597584b22a2df35b35e0",
+    "semantic_hash": ""
+  },
+  "app/assets/icons/onboarding-status-badge.png": {
+    "mtime": 1791304923.8728533,
+    "seen": 1791390117.6736825,
+    "ast_hash": "bde5ec142366b4b574b34c9e8cabeb20",
+    "semantic_hash": ""
+  },
+  "app/src/app/signup.tsx": {
+    "mtime": 1791447381.6612425,
+    "seen": 1791447463.209252,
+    "ast_hash": "a2af9131cca5fe54bac1ad8d8e5b87d2",
+    "semantic_hash": ""
+  },
+  "app/src/app/map.tsx": {
+    "mtime": 1791447440.763718,
+    "seen": 1791447463.209219,
+    "ast_hash": "502338277fe7bdbc630f9745556bbfeb",
+    "semantic_hash": ""
+  },
+  "app/assets/maps/destination-marker.svg": {
+    "mtime": 1791447236.0325117,
+    "seen": 1791447463.2094371,
+    "ast_hash": "5ba296fe18828c949acaaf3525e19a1c",
+    "semantic_hash": ""
+  },
+  "app/assets/maps/divider.svg": {
+    "mtime": 1791447235.7986636,
+    "seen": 1791447463.2094414,
+    "ast_hash": "52df7af2b6fea716295a1fad62f92253",
+    "semantic_hash": ""
+  },
+  "app/assets/maps/map-background.png": {
+    "mtime": 1791447235.3210578,
+    "seen": 1791447463.2094483,
+    "ast_hash": "ad706bad402bb87c8a2e5a6b5a050b98",
+    "semantic_hash": ""
+  },
+  "app/assets/maps/map-overlay.svg": {
+    "mtime": 1791447234.7432518,
+    "seen": 1791447463.2094514,
+    "ast_hash": "9f1b467a1f90542c4dec352cad47c208",
+    "semantic_hash": ""
+  },
+  "app/assets/maps/menu.svg": {
+    "mtime": 1791447235.0125265,
+    "seen": 1791447463.2094548,
+    "ast_hash": "6eb3501f2c430e1e4bfd9d90b47288aa",
+    "semantic_hash": ""
+  },
+  "app/assets/maps/passenger-dot.svg": {
+    "mtime": 1791447234.765477,
+    "seen": 1791447463.2094579,
+    "ast_hash": "993733a07b7d9f59060d65ebfae2af19",
+    "semantic_hash": ""
+  },
+  "app/assets/maps/passenger-halo.svg": {
+    "mtime": 1791447234.803905,
+    "seen": 1791447463.209461,
+    "ast_hash": "c8b387404a7508ff34d9326070104bb8",
+    "semantic_hash": ""
+  },
+  "app/assets/maps/pickup-marker.svg": {
+    "mtime": 1791447235.6206243,
+    "seen": 1791447463.209464,
+    "ast_hash": "53a8581b008baf21c41c3983f4cf7a53",
+    "semantic_hash": ""
+  },
+  "app/assets/maps/taxi-1.svg": {
+    "mtime": 1791447235.5398395,
+    "seen": 1791447463.2094676,
+    "ast_hash": "b6f11ca654ce7998c6607ec52a1cbb05",
+    "semantic_hash": ""
+  },
+  "app/assets/maps/taxi-2.svg": {
+    "mtime": 1791447235.6769934,
+    "seen": 1791447463.2094712,
+    "ast_hash": "08bf12cd1eee728aa76c0aa24cc12f0d",
+    "semantic_hash": ""
+  },
+  "app/assets/maps/taxi-3.svg": {
+    "mtime": 1791447235.0125265,
+    "seen": 1791447463.2094743,
+    "ast_hash": "b31dc4544414179507856207c688190b",
+    "semantic_hash": ""
+  },
+  "app/assets/maps/taxi-4.svg": {
+    "mtime": 1791447235.850646,
+    "seen": 1791447463.209478,
+    "ast_hash": "09105e5ce4034ab22af807b695893a49",
+    "semantic_hash": ""
+  },
+  "app/assets/maps/taxi-5.svg": {
+    "mtime": 1791447235.909028,
+    "seen": 1791447463.209481,
+    "ast_hash": "c71b5fd4ff70d1831ba229e0df6c4046",
+    "semantic_hash": ""
+  }
+}
