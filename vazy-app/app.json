@@ -56,7 +56,15 @@
       "expo-image",
       "expo-status-bar",
       "expo-web-browser",
-      "@maplibre/maplibre-react-native"
+      "@maplibre/maplibre-react-native",
+      [
+        "expo-build-properties",
+        {
+          "android": {
+            "cmakeVersion": "4.1.2"
+          }
+        }
+      ]
     ],
     "experiments": {
       "typedRoutes": true,
