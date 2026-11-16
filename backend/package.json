@@ -1,0 +1,16 @@
+{
+  "name": "vazy-backend",
+  "private": true,
+  "type": "module",
+  "engines": {
+    "node": ">=22.18"
+  },
+  "scripts": {
+    "start": "node src/index.ts",
+    "typecheck": "tsc --noEmit"
+  },
+  "devDependencies": {
+    "@types/node": "^22.18.0",
+    "typescript": "~6.0.3"
+  }
+}

@@ -43,30 +43,43 @@
       "source_location": "L5"
     },
     {
-      "id": "vazy_app_src_constants_circuit_lnglat",
-      "label": "LngLat",
-      "_callable": true,
-      "_callable_class": true,
-      "_origin": "ast",
-      "community": 4,
-      "community_name": "map.tsx",
-      "file_type": "code",
-      "norm_label": "lnglat",
-      "source_file": "vazy-app/src/constants/circuit.ts",
-      "source_location": "L3"
-    },
-    {
       "id": "vazy_app_src_constants_circuit_stop",
       "label": "Stop",
       "_callable": true,
       "_callable_class": true,
       "_origin": "ast",
-      "community": 4,
-      "community_name": "map.tsx",
+      "community": 50,
+      "community_name": "route.ts",
       "file_type": "code",
       "norm_label": "stop",
       "source_file": "vazy-app/src/constants/circuit.ts",
-      "source_location": "L5"
+      "source_location": "L7"
+    },
+    {
+      "id": "vazy_app_src_constants_stops_lnglat",
+      "label": "LngLat",
+      "_callable": true,
+      "_callable_class": true,
+      "_origin": "ast",
+      "community": 50,
+      "community_name": "route.ts",
+      "file_type": "code",
+      "norm_label": "lnglat",
+      "source_file": "vazy-app/src/constants/stops.ts",
+      "source_location": "L6"
+    },
+    {
+      "id": "vazy_app_src_constants_stops_stopdef",
+      "label": "StopDef",
+      "_callable": true,
+      "_callable_class": true,
+      "_origin": "ast",
+      "community": 50,
+      "community_name": "route.ts",
+      "file_type": "code",
+      "norm_label": "stopdef",
+      "source_file": "vazy-app/src/constants/stops.ts",
+      "source_location": "L8"
     },
     {
       "id": "vazy_app_src_lib_route_trip",
@@ -74,24 +87,12 @@
       "_callable": true,
       "_callable_class": true,
       "_origin": "ast",
-      "community": 4,
-      "community_name": "map.tsx",
+      "community": 50,
+      "community_name": "route.ts",
       "file_type": "code",
       "norm_label": "trip",
       "source_file": "vazy-app/src/lib/route.ts",
       "source_location": "L4"
-    },
-    {
-      "id": "vazy_app_src_app_layout_rootlayout",
-      "label": "RootLayout()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 0,
-      "community_name": "package.json",
-      "file_type": "code",
-      "norm_label": "rootlayout()",
-      "source_file": "vazy-app/src/app/_layout.tsx",
-      "source_location": "L9"
     },
     {
       "id": "vazy_app_src_app_index_index",
@@ -106,6 +107,18 @@
       "source_location": "L8"
     },
     {
+      "id": "vazy_app_src_app_layout_rootlayout",
+      "label": "RootLayout()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 4,
+      "community_name": "map.tsx",
+      "file_type": "code",
+      "norm_label": "rootlayout()",
+      "source_file": "vazy-app/src/app/_layout.tsx",
+      "source_location": "L9"
+    },
+    {
       "id": "vazy_app_src_app_login_login",
       "label": "Login()",
       "_callable": true,
@@ -116,18 +129,6 @@
       "norm_label": "login()",
       "source_file": "vazy-app/src/app/login.tsx",
       "source_location": "L16"
-    },
-    {
-      "id": "vazy_app_src_app_map_mapscreen",
-      "label": "MapScreen()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 4,
-      "community_name": "map.tsx",
-      "file_type": "code",
-      "norm_label": "mapscreen()",
-      "source_file": "vazy-app/src/app/map.tsx",
-      "source_location": "L38"
     },
     {
       "id": "vazy_app_src_app_onboarding_location_onboardinglocation",
@@ -202,12 +203,36 @@
       "source_location": "L19"
     },
     {
+      "id": "vazy_app_scripts_build_circuit_round",
+      "label": "round()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 50,
+      "community_name": "route.ts",
+      "file_type": "code",
+      "norm_label": "round()",
+      "source_file": "vazy-app/scripts/build-circuit.mjs",
+      "source_location": "L7"
+    },
+    {
+      "id": "vazy_app_src_app_map_mapscreen",
+      "label": "MapScreen()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 50,
+      "community_name": "route.ts",
+      "file_type": "code",
+      "norm_label": "mapscreen()",
+      "source_file": "vazy-app/src/app/map.tsx",
+      "source_location": "L38"
+    },
+    {
       "id": "vazy_app_src_lib_route_bounds",
       "label": "bounds()",
       "_callable": true,
       "_origin": "ast",
-      "community": 4,
-      "community_name": "map.tsx",
+      "community": 50,
+      "community_name": "route.ts",
       "file_type": "code",
       "norm_label": "bounds()",
       "source_file": "vazy-app/src/lib/route.ts",
@@ -218,8 +243,8 @@
       "label": "meters()",
       "_callable": true,
       "_origin": "ast",
-      "community": 4,
-      "community_name": "map.tsx",
+      "community": 50,
+      "community_name": "route.ts",
       "file_type": "code",
       "norm_label": "meters()",
       "source_file": "vazy-app/src/lib/route.ts",
@@ -230,8 +255,8 @@
       "label": "nearestStop()",
       "_callable": true,
       "_origin": "ast",
-      "community": 4,
-      "community_name": "map.tsx",
+      "community": 50,
+      "community_name": "route.ts",
       "file_type": "code",
       "norm_label": "neareststop()",
       "source_file": "vazy-app/src/lib/route.ts",
@@ -242,8 +267,8 @@
       "label": "summary()",
       "_callable": true,
       "_origin": "ast",
-      "community": 4,
-      "community_name": "map.tsx",
+      "community": 50,
+      "community_name": "route.ts",
       "file_type": "code",
       "norm_label": "summary()",
       "source_file": "vazy-app/src/lib/route.ts",
@@ -254,24 +279,12 @@
       "label": "tripPath()",
       "_callable": true,
       "_origin": "ast",
-      "community": 4,
-      "community_name": "map.tsx",
+      "community": 50,
+      "community_name": "route.ts",
       "file_type": "code",
       "norm_label": "trippath()",
       "source_file": "vazy-app/src/lib/route.ts",
       "source_location": "L23"
-    },
-    {
-      "id": "vazy_app_scripts_build_circuit_round",
-      "label": "round()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 50,
-      "community_name": "build-circuit.mjs",
-      "file_type": "code",
-      "norm_label": "round()",
-      "source_file": "vazy-app/scripts/build-circuit.mjs",
-      "source_location": "L18"
     },
     {
       "id": "vazy_app_eslint_config",
@@ -494,17 +507,6 @@
       "source_location": "L4"
     },
     {
-      "id": "vazy_app_src_app_layout",
-      "label": "_layout.tsx",
-      "_origin": "ast",
-      "community": 0,
-      "community_name": "package.json",
-      "file_type": "code",
-      "norm_label": "_layout.tsx",
-      "source_file": "vazy-app/src/app/_layout.tsx",
-      "source_location": "L1"
-    },
-    {
       "id": "ref_eslint",
       "label": "eslint",
       "_origin": "ast",
@@ -582,17 +584,6 @@
       "source_location": "L12"
     },
     {
-      "id": "ref_expo_font",
-      "label": "expo-font",
-      "_origin": "ast",
-      "community": 0,
-      "community_name": "package.json",
-      "file_type": "concept",
-      "norm_label": "expo-font",
-      "source_file": "vazy-app/package.json",
-      "source_location": "L13"
-    },
-    {
       "id": "ref_expo_glass_effect",
       "label": "expo-glass-effect",
       "_origin": "ast",
@@ -624,17 +615,6 @@
       "norm_label": "expo-linking",
       "source_file": "vazy-app/package.json",
       "source_location": "L16"
-    },
-    {
-      "id": "ref_expo_splash_screen",
-      "label": "expo-splash-screen",
-      "_origin": "ast",
-      "community": 0,
-      "community_name": "package.json",
-      "file_type": "concept",
-      "norm_label": "expo-splash-screen",
-      "source_file": "vazy-app/package.json",
-      "source_location": "L18"
     },
     {
       "id": "ref_expo_symbols",
@@ -1150,6 +1130,17 @@
       "source_location": "L3"
     },
     {
+      "id": "vazy_app_tsconfig_compileroptions_allowimportingtsextensions",
+      "label": "allowImportingTsExtensions",
+      "_origin": "ast",
+      "community": 10,
+      "community_name": "tsconfig.json",
+      "file_type": "code",
+      "norm_label": "allowimportingtsextensions",
+      "source_file": "vazy-app/tsconfig.json",
+      "source_location": "L5"
+    },
+    {
       "id": "vazy_app_tsconfig_compileroptions_paths",
       "label": "paths",
       "_origin": "ast",
@@ -1158,7 +1149,7 @@
       "file_type": "code",
       "norm_label": "paths",
       "source_file": "vazy-app/tsconfig.json",
-      "source_location": "L5"
+      "source_location": "L6"
     },
     {
       "id": "vazy_app_tsconfig_compileroptions_strict",
@@ -1180,7 +1171,7 @@
       "file_type": "code",
       "norm_label": "exclude",
       "source_file": "vazy-app/tsconfig.json",
-      "source_location": "L20"
+      "source_location": "L21"
     },
     {
       "id": "vazy_app_tsconfig_extends",
@@ -1202,7 +1193,7 @@
       "file_type": "code",
       "norm_label": "include",
       "source_file": "vazy-app/tsconfig.json",
-      "source_location": "L14"
+      "source_location": "L15"
     },
     {
       "id": "vazy_app_tsconfig_paths_assets",
@@ -1213,7 +1204,7 @@
       "file_type": "code",
       "norm_label": "@/assets/*",
       "source_file": "vazy-app/tsconfig.json",
-      "source_location": "L9"
+      "source_location": "L10"
     },
     {
       "id": "ref_expo_tsconfig_base",
@@ -7529,28 +7520,6 @@
       "source_location": "L74"
     },
     {
-      "id": "vazy_app_scripts_route_check",
-      "label": "route.check.mjs",
-      "_origin": "ast",
-      "community": 4,
-      "community_name": "map.tsx",
-      "file_type": "code",
-      "norm_label": "route.check.mjs",
-      "source_file": "vazy-app/scripts/route.check.mjs",
-      "source_location": "L1"
-    },
-    {
-      "id": "vazy_app_scripts_route_check_stops",
-      "label": "stops",
-      "_origin": "ast",
-      "community": 4,
-      "community_name": "map.tsx",
-      "file_type": "code",
-      "norm_label": "stops",
-      "source_file": "vazy-app/scripts/route.check.mjs",
-      "source_location": "L6"
-    },
-    {
       "id": "vazy_app_src_app_index",
       "label": "index.tsx",
       "_origin": "ast",
@@ -7571,6 +7540,17 @@
       "norm_label": "styles",
       "source_file": "vazy-app/src/app/index.tsx",
       "source_location": "L45"
+    },
+    {
+      "id": "vazy_app_src_app_layout",
+      "label": "_layout.tsx",
+      "_origin": "ast",
+      "community": 4,
+      "community_name": "map.tsx",
+      "file_type": "code",
+      "norm_label": "_layout.tsx",
+      "source_file": "vazy-app/src/app/_layout.tsx",
+      "source_location": "L1"
     },
     {
       "id": "vazy_app_src_app_login",
@@ -7636,7 +7616,7 @@
       "file_type": "code",
       "norm_label": "styles",
       "source_file": "vazy-app/src/app/map.tsx",
-      "source_location": "L277"
+      "source_location": "L283"
     },
     {
       "id": "vazy_app_src_app_onboarding",
@@ -7771,28 +7751,6 @@
       "source_location": "L27"
     },
     {
-      "id": "vazy_app_src_constants_circuit",
-      "label": "circuit.ts",
-      "_origin": "ast",
-      "community": 4,
-      "community_name": "map.tsx",
-      "file_type": "code",
-      "norm_label": "circuit.ts",
-      "source_file": "vazy-app/src/constants/circuit.ts",
-      "source_location": "L1"
-    },
-    {
-      "id": "vazy_app_src_constants_circuit_stops",
-      "label": "STOPS",
-      "_origin": "ast",
-      "community": 4,
-      "community_name": "map.tsx",
-      "file_type": "code",
-      "norm_label": "stops",
-      "source_file": "vazy-app/src/constants/circuit.ts",
-      "source_location": "L7"
-    },
-    {
       "id": "vazy_app_src_constants_pickup",
       "label": "pickup.ts",
       "_origin": "ast",
@@ -7870,15 +7828,15 @@
       "source_location": "L27"
     },
     {
-      "id": "vazy_app_src_lib_route",
-      "label": "route.ts",
+      "id": "ref_expo_font",
+      "label": "expo-font",
       "_origin": "ast",
       "community": 4,
       "community_name": "map.tsx",
-      "file_type": "code",
-      "norm_label": "route.ts",
-      "source_file": "vazy-app/src/lib/route.ts",
-      "source_location": "L1"
+      "file_type": "concept",
+      "norm_label": "expo-font",
+      "source_file": "vazy-app/package.json",
+      "source_location": "L13"
     },
     {
       "id": "ref_expo_router",
@@ -7890,6 +7848,17 @@
       "norm_label": "expo-router",
       "source_file": "vazy-app/package.json",
       "source_location": "L17"
+    },
+    {
+      "id": "ref_expo_splash_screen",
+      "label": "expo-splash-screen",
+      "_origin": "ast",
+      "community": 4,
+      "community_name": "map.tsx",
+      "file_type": "concept",
+      "norm_label": "expo-splash-screen",
+      "source_file": "vazy-app/package.json",
+      "source_location": "L18"
     },
     {
       "id": "ref_expo_status_bar",
@@ -7934,18 +7903,6 @@
       "norm_label": "react-native-safe-area-context",
       "source_file": "vazy-app/package.json",
       "source_location": "L28"
-    },
-    {
-      "id": "claude_plans_fixed_circuit_stops_src_app_map_tsx",
-      "label": "`src/app/map.tsx`",
-      "_origin": "ast",
-      "community": 4,
-      "community_name": "map.tsx",
-      "file_type": "document",
-      "node_kind": "heading",
-      "norm_label": "`src/app/map.tsx`",
-      "source_file": ".claude/plans/fixed-circuit-stops.md",
-      "source_location": "L56"
     },
     {
       "id": "claude_plans_map_destination_search_reused",
@@ -8438,6 +8395,18 @@
       "norm_label": "new",
       "source_file": ".claude/plans/fixed-circuit-stops.md",
       "source_location": "L43"
+    },
+    {
+      "id": "claude_plans_fixed_circuit_stops_review_fixes_2026_11_16",
+      "label": "Review fixes (2026-11-16)",
+      "_origin": "ast",
+      "community": 42,
+      "community_name": "Fixed circuit with 9 stops (replaces address search)",
+      "file_type": "document",
+      "node_kind": "heading",
+      "norm_label": "review fixes (2026-11-16)",
+      "source_file": ".claude/plans/fixed-circuit-stops.md",
+      "source_location": "L112"
     },
     {
       "id": "claude_plans_fixed_circuit_stops_status",
@@ -9769,44 +9738,122 @@
       "label": "build-circuit.mjs",
       "_origin": "ast",
       "community": 50,
-      "community_name": "build-circuit.mjs",
+      "community_name": "route.ts",
       "file_type": "code",
       "norm_label": "build-circuit.mjs",
       "source_file": "vazy-app/scripts/build-circuit.mjs",
       "source_location": "L1"
     },
     {
-      "id": "vazy_app_scripts_build_circuit_entries",
-      "label": "entries",
-      "_origin": "ast",
-      "community": 50,
-      "community_name": "build-circuit.mjs",
-      "file_type": "code",
-      "norm_label": "entries",
-      "source_file": "vazy-app/scripts/build-circuit.mjs",
-      "source_location": "L33"
-    },
-    {
       "id": "vazy_app_scripts_build_circuit_legs",
       "label": "legs",
       "_origin": "ast",
       "community": 50,
-      "community_name": "build-circuit.mjs",
+      "community_name": "route.ts",
       "file_type": "code",
       "norm_label": "legs",
       "source_file": "vazy-app/scripts/build-circuit.mjs",
-      "source_location": "L20"
+      "source_location": "L9"
     },
     {
-      "id": "vazy_app_scripts_build_circuit_stops",
+      "id": "vazy_app_scripts_route_check",
+      "label": "route.check.mjs",
+      "_origin": "ast",
+      "community": 50,
+      "community_name": "route.ts",
+      "file_type": "code",
+      "norm_label": "route.check.mjs",
+      "source_file": "vazy-app/scripts/route.check.mjs",
+      "source_location": "L1"
+    },
+    {
+      "id": "vazy_app_scripts_route_check_stops",
+      "label": "stops",
+      "_origin": "ast",
+      "community": 50,
+      "community_name": "route.ts",
+      "file_type": "code",
+      "norm_label": "stops",
+      "source_file": "vazy-app/scripts/route.check.mjs",
+      "source_location": "L16"
+    },
+    {
+      "id": "vazy_app_src_constants_circuit",
+      "label": "circuit.ts",
+      "_origin": "ast",
+      "community": 50,
+      "community_name": "route.ts",
+      "file_type": "code",
+      "norm_label": "circuit.ts",
+      "source_file": "vazy-app/src/constants/circuit.ts",
+      "source_location": "L1"
+    },
+    {
+      "id": "vazy_app_src_constants_circuit_legs",
+      "label": "LEGS",
+      "_origin": "ast",
+      "community": 50,
+      "community_name": "route.ts",
+      "file_type": "code",
+      "norm_label": "legs",
+      "source_file": "vazy-app/src/constants/circuit.ts",
+      "source_location": "L9"
+    },
+    {
+      "id": "vazy_app_src_constants_circuit_stops",
       "label": "STOPS",
       "_origin": "ast",
       "community": 50,
-      "community_name": "build-circuit.mjs",
+      "community_name": "route.ts",
       "file_type": "code",
       "norm_label": "stops",
-      "source_file": "vazy-app/scripts/build-circuit.mjs",
-      "source_location": "L6"
+      "source_file": "vazy-app/src/constants/circuit.ts",
+      "source_location": "L21"
+    },
+    {
+      "id": "vazy_app_src_constants_stops",
+      "label": "stops.ts",
+      "_origin": "ast",
+      "community": 50,
+      "community_name": "route.ts",
+      "file_type": "code",
+      "norm_label": "stops.ts",
+      "source_file": "vazy-app/src/constants/stops.ts",
+      "source_location": "L1"
+    },
+    {
+      "id": "vazy_app_src_constants_stops_stop_defs",
+      "label": "STOP_DEFS",
+      "_origin": "ast",
+      "community": 50,
+      "community_name": "route.ts",
+      "file_type": "code",
+      "norm_label": "stop_defs",
+      "source_file": "vazy-app/src/constants/stops.ts",
+      "source_location": "L10"
+    },
+    {
+      "id": "vazy_app_src_lib_route",
+      "label": "route.ts",
+      "_origin": "ast",
+      "community": 50,
+      "community_name": "route.ts",
+      "file_type": "code",
+      "norm_label": "route.ts",
+      "source_file": "vazy-app/src/lib/route.ts",
+      "source_location": "L1"
+    },
+    {
+      "id": "claude_plans_fixed_circuit_stops_src_app_map_tsx",
+      "label": "`src/app/map.tsx`",
+      "_origin": "ast",
+      "community": 50,
+      "community_name": "route.ts",
+      "file_type": "document",
+      "node_kind": "heading",
+      "norm_label": "`src/app/map.tsx`",
+      "source_file": ".claude/plans/fixed-circuit-stops.md",
+      "source_location": "L56"
     },
     {
       "id": "specs_001_vazy_splash_screen_quickstart",
@@ -12421,8 +12468,8 @@
       "id": "ref_node_assert",
       "label": "ref_node_assert",
       "_origin": "semantic",
-      "community": 4,
-      "community_name": "map.tsx",
+      "community": 50,
+      "community_name": "route.ts",
       "external": true,
       "file_type": "concept",
       "norm_label": "ref_node_assert",
@@ -12432,11 +12479,23 @@
     {
       "id": "ref_node_fs",
       "label": "ref_node_fs",
+      "_origin": "semantic",
       "community": 50,
-      "community_name": "build-circuit.mjs",
+      "community_name": "route.ts",
       "external": true,
       "file_type": "concept",
       "norm_label": "ref_node_fs",
+      "source_file": "",
+      "type": "external"
+    },
+    {
+      "id": "vazy_app_src_constants_circuit_lnglat",
+      "label": "vazy_app_src_constants_circuit_lnglat",
+      "community": 50,
+      "community_name": "route.ts",
+      "external": true,
+      "file_type": "concept",
+      "norm_label": "vazy_app_src_constants_circuit_lnglat",
       "source_file": "",
       "type": "external"
     }
@@ -12487,7 +12546,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "vazy-app/src/app/map.tsx",
-      "source_location": "L187",
+      "source_location": "L193",
       "weight": 1.0
     },
     {
@@ -12499,7 +12558,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "vazy-app/src/app/map.tsx",
-      "source_location": "L265",
+      "source_location": "L271",
       "weight": 1.0
     },
     {
@@ -12511,7 +12570,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "vazy-app/src/app/map.tsx",
-      "source_location": "L268",
+      "source_location": "L274",
       "weight": 1.0
     },
     {
@@ -12523,7 +12582,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "vazy-app/src/app/map.tsx",
-      "source_location": "L46",
+      "source_location": "L48",
       "weight": 1.0
     },
     {
@@ -12535,7 +12594,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "vazy-app/src/app/map.tsx",
-      "source_location": "L58",
+      "source_location": "L60",
       "weight": 1.0
     },
     {
@@ -12656,6 +12715,18 @@
       "context": "call",
       "source_file": "vazy-app/src/lib/route.ts",
       "source_location": "L17",
+      "weight": 1.0
+    },
+    {
+      "source": "vazy_app_src_constants_circuit",
+      "target": "vazy_app_src_constants_stops",
+      "relation": "re_exports",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "export",
+      "source_file": "vazy-app/src/constants/circuit.ts",
+      "source_location": "L5",
       "weight": 1.0
     },
     {
@@ -13031,6 +13102,30 @@
       "weight": 1.0
     },
     {
+      "source": "vazy_app_scripts_build_circuit",
+      "target": "vazy_app_src_constants_stops_stop_defs",
+      "relation": "imports",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "import",
+      "source_file": "vazy-app/scripts/build-circuit.mjs",
+      "source_location": "L5",
+      "weight": 1.0
+    },
+    {
+      "source": "vazy_app_scripts_route_check",
+      "target": "vazy_app_src_constants_circuit_stops",
+      "relation": "imports",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "import",
+      "source_file": "vazy-app/scripts/route.check.mjs",
+      "source_location": "L3",
+      "weight": 1.0
+    },
+    {
       "source": "vazy_app_scripts_route_check",
       "target": "vazy_app_src_lib_route_bounds",
       "relation": "imports",
@@ -13039,7 +13134,19 @@
       "confidence_score": 1.0,
       "context": "import",
       "source_file": "vazy-app/scripts/route.check.mjs",
-      "source_location": "L3",
+      "source_location": "L4",
+      "weight": 1.0
+    },
+    {
+      "source": "vazy_app_scripts_route_check",
+      "target": "vazy_app_src_lib_route_meters",
+      "relation": "imports",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "import",
+      "source_file": "vazy-app/scripts/route.check.mjs",
+      "source_location": "L4",
       "weight": 1.0
     },
     {
@@ -13051,7 +13158,7 @@
       "confidence_score": 1.0,
       "context": "import",
       "source_file": "vazy-app/scripts/route.check.mjs",
-      "source_location": "L3",
+      "source_location": "L4",
       "weight": 1.0
     },
     {
@@ -13063,7 +13170,7 @@
       "confidence_score": 1.0,
       "context": "import",
       "source_file": "vazy-app/scripts/route.check.mjs",
-      "source_location": "L3",
+      "source_location": "L4",
       "weight": 1.0
     },
     {
@@ -13075,7 +13182,7 @@
       "confidence_score": 1.0,
       "context": "import",
       "source_file": "vazy-app/scripts/route.check.mjs",
-      "source_location": "L3",
+      "source_location": "L4",
       "weight": 1.0
     },
     {
@@ -13403,6 +13510,42 @@
       "weight": 1.0
     },
     {
+      "source": "vazy_app_src_constants_circuit",
+      "target": "vazy_app_src_constants_stops_lnglat",
+      "relation": "imports",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "import",
+      "source_file": "vazy-app/src/constants/circuit.ts",
+      "source_location": "L3",
+      "weight": 1.0
+    },
+    {
+      "source": "vazy_app_src_constants_circuit",
+      "target": "vazy_app_src_constants_stops_stop_defs",
+      "relation": "imports",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "import",
+      "source_file": "vazy-app/src/constants/circuit.ts",
+      "source_location": "L3",
+      "weight": 1.0
+    },
+    {
+      "source": "vazy_app_src_constants_circuit",
+      "target": "vazy_app_src_constants_stops_stopdef",
+      "relation": "imports",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "import",
+      "source_file": "vazy-app/src/constants/circuit.ts",
+      "source_location": "L3",
+      "weight": 1.0
+    },
+    {
       "source": "vazy_app_src_lib_route",
       "target": "vazy_app_src_constants_circuit_lnglat",
       "relation": "imports",
@@ -13417,6 +13560,18 @@
     {
       "source": "vazy_app_src_lib_route",
       "target": "vazy_app_src_constants_circuit_stop",
+      "relation": "imports",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "import",
+      "source_file": "vazy-app/src/lib/route.ts",
+      "source_location": "L2",
+      "weight": 1.0
+    },
+    {
+      "source": "vazy_app_src_lib_route",
+      "target": "vazy_app_src_constants_stops_lnglat",
       "relation": "imports",
       "_origin": "ast",
       "confidence": "EXTRACTED",
@@ -13459,7 +13614,19 @@
       "confidence_score": 1.0,
       "context": "import",
       "source_file": "vazy-app/scripts/build-circuit.mjs",
-      "source_location": "L3",
+      "source_location": "L4",
+      "weight": 1.0
+    },
+    {
+      "source": "vazy_app_scripts_build_circuit",
+      "target": "vazy_app_src_constants_stops",
+      "relation": "imports_from",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "import",
+      "source_file": "vazy-app/scripts/build-circuit.mjs",
+      "source_location": "L5",
       "weight": 1.0
     },
     {
@@ -13476,7 +13643,7 @@
     },
     {
       "source": "vazy_app_scripts_route_check",
-      "target": "vazy_app_src_lib_route",
+      "target": "vazy_app_src_constants_circuit",
       "relation": "imports_from",
       "_origin": "ast",
       "confidence": "EXTRACTED",
@@ -13484,6 +13651,18 @@
       "context": "import",
       "source_file": "vazy-app/scripts/route.check.mjs",
       "source_location": "L3",
+      "weight": 1.0
+    },
+    {
+      "source": "vazy_app_scripts_route_check",
+      "target": "vazy_app_src_lib_route",
+      "relation": "imports_from",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "import",
+      "source_file": "vazy-app/scripts/route.check.mjs",
+      "source_location": "L4",
       "weight": 1.0
     },
     {
@@ -15526,6 +15705,17 @@
       "confidence_score": 1.0,
       "source_file": ".claude/plans/fixed-circuit-stops.md",
       "source_location": "L109",
+      "weight": 1.0
+    },
+    {
+      "source": "claude_plans_fixed_circuit_stops_fixed_circuit_with_9_stops_replaces_address_search",
+      "target": "claude_plans_fixed_circuit_stops_review_fixes_2026_11_16",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": ".claude/plans/fixed-circuit-stops.md",
+      "source_location": "L112",
       "weight": 1.0
     },
     {
@@ -23610,29 +23800,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "vazy-app/scripts/build-circuit.mjs",
-      "source_location": "L20",
-      "weight": 1.0
-    },
-    {
-      "source": "vazy_app_scripts_build_circuit",
-      "target": "vazy_app_scripts_build_circuit_entries",
-      "relation": "contains",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "vazy-app/scripts/build-circuit.mjs",
-      "source_location": "L33",
-      "weight": 1.0
-    },
-    {
-      "source": "vazy_app_scripts_build_circuit",
-      "target": "vazy_app_scripts_build_circuit_stops",
-      "relation": "contains",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "vazy-app/scripts/build-circuit.mjs",
-      "source_location": "L6",
+      "source_location": "L9",
       "weight": 1.0
     },
     {
@@ -23643,7 +23811,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "vazy-app/scripts/route.check.mjs",
-      "source_location": "L6",
+      "source_location": "L16",
       "weight": 1.0
     },
     {
@@ -23709,7 +23877,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "vazy-app/src/app/map.tsx",
-      "source_location": "L277",
+      "source_location": "L283",
       "weight": 1.0
     },
     {
@@ -23912,13 +24080,13 @@
     },
     {
       "source": "vazy_app_src_constants_circuit",
-      "target": "vazy_app_src_constants_circuit_lnglat",
+      "target": "vazy_app_src_constants_circuit_stops",
       "relation": "contains",
       "_origin": "ast",
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "vazy-app/src/constants/circuit.ts",
-      "source_location": "L3",
+      "source_location": "L21",
       "weight": 1.0
     },
     {
@@ -23929,18 +24097,18 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "vazy-app/src/constants/circuit.ts",
-      "source_location": "L5",
+      "source_location": "L7",
       "weight": 1.0
     },
     {
       "source": "vazy_app_src_constants_circuit",
-      "target": "vazy_app_src_constants_circuit_stops",
+      "target": "vazy_app_src_constants_circuit_legs",
       "relation": "contains",
       "_origin": "ast",
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "vazy-app/src/constants/circuit.ts",
-      "source_location": "L7",
+      "source_location": "L9",
       "weight": 1.0
     },
     {
@@ -23952,6 +24120,39 @@
       "confidence_score": 1.0,
       "source_file": "vazy-app/src/constants/pickup.ts",
       "source_location": "L2",
+      "weight": 1.0
+    },
+    {
+      "source": "vazy_app_src_constants_stops",
+      "target": "vazy_app_src_constants_stops_stop_defs",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "vazy-app/src/constants/stops.ts",
+      "source_location": "L10",
+      "weight": 1.0
+    },
+    {
+      "source": "vazy_app_src_constants_stops",
+      "target": "vazy_app_src_constants_stops_lnglat",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "vazy-app/src/constants/stops.ts",
+      "source_location": "L6",
+      "weight": 1.0
+    },
+    {
+      "source": "vazy_app_src_constants_stops",
+      "target": "vazy_app_src_constants_stops_stopdef",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "vazy-app/src/constants/stops.ts",
+      "source_location": "L8",
       "weight": 1.0
     },
     {
@@ -24072,7 +24273,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "vazy-app/tsconfig.json",
-      "source_location": "L14",
+      "source_location": "L15",
       "weight": 1.0
     },
     {
@@ -24094,7 +24295,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "vazy-app/tsconfig.json",
-      "source_location": "L20",
+      "source_location": "L21",
       "weight": 1.0
     },
     {
@@ -24121,13 +24322,24 @@
     },
     {
       "source": "vazy_app_tsconfig_compileroptions",
-      "target": "vazy_app_tsconfig_compileroptions_paths",
+      "target": "vazy_app_tsconfig_compileroptions_allowimportingtsextensions",
       "relation": "contains",
       "_origin": "ast",
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "vazy-app/tsconfig.json",
       "source_location": "L5",
+      "weight": 1.0
+    },
+    {
+      "source": "vazy_app_tsconfig_compileroptions",
+      "target": "vazy_app_tsconfig_compileroptions_paths",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "vazy-app/tsconfig.json",
+      "source_location": "L6",
       "weight": 1.0
     },
     {
@@ -24138,7 +24350,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "vazy-app/tsconfig.json",
-      "source_location": "L9",
+      "source_location": "L10",
       "weight": 1.0
     },
     {
@@ -24403,7 +24615,7 @@
       "confidence_score": 0.85,
       "context": "argument",
       "source_file": "vazy-app/scripts/build-circuit.mjs",
-      "source_location": "L30",
+      "source_location": "L20",
       "weight": 1.0
     },
     {
@@ -24648,5 +24860,5 @@
     }
   ],
   "hyperedges": [],
-  "built_at_commit": "dcc0f68a0bf2cba3884646afd871dcb3fe9380a6"
+  "built_at_commit": "f2c518a9aaad28f0f0de9d400fa21fbdd7ecff99"
 }

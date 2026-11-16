@@ -1,0 +1,12 @@
+{
+  "compilerOptions": {
+    "strict": true,
+    "noEmit": true,
+    "target": "es2023",
+    "module": "nodenext",
+    "allowImportingTsExtensions": true,
+    "erasableSyntaxOnly": true,
+    "types": ["node"]
+  },
+  "include": ["src"]
+}
