@@ -8,7 +8,16 @@
     "userInterfaceStyle": "automatic",
     "android": {
       "predictiveBackGestureEnabled": false,
-      "package": "com.autonomoustaxi.vazy"
+      "package": "com.autonomoustaxi.vazy",
+      "permissions": [
+        "ACCESS_COARSE_LOCATION",
+        "ACCESS_FINE_LOCATION"
+      ]
+    },
+    "ios": {
+      "infoPlist": {
+        "NSLocationWhenInUseUsageDescription": "Vazy uses your location to find your pickup point and show the streets and rides around you."
+      }
     },
     "web": {
       "output": "static"
