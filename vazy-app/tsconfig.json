@@ -9,6 +9,10 @@
       ],
       "@/assets/*": [
         "./assets/*"
+      ],
+      // @firebase/auth lists "types" before its "react-native" condition, so TS would pick the web typings (no getReactNativePersistence).
+      "@firebase/auth": [
+        "./node_modules/@firebase/auth/dist/rn/index.rn.d.ts"
       ]
     }
   },
