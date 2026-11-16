@@ -1,27 +1,28 @@
-# Graph Report - autonomous-taxi  (2026-10-08)
+# Graph Report - Autonomous-Taxi  (2026-11-16)
 
 ## Corpus Check
-- 30 files · ~37,193 words
+- 126 files · ~76,978 words
 - Verdict: corpus is large enough that graph structure adds value.
-- Unclassified: 8 file(s) not represented in the graph (top: (none) 4, .ttf 4)
+- Unclassified: 24 file(s) not represented in the graph (top: .ttf 19, (none) 5)
 
 ## Summary
-- 260 nodes · 319 edges · 20 communities (18 shown, 2 thin omitted)
-- Extraction: 100% EXTRACTED · 0% INFERRED · 0% AMBIGUOUS
+- 1019 nodes · 1071 edges · 84 communities (76 shown, 8 thin omitted)
+- Extraction: 98% EXTRACTED · 2% INFERRED · 0% AMBIGUOUS · INFERRED: 19 edges (avg confidence: 0.94)
 - Token cost: 0 input · 0 output
 
 ## Graph Freshness
-- Built from commit: `d598a0b8`
+- Built from commit: `784fe63c`
 - Run `git rev-parse HEAD` and compare to check if the graph is stale.
 - Run `graphify update .` after code changes (no API cost).
 
 ## Community Hubs (Navigation)
 - package.json
-- dependencies
+- Implementation Plan: Ride Map Screen
 - Execution Steps
-- expo
+- Implementation Plan: Vazy Splash Screen
 - ThemedText
 - speckit-analyze/SKILL.md
+- Implementation Plan: Phone Login Entry Screen
 - speckit-plan/SKILL.md
 - speckit-specify/SKILL.md
 - speckit-tasks/SKILL.md
@@ -29,66 +30,129 @@
 - speckit-checklist/SKILL.md
 - speckit-clarify/SKILL.md
 - speckit-implement/SKILL.md
-- scripts
-- Welcome to your Expo app 👋
+- Implementation Plan: Sign Up Screen
+- Tasks: [FEATURE NAME]
 - speckit-constitution/SKILL.md
-- app/AGENTS.md
+- Implementation Plan: Onboarding Entry Screen
 - speckit-taskstoissues/SKILL.md
-- Autonomous-Taxi
+- Implementation Plan: Onboarding Tracking Screen
+- Vazy
 - AGENTS.md
+- Implementation Plan: Onboarding Location Consent Screen
+- Implementation Plan: Shared Themed Entry-Flow Components
+- dependencies
+- Implementation Plan: Fix Tracking Layout
+- expo
+- Tasks: Onboarding Entry Screen
+- Tasks: Onboarding Tracking Screen
+- Tasks: Onboarding Location Consent Screen
+- Tasks: Phone Login Entry Screen
+- common.ps1
+- Tasks: Vazy Splash Screen
+- Tasks: Sign Up Screen
+- Tasks: Ride Map Screen
+- UI Contract: Onboarding Tracking Screen
+- UI Contract: Onboarding Location Consent Screen
+- Tasks: Fix Tracking Layout
+- Feature Specification: [FEATURE NAME]
+- Tasks: Shared Themed Entry-Flow Components
+- Core Principles
+- Core Principles
+- Destination selection screen (Figma "Select Location", 5:1829)
+- Implementation Plan: [FEATURE]
+- UI Contract: Phone Login Entry Screen
+- UI Contract: Vazy Splash Screen
+- Research: Vazy Splash Screen
+- Quickstart: Validate the Onboarding Entry Screen
+- Research: Onboarding Entry Screen
+- Research: Onboarding Location Consent Screen
+- Map screen: user types a destination
+- Quickstart: Validate the Vazy Splash Screen
+- UI Contract: Splash to First Onboarding Page
+- Research: Onboarding Tracking Screen
+- Research: Phone Login Entry Screen
+- Research: Ride Map Screen
+- How to Run the Current Version
+- create-new-feature.ps1
+- Data Model: Onboarding Entry Screen
+- Quickstart: Phone Login Entry Screen
+- UI Contract: Sign Up Screen
+- UI Contract: Ride Map Screen
+- vazy-app/AGENTS.md
+- [CHECKLIST TYPE] Checklist: [FEATURE NAME]
+- Data Model: Vazy Splash Screen
+- Data Model: Phone Login Entry Screen
+- UI Contract: Themed Components
+- Quickstart: Validate Shared Themed Onboarding Components
+- Research: Shared Themed Entry-Flow Components
+- UI Contract: Tracking Onboarding Layout
+- Quickstart: Validate Tracking Layout Fix
+- Research: Fix Tracking Layout
+- Quickstart: Validate Sign Up Screen
+- Quickstart: Validate Ride Map Screen
+- Data Model: Onboarding Tracking Screen
+- Data Model: Onboarding Location Consent Screen
+- Data Model: Sign Up Screen
+- Data Model: Ride Map Screen
+- 006-shared-themed-components/data-model.md
+- 007-fix-tracking-layout/data-model.md
 
 ## God Nodes (most connected - your core abstractions)
-1. `ThemedText()` - 17 edges
-2. `ThemedButton()` - 12 edges
-3. `expo` - 11 edges
-4. `react-native` - 10 edges
-5. `react-native-safe-area-context` - 9 edges
-6. `expo-router` - 8 edges
-7. `expo-status-bar` - 8 edges
-8. `scripts` - 7 edges
-9. `Execution Steps` - 7 edges
-10. `4. Detection Passes (Token-Efficient Analysis)` - 7 edges
+1. `ThemedText()` - 27 edges
+2. `ThemedButton()` - 23 edges
+3. `Tasks: [FEATURE NAME]` - 13 edges
+4. `expo` - 12 edges
+5. `Tasks: Onboarding Entry Screen` - 12 edges
+6. `react-native` - 11 edges
+7. `Tasks: Onboarding Tracking Screen` - 11 edges
+8. `Tasks: Onboarding Location Consent Screen` - 11 edges
+9. `expo-router` - 10 edges
+10. `react-native-safe-area-context` - 10 edges
 
 ## Surprising Connections (you probably didn't know these)
-- `Index()` --calls--> `ThemedText()`  [EXTRACTED]
-  app/src/app/index.tsx → app/src/components/themed-text.tsx
-- `Map()` --calls--> `ThemedText()`  [EXTRACTED]
-  app/src/app/map.tsx → app/src/components/themed-text.tsx
-- `Login()` --calls--> `ThemedButton()`  [EXTRACTED]
-  app/src/app/login.tsx → app/src/components/themed-button.tsx
-- `Login()` --calls--> `ThemedText()`  [EXTRACTED]
-  app/src/app/login.tsx → app/src/components/themed-text.tsx
-- `OnboardingLocation()` --calls--> `ThemedButton()`  [EXTRACTED]
-  app/src/app/onboarding-location.tsx → app/src/components/themed-button.tsx
+- `Changes (one file: `vazy-app/src/app/map.tsx`)` --references--> `ThemedButton()`  [INFERRED]
+  .claude/plans/map-destination-search.md → vazy-app/src/components/themed-button.tsx
+- `Decision 3: Reuse the installed image renderer` --references--> `ThemedText()`  [INFERRED]
+  specs/009-ride-map-screen/research.md → vazy-app/src/components/themed-text.tsx
+- `Decision 2: Keep form state transient and local` --references--> `ThemedButton()`  [INFERRED]
+  specs/008-sign-up-screen/research.md → vazy-app/src/components/themed-button.tsx
+- `Reused` --references--> `ThemedButton()`  [INFERRED]
+  .claude/plans/map-destination-search.md → vazy-app/src/components/themed-button.tsx
+- `Decision 1: Share only repeated text and button presentation` --references--> `ThemedButton()`  [INFERRED]
+  specs/006-shared-themed-components/research.md → vazy-app/src/components/themed-button.tsx
 
 ## Import Cycles
 - None detected.
 
-## Communities (20 total, 2 thin omitted)
+## Communities (84 total, 8 thin omitted)
 
 ### Community 0 - "package.json"
-Cohesion: 0.06
-Nodes (33): { defineConfig }, expoConfig, devDependencies, eslint, eslint-config-expo, @types/react, typescript, main (+25 more)
+Cohesion: 0.05
+Nodes (42): eslint, eslint-config-expo, expo, expo-build-properties, expo-constants, expo-dev-client, expo-device, expo-font (+34 more)
 
-### Community 1 - "dependencies"
-Cohesion: 0.08
-Nodes (24): dependencies, expo, expo-constants, expo-device, expo-font, expo-glass-effect, expo-image, expo-linking (+16 more)
+### Community 1 - "Implementation Plan: Ride Map Screen"
+Cohesion: 0.07
+Nodes (26): Content Quality, Feature Readiness, Notes, Requirement Completeness, Specification Quality Checklist: Ride Map Screen, Complexity Tracking, Constitution Check, Documentation (this feature) (+18 more)
 
 ### Community 2 - "Execution Steps"
 Cohesion: 0.12
 Nodes (15): 1. Initialize Convergence Context, 2. Load Artifacts (Progressive Disclosure), 3. Build the Intent Inventory, 4. Assess the Codebase and Classify Findings, 5. Assign Severity, 6. Present the In-Session Findings Summary, 7. Append Convergence Tasks (or report converged), 8. Provide Next Actions (Handoff) (+7 more)
 
-### Community 3 - "expo"
-Cohesion: 0.12
-Nodes (15): predictiveBackGestureEnabled, reactCompiler, typedRoutes, expo, android, experiments, name, orientation (+7 more)
+### Community 3 - "Implementation Plan: Vazy Splash Screen"
+Cohesion: 0.07
+Nodes (25): Content Quality, Feature Readiness, Notes, Requirement Completeness, Specification Quality Checklist: Vazy Splash Screen, Complexity Tracking, Constitution Check, Documentation (this feature) (+17 more)
 
 ### Community 4 - "ThemedText"
-Cohesion: 0.13
-Nodes (30): Index(), styles, Login(), styles, Map(), styles, OnboardingLocation(), styles (+22 more)
+Cohesion: 0.07
+Nodes (53): Reused, Decisions and notes (2026-11-16), expo-router, expo-status-bar, expo-symbols, react, react-native, react-native-safe-area-context (+45 more)
 
 ### Community 5 - "speckit-analyze/SKILL.md"
 Cohesion: 0.08
 Nodes (25): 1. Initialize Analysis Context, 2. Load Artifacts (Progressive Disclosure), 3. Build Semantic Models, 4. Detection Passes (Token-Efficient Analysis), 5. Severity Assignment, 6. Produce Compact Analysis Report, 7. Provide Next Actions, 8. Offer Remediation (+17 more)
+
+### Community 6 - "Implementation Plan: Phone Login Entry Screen"
+Cohesion: 0.07
+Nodes (25): Content Quality, Feature Readiness, Notes, Requirement Completeness, Specification Quality Checklist: Phone Login Entry Screen, Complexity Tracking, Constitution Check, Documentation (this feature) (+17 more)
 
 ### Community 7 - "speckit-plan/SKILL.md"
 Cohesion: 0.18
@@ -104,7 +168,7 @@ Nodes (10): Checklist Format (REQUIRED), Completion Report, Done When, Mandatory
 
 ### Community 10 - "tsconfig.json"
 Cohesion: 0.22
-Nodes (8): compilerOptions, paths, strict, exclude, extends, include, @/assets/*, expo/tsconfig.base
+Nodes (8): expo/tsconfig.base, compilerOptions, paths, strict, exclude, extends, include, @/assets/*
 
 ### Community 11 - "speckit-checklist/SKILL.md"
 Cohesion: 0.25
@@ -118,45 +182,273 @@ Nodes (6): Completion Report, Done When, Mandatory Post-Execution Hooks, Outline
 Cohesion: 0.29
 Nodes (6): Completion Report, Done When, Mandatory Post-Execution Hooks, Outline, Pre-Execution Checks, User Input
 
-### Community 14 - "scripts"
-Cohesion: 0.29
-Nodes (7): scripts, android, ios, lint, reset-project, start, web
+### Community 14 - "Implementation Plan: Sign Up Screen"
+Cohesion: 0.07
+Nodes (25): Content Quality, Feature Readiness, Notes, Requirement Completeness, Specification Quality Checklist: Sign Up Screen, Complexity Tracking, Constitution Check, Documentation (this feature) (+17 more)
 
-### Community 15 - "Welcome to your Expo app 👋"
-Cohesion: 0.29
-Nodes (6): Get a fresh project, Get started, Join the community, Learn more, Other setup steps, Welcome to your Expo app 👋
+### Community 15 - "Tasks: [FEATURE NAME]"
+Cohesion: 0.07
+Nodes (26): Dependencies & Execution Order, Format: `[ID] [P?] [Story] Description`, Implementation for User Story 1, Implementation for User Story 2, Implementation for User Story 3, Implementation Strategy, Incremental Delivery, MVP First (User Story 1 Only) (+18 more)
 
 ### Community 16 - "speckit-constitution/SKILL.md"
 Cohesion: 0.33
 Nodes (5): Outline, Post-Execution Checks, Pre-Execution Checks, Scope Guard, User Input
 
-### Community 17 - "app/AGENTS.md"
-Cohesion: 0.33
-Nodes (5): Building with EAS, Commands, Expo has changed — do not trust your training data, Navigation & Routing, Rules
+### Community 17 - "Implementation Plan: Onboarding Entry Screen"
+Cohesion: 0.07
+Nodes (24): Content Quality, Feature Readiness, Notes, Requirement Completeness, Specification Quality Checklist: Onboarding Entry Screen, Constitution Check, Documentation (this feature), Implementation Plan: Onboarding Entry Screen (+16 more)
 
 ### Community 18 - "speckit-taskstoissues/SKILL.md"
 Cohesion: 0.40
 Nodes (4): Outline, Post-Execution Checks, Pre-Execution Checks, User Input
 
+### Community 19 - "Implementation Plan: Onboarding Tracking Screen"
+Cohesion: 0.07
+Nodes (24): Content Quality, Feature Readiness, Notes, Requirement Completeness, Specification Quality Checklist: Onboarding Tracking Screen, Complexity Tracking, Constitution Check, Documentation (this feature) (+16 more)
+
+### Community 20 - "Vazy"
+Cohesion: 0.50
+Nodes (3): Documentation, Overview, Vazy
+
+### Community 22 - "Implementation Plan: Onboarding Location Consent Screen"
+Cohesion: 0.07
+Nodes (24): Content Quality, Feature Readiness, Notes, Requirement Completeness, Specification Quality Checklist: Onboarding Location Consent Screen, Complexity Tracking, Constitution Check, Documentation (this feature) (+16 more)
+
+### Community 23 - "Implementation Plan: Shared Themed Entry-Flow Components"
+Cohesion: 0.07
+Nodes (24): Content Quality, Feature Readiness, Notes, Requirement Completeness, Specification Quality Checklist: Shared Themed Onboarding Components, Complexity Tracking, Constitution Check, Documentation (this feature) (+16 more)
+
+### Community 24 - "dependencies"
+Cohesion: 0.07
+Nodes (27): dependencies, expo, expo-build-properties, expo-constants, expo-dev-client, expo-device, expo-font, expo-glass-effect (+19 more)
+
+### Community 25 - "Implementation Plan: Fix Tracking Layout"
+Cohesion: 0.08
+Nodes (23): Content Quality, Feature Readiness, Notes, Requirement Completeness, Specification Quality Checklist: Fix Tracking Layout, Complexity Tracking, Constitution Check, Documentation (this feature) (+15 more)
+
+### Community 26 - "expo"
+Cohesion: 0.10
+Nodes (20): package, permissions, predictiveBackGestureEnabled, reactCompiler, typedRoutes, expo, android, experiments (+12 more)
+
+### Community 27 - "Tasks: Onboarding Entry Screen"
+Cohesion: 0.11
+Nodes (18): Dependencies & Execution Order, Dependency Graph, Format: `[ID] [P?] [Story] Description`, Implementation Strategy, Incremental Delivery, MVP First, Notes, Parallel Example: User Story 2 (+10 more)
+
+### Community 28 - "Tasks: Onboarding Tracking Screen"
+Cohesion: 0.11
+Nodes (18): Complete This Screen Increment, Dependencies and Execution Order, First Independently Testable Slice, Format: `[ID] [P?] [Story] Description`, Implementation for User Story 1, Implementation for User Story 2, Implementation Strategy, Notes (+10 more)
+
+### Community 29 - "Tasks: Onboarding Location Consent Screen"
+Cohesion: 0.11
+Nodes (18): Complete Screen, Dependencies & Execution Order, First Increment: Navigation, Format: `[ID] [P?] [Story] Description`, Implementation for User Story 1, Implementation for User Story 2, Implementation Strategy, Notes (+10 more)
+
+### Community 30 - "Tasks: Phone Login Entry Screen"
+Cohesion: 0.11
+Nodes (17): Complete Login Entry, Dependencies & Execution Order, Flow Connection, Format: `[ID] [P?] [Story] Description`, Implementation for User Story 1, Implementation for User Story 2, Implementation Strategy, Notes (+9 more)
+
+### Community 31 - "common.ps1"
+Cohesion: 0.23
+Nodes (13): Find-SpecifyRoot(), Format-SpecKitCommand(), Get-CurrentBranch(), Get-FeaturePathsEnv(), Get-InvokeSeparator(), Get-NormalizedPriority(), Get-Python3Command(), Get-RepoRoot() (+5 more)
+
+### Community 32 - "Tasks: Vazy Splash Screen"
+Cohesion: 0.12
+Nodes (15): Dependencies & Execution Order, Format: `[ID] [P?] [Story] Description`, Implementation, Implementation Strategy, MVP first, Parallel Example, Phase 1: Setup, Phase 2: Foundational (+7 more)
+
+### Community 33 - "Tasks: Sign Up Screen"
+Cohesion: 0.12
+Nodes (15): Dependencies & Execution Order, Format: `[ID] [P?] [Story] Description`, Implementation, Implementation, Implementation Strategy, Notes, Parallel Example, Phase 1: Setup and Foundation (+7 more)
+
+### Community 34 - "Tasks: Ride Map Screen"
+Cohesion: 0.12
+Nodes (15): Dependencies & Execution Order, Format: `[ID] [P?] [Story] Description`, Implementation, Implementation, Implementation, Implementation Strategy, Notes, Parallel Example (+7 more)
+
+### Community 35 - "UI Contract: Onboarding Tracking Screen"
+Cohesion: 0.14
+Nodes (12): Accessibility contract, Back transition, Failure behavior, Forward transition, Route contract, Tracking-page rendering contract, UI Contract: Onboarding Tracking Screen, Increment checks (+4 more)
+
+### Community 36 - "UI Contract: Onboarding Location Consent Screen"
+Cohesion: 0.14
+Nodes (12): Accessibility contract, Back transition, Failure behavior, Final-page rendering contract, Forward transition, Route contract, UI Contract: Onboarding Location Consent Screen, Increment checks (+4 more)
+
+### Community 37 - "Tasks: Fix Tracking Layout"
+Cohesion: 0.14
+Nodes (13): Dependencies & Execution Order, Format: `[ID] [P?] [Story] Description`, Implementation, Implementation Strategy, Notes, Parallel Opportunities, Phase 1: Setup, Phase 2: Foundational (+5 more)
+
+### Community 38 - "Feature Specification: [FEATURE NAME]"
+Cohesion: 0.15
+Nodes (12): Assumptions, Edge Cases, Feature Specification: [FEATURE NAME], Functional Requirements, Key Entities *(include if feature involves data)*, Measurable Outcomes, Requirements *(mandatory)*, Success Criteria *(mandatory)* (+4 more)
+
+### Community 39 - "Tasks: Shared Themed Entry-Flow Components"
+Cohesion: 0.17
+Nodes (11): Complete Slice, Dependencies & Execution Order, Implementation Strategy, Notes, Parallel Opportunities, Phase 1: Setup, Phase 3: User Story 1 - Consistent entry-flow presentation (Priority: P1), Phase 4: Polish & Cross-Cutting Validation (+3 more)
+
+### Community 40 - "Core Principles"
+Cohesion: 0.18
+Nodes (10): Architecture and Technology Constraints, Autonomous Taxi Constitution, Core Principles, Delivery Workflow and Quality Gates, Governance, I. Safety Boundaries Are Non-Negotiable, II. Contracts Define Every Boundary, III. UI First, Then One Working Slice at a Time (+2 more)
+
+### Community 41 - "Core Principles"
+Cohesion: 0.18
+Nodes (10): Core Principles, Governance, [PRINCIPLE_1_NAME], [PRINCIPLE_2_NAME], [PRINCIPLE_3_NAME], [PRINCIPLE_4_NAME], [PRINCIPLE_5_NAME], [PROJECT_NAME] Constitution (+2 more)
+
+### Community 42 - "Destination selection screen (Figma "Select Location", 5:1829)"
+Cohesion: 0.22
+Nodes (8): API: which one and where it runs, Changes, Context, Destination selection screen (Figma "Select Location", 5:1829), Left out (YAGNI), Verification, Where it runs, Which service
+
+### Community 43 - "Implementation Plan: [FEATURE]"
+Cohesion: 0.22
+Nodes (8): Complexity Tracking, Constitution Check, Documentation (this feature), Implementation Plan: [FEATURE], Project Structure, Source Code (repository root), Summary, Technical Context
+
+### Community 44 - "UI Contract: Phone Login Entry Screen"
+Cohesion: 0.22
+Nodes (8): Back transition, Failure behavior, Forward transition, Input contract, Login rendering contract, Route contract, Static-treatment contract, UI Contract: Phone Login Entry Screen
+
+### Community 45 - "UI Contract: Vazy Splash Screen"
+Cohesion: 0.25
+Nodes (7): Accessibility, Availability and performance, Entry, Exclusions, Responsive behavior, UI Contract: Vazy Splash Screen, Visible output
+
+### Community 46 - "Research: Vazy Splash Screen"
+Cohesion: 0.25
+Nodes (7): Decision 1: Use the index route for the complete design, Decision 2: Bundle one raster illustration locally, Decision 3: Use existing layout primitives and system typography, Decision 4: Preserve native system UI and accessibility, Decision 5: Do not add a test framework for a static layout, Decision 6: Remove invalid template asset references without creating branding, Research: Vazy Splash Screen
+
+### Community 47 - "Quickstart: Validate the Onboarding Entry Screen"
+Cohesion: 0.25
+Nodes (7): Offline Validation, P1: Splash-to-Onboarding Transition, P2: Onboarding Presentation, Prerequisites, Quickstart: Validate the Onboarding Entry Screen, Run the App, Static Validation
+
+### Community 48 - "Research: Onboarding Entry Screen"
+Cohesion: 0.25
+Nodes (7): Figma Assets, Provisional Copy and Call-to-Action, Research: Onboarding Entry Screen, Responsive Composition, Route Transition, Splash Interaction and Accessibility, Verification
+
+### Community 49 - "Research: Onboarding Location Consent Screen"
+Cohesion: 0.25
+Nodes (7): Decision 1: Reuse Expo Router `navigate`, Decision 2: Preserve each supplied illustration layer, Decision 3: Keep permission and LGPD logic absent, Decision 4: Follow existing native accessibility patterns, Decision 5: Keep the final screen standalone, Decision 6: Stage final acceptance with the complete first flow, Research: Onboarding Location Consent Screen
+
+### Community 50 - "Map screen: user types a destination"
+Cohesion: 0.29
+Nodes (6): Changes (one file: `vazy-app/src/app/map.tsx`), Context, Implementation notes (done), Map screen: user types a destination, Skipped (YAGNI), Verification
+
+### Community 51 - "Quickstart: Validate the Vazy Splash Screen"
+Cohesion: 0.29
+Nodes (6): Acceptance matrix, Implementation validation: 2026-10-06, Prerequisites, Quickstart: Validate the Vazy Splash Screen, Run the screen, Static checks
+
+### Community 52 - "UI Contract: Splash to First Onboarding Page"
+Cohesion: 0.29
+Nodes (6): Layout Contract, Offline and Failure Contract, Onboarding Presentation Contract, Route Contract, Splash Activation Contract, UI Contract: Splash to First Onboarding Page
+
+### Community 53 - "Research: Onboarding Tracking Screen"
+Cohesion: 0.29
+Nodes (6): Decision 1: Use Expo Router `navigate`, Decision 2: Preserve native accessibility semantics, Decision 3: Add only the unique illustration, Decision 4: Keep the second screen standalone, Decision 5: Stage acceptance with the complete first flow, Research: Onboarding Tracking Screen
+
+### Community 54 - "Research: Phone Login Entry Screen"
+Cohesion: 0.29
+Nodes (6): Decision 1: Reuse Expo Router `navigate`, Decision 2: Use native keyboard and phone-input behavior, Decision 3: Keep unfinished destinations visibly static, Decision 4: Adapt identity without adding an asset, Decision 5: Validate the whole first flow now, Research: Phone Login Entry Screen
+
+### Community 55 - "Research: Ride Map Screen"
+Cohesion: 0.29
+Nodes (6): Decision 1: Build a static composition, not a map integration, Decision 2: Bundle every visible design asset locally, Decision 3: Reuse the installed image renderer, Decision 4: Connect signup without pretending authentication succeeded, Decision 5: Keep screen testing user-owned, Research: Ride Map Screen
+
+### Community 56 - "How to Run the Current Version"
+Cohesion: 0.33
+Nodes (5): 1. Clone the repository, 1. Instal dependencies, 2. Building the project, 3. Running, How to Run the Current Version
+
+### Community 58 - "Data Model: Onboarding Entry Screen"
+Cohesion: 0.33
+Nodes (5): App Screen, Data Model: Onboarding Entry Screen, Domain Data, Onboarding Presentation, Transient Presentation State
+
+### Community 59 - "Quickstart: Phone Login Entry Screen"
+Cohesion: 0.33
+Nodes (5): Integrated flow validation, Prerequisites, Quickstart: Phone Login Entry Screen, Required test matrix, Static validation
+
+### Community 60 - "UI Contract: Sign Up Screen"
+Cohesion: 0.33
+Nodes (5): Deferred behavior, Input contract, Presentation contract, Route contract, UI Contract: Sign Up Screen
+
+### Community 61 - "UI Contract: Ride Map Screen"
+Cohesion: 0.33
+Nodes (5): Deferred behavior, Map contract, Route contract, Sheet contract, UI Contract: Ride Map Screen
+
+### Community 62 - "vazy-app/AGENTS.md"
+Cohesion: 0.33
+Nodes (5): Building with EAS, Commands, Expo has changed — do not trust your training data, Navigation & Routing, Rules
+
+### Community 63 - "[CHECKLIST TYPE] Checklist: [FEATURE NAME]"
+Cohesion: 0.40
+Nodes (4): [Category 1], [Category 2], [CHECKLIST TYPE] Checklist: [FEATURE NAME], Notes
+
+### Community 64 - "Data Model: Vazy Splash Screen"
+Cohesion: 0.40
+Nodes (4): Data Model: Vazy Splash Screen, Display inputs, Domain entities, State transitions
+
+### Community 65 - "Data Model: Phone Login Entry Screen"
+Cohesion: 0.40
+Nodes (4): Data Model: Phone Login Entry Screen, Phone Login Draft, Presentation values, Transient navigation state
+
+### Community 66 - "UI Contract: Themed Components"
+Cohesion: 0.40
+Nodes (4): Compatibility, ThemedButton, ThemedText, UI Contract: Themed Components
+
+### Community 67 - "Quickstart: Validate Shared Themed Onboarding Components"
+Cohesion: 0.40
+Nodes (4): Integrated flow validation, Prerequisites, Quickstart: Validate Shared Themed Onboarding Components, Static validation
+
+### Community 68 - "Research: Shared Themed Entry-Flow Components"
+Cohesion: 0.40
+Nodes (4): Decision 2: Reuse React Native props directly, Decision 3: Keep the current theme synchronous and local, Decision 4: Validate the real flow, Research: Shared Themed Entry-Flow Components
+
+### Community 69 - "UI Contract: Tracking Onboarding Layout"
+Cohesion: 0.40
+Nodes (4): Compatibility, Responsive behavior, UI Contract: Tracking Onboarding Layout, Visual order
+
+### Community 70 - "Quickstart: Validate Tracking Layout Fix"
+Cohesion: 0.40
+Nodes (4): Prerequisites, Quickstart: Validate Tracking Layout Fix, Static validation, User-run screen validation
+
+### Community 71 - "Research: Fix Tracking Layout"
+Cohesion: 0.40
+Nodes (4): Decision 1: Correct containment at the source, Decision 2: Keep the correction local, Decision 3: Use existing validation ownership, Research: Fix Tracking Layout
+
+### Community 72 - "Quickstart: Validate Sign Up Screen"
+Cohesion: 0.40
+Nodes (4): Prerequisites, Quickstart: Validate Sign Up Screen, Static validation, User-run integrated validation
+
+### Community 73 - "Quickstart: Validate Ride Map Screen"
+Cohesion: 0.40
+Nodes (4): Prerequisites, Quickstart: Validate Ride Map Screen, Static validation, User-run integrated validation
+
+### Community 74 - "Data Model: Onboarding Tracking Screen"
+Cohesion: 0.50
+Nodes (3): Data Model: Onboarding Tracking Screen, Presentation values, Transient navigation state
+
+### Community 75 - "Data Model: Onboarding Location Consent Screen"
+Cohesion: 0.50
+Nodes (3): Data Model: Onboarding Location Consent Screen, Presentation values, Transient navigation state
+
+### Community 76 - "Data Model: Sign Up Screen"
+Cohesion: 0.50
+Nodes (3): Data Model: Sign Up Screen, Lifecycle, Sign-Up Draft
+
+### Community 77 - "Data Model: Ride Map Screen"
+Cohesion: 0.50
+Nodes (3): Data Model: Ride Map Screen, State transitions, Static Map Preview
+
 ## Knowledge Gaps
-- **188 isolated node(s):** `name`, `slug`, `version`, `orientation`, `scheme` (+183 more)
-  These have ≤1 connection - possible missing edges or undocumented components. (Counts symbols only; 192 node(s) total have ≤1 connection when file, concept and rationale nodes are included.)
-- **2 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
+- **658 isolated node(s):** `name`, `slug`, `version`, `orientation`, `scheme` (+653 more)
+  These have ≤1 connection - possible missing edges or undocumented components. (Counts symbols only; 721 node(s) total have ≤1 connection when file, concept and rationale nodes are included.)
+- **8 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
 
 ## Suggested Questions
 _Questions this graph is uniquely positioned to answer:_
 
 - **Why does `dependencies` connect `dependencies` to `package.json`?**
-  _High betweenness centrality (0.065) - this node is a cross-community bridge._
+  _High betweenness centrality (0.017) - this node is a cross-community bridge._
+- **Are the 8 inferred relationships involving `ThemedText()` (e.g. with `Reused` and `Decision 1: Share only repeated text and button presentation`) actually correct?**
+  _`ThemedText()` has 8 INFERRED edges - model-reasoned connections that need verification._
 - **What connects `name`, `slug`, `version` to the rest of the system?**
-  _188 weakly-connected nodes found - possible documentation gaps or missing edges._
+  _658 weakly-connected nodes found - possible documentation gaps or missing edges._
 - **Should `package.json` be split into smaller, more focused modules?**
-  _Cohesion score 0.05855855855855856 - nodes in this community are weakly interconnected._
-- **Why does `react-native` connect `ThemedText` to `package.json`?**
-  _High betweenness centrality (0.028) - this node is a cross-community bridge._
-- **Should `dependencies` be split into smaller, more focused modules?**
-  _Cohesion score 0.08333333333333333 - nodes in this community are weakly interconnected._
-- **Why does `scripts` connect `scripts` to `package.json`?**
-  _High betweenness centrality (0.019) - this node is a cross-community bridge._
-- **Should `Execution Steps` be split into smaller, more focused modules?**
-  _Cohesion score 0.125 - nodes in this community are weakly interconnected._
+  _Cohesion score 0.04541062801932367 - nodes in this community are weakly interconnected._
+- **Why does `ThemedText()` connect `ThemedText` to `Research: Ride Map Screen`?**
+  _High betweenness centrality (0.015) - this node is a cross-community bridge._
+- **Are the 9 inferred relationships involving `ThemedButton()` (e.g. with `Changes (one file: `vazy-app/src/app/map.tsx`)` and `Reused`) actually correct?**
+  _`ThemedButton()` has 9 INFERRED edges - model-reasoned connections that need verification._
+- **Should `Implementation Plan: Ride Map Screen` be split into smaller, more focused modules?**
+  _Cohesion score 0.06896551724137931 - nodes in this community are weakly interconnected._
