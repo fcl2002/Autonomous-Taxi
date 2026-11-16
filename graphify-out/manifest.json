@@ -167,16 +167,10 @@
     "ast_hash": "40479a4148b8dbb4a21a326eb7aa5fae",
     "semantic_hash": ""
   },
-  "vazy-app/scripts/photon.check.mjs": {
-    "mtime": 1794819755.291433,
-    "seen": 1794819963.6235282,
-    "ast_hash": "bdb29096611d38a10dbcc9fae9371b9b",
-    "semantic_hash": ""
-  },
   "vazy-app/src/app/_layout.tsx": {
-    "mtime": 1794819779.714247,
-    "seen": 1794819963.6235292,
-    "ast_hash": "9530e045e4d290fa71a33b4ea1b1692a",
+    "mtime": 1794823466.5895362,
+    "seen": 1794823503.9157336,
+    "ast_hash": "37796ebcc25a5fac48a9a6a0f8513b56",
     "semantic_hash": ""
   },
   "vazy-app/src/app/index.tsx": {
@@ -192,9 +186,9 @@
     "semantic_hash": ""
   },
   "vazy-app/src/app/map.tsx": {
-    "mtime": 1794819820.7189324,
-    "seen": 1794819963.6235325,
-    "ast_hash": "fbd56776ff58a5df825fdad72458903c",
+    "mtime": 1794824228.9471679,
+    "seen": 1794824297.0595107,
+    "ast_hash": "fa8f909f1f57b9c093a1f71130356a44",
     "semantic_hash": ""
   },
   "vazy-app/src/app/onboarding-location.tsx": {
@@ -213,12 +207,6 @@
     "mtime": 1791879332.7015436,
     "seen": 1794819963.6235354,
     "ast_hash": "72f7c16e826ad8b366bbe947f7ef5586",
-    "semantic_hash": ""
-  },
-  "vazy-app/src/app/select-location.tsx": {
-    "mtime": 1794819941.4049897,
-    "seen": 1794819963.6235363,
-    "ast_hash": "1b46d2505b6c8b9da3d5ef72e4ba8705",
     "semantic_hash": ""
   },
   "vazy-app/src/app/signup.tsx": {
@@ -240,9 +228,9 @@
     "semantic_hash": ""
   },
   "vazy-app/src/constants/pickup.ts": {
-    "mtime": 1794819756.107083,
-    "seen": 1794819963.6235414,
-    "ast_hash": "d70fab7c33e38eb7d55be58cc283fbba",
+    "mtime": 1794823466.6198313,
+    "seen": 1794823503.9157498,
+    "ast_hash": "cbf4178e8b05c655aff9349b8c07c2e8",
     "semantic_hash": ""
   },
   "vazy-app/src/constants/theme.ts": {
@@ -251,28 +239,22 @@
     "ast_hash": "211b922a23d14f492e113f6b9cb6c66c",
     "semantic_hash": ""
   },
-  "vazy-app/src/lib/photon.ts": {
-    "mtime": 1794819754.4594922,
-    "seen": 1794819963.6235437,
-    "ast_hash": "2c2a607336624aba5dbaebcf2cbaad2d",
-    "semantic_hash": ""
-  },
   "vazy-app/tsconfig.json": {
-    "mtime": 1791879332.703481,
-    "seen": 1794819963.6235456,
-    "ast_hash": "507a6b4bbce9ad97aa6965b246f26a85",
+    "mtime": 1794824195.9937599,
+    "seen": 1794824297.0595353,
+    "ast_hash": "d3371b82d6be3cca9a0757877c7c5539",
     "semantic_hash": ""
   },
   ".claude/plans/map-destination-search.md": {
-    "mtime": 1794819092.3836753,
-    "seen": 1794819963.6235633,
-    "ast_hash": "9cdedefabc3f4f0fbd1e23181f952120",
+    "mtime": 1794823498.5167732,
+    "seen": 1794823503.91577,
+    "ast_hash": "a487b8cf59ad22903a4f8f8b4c85a276",
     "semantic_hash": ""
   },
   ".claude/plans/select-location-screen.md": {
-    "mtime": 1794819957.847185,
-    "seen": 1794819963.6235642,
-    "ast_hash": "72baf59f24a75be78ff9147603ed680a",
+    "mtime": 1794823498.629964,
+    "seen": 1794823503.9157727,
+    "ast_hash": "62cad0e3a071f0e28be40800e87c97af",
     "semantic_hash": ""
   },
   ".specify/memory/constitution.md": {
@@ -837,6 +819,48 @@
     "mtime": 1791879332.6933427,
     "seen": 1794819963.6236672,
     "ast_hash": "55e7749f6879a2fdeb0a7df714818392",
+    "semantic_hash": ""
+  },
+  "vazy-app/scripts/route.check.mjs": {
+    "mtime": 1794824197.7631862,
+    "seen": 1794824297.0595021,
+    "ast_hash": "367ac70d465a9b925f4e308cfa2bdcd6",
+    "semantic_hash": ""
+  },
+  "vazy-app/src/lib/route.ts": {
+    "mtime": 1794824196.8874319,
+    "seen": 1794824297.059534,
+    "ast_hash": "487c620ca20811b2af1d11e29121e1f3",
+    "semantic_hash": ""
+  },
+  ".claude/plans/route-after-confirm.md": {
+    "mtime": 1794823498.6913502,
+    "seen": 1794823503.9157715,
+    "ast_hash": "a45a92cdc33482a38d80c6e0a269483a",
+    "semantic_hash": ""
+  },
+  "vazy-app/scripts/build-circuit.mjs": {
+    "mtime": 1794824182.6499462,
+    "seen": 1794824297.0594988,
+    "ast_hash": "d7fcfc4fad04c1592a3e5f687e151303",
+    "semantic_hash": ""
+  },
+  "vazy-app/src/constants/circuit.ts": {
+    "mtime": 1794824184.8946378,
+    "seen": 1794824297.0595262,
+    "ast_hash": "7f8d55d13ace3896a8d716ec4d163227",
+    "semantic_hash": ""
+  },
+  ".claude/plans/fixed-circuit-stops.md": {
+    "mtime": 1794824292.0847468,
+    "seen": 1794824297.0595517,
+    "ast_hash": "26f3bab30c17e5fe1d25d5cc2e98a198",
+    "semantic_hash": ""
+  },
+  "vazy-app/src/constants/stops.ts": {
+    "mtime": 1794824181.8472881,
+    "seen": 1794824297.0595305,
+    "ast_hash": "6c5eca51143d883a16b942525b73a942",
     "semantic_hash": ""
   }
 }
