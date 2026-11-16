@@ -4,7 +4,7 @@
     "slug": "vazy-app",
     "version": "1.0.0",
     "orientation": "portrait",
-    "scheme": "myapp",
+    "scheme": "vazy",
     "userInterfaceStyle": "automatic",
     "android": {
       "predictiveBackGestureEnabled": false,
@@ -30,38 +30,7 @@
           "backgroundColor": "#F8F8FF"
         }
       ],
-      [
-        "expo-font",
-        {
-          "fonts": [
-            "./assets/fonts/Medel/Medel.ttf"
-          ],
-          "android": {
-            "fontFamily": "Poppins",
-            "fonDefinitions": [
-              {
-                "path": "./assets/fonts/Poppins/Poppins-Regular.ttf",
-                "weight": 400
-              },
-              {
-                "path": "./assets/fonts/Poppins/Poppins-Medium.ttf",
-                "weight": 500
-              },
-              {
-                "path": "./assets/fonts/Poppins/Poppins-SemiBold.ttf",
-                "weight": 600
-              }
-            ]
-          },
-          "ios": {
-            "fonts": [
-              "./assets/fonts/Poppins/Poppins-Regular.ttf",
-              "./assets/fonts/Poppins/Poppins-Medium.ttf",
-              "./assets/fonts/Poppins/Poppins-SemiBold.ttf"
-            ]
-          }
-        }
-      ],
+      "expo-font",
       "expo-image",
       "expo-status-bar",
       "expo-web-browser",
