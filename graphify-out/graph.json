@@ -339,7 +339,7 @@
       "file_type": "code",
       "norm_label": "devdependencies",
       "source_file": "vazy-app/package.json",
-      "source_location": "L33"
+      "source_location": "L35"
     },
     {
       "id": "vazy_app_package_devdependencies_eslint",
@@ -350,7 +350,7 @@
       "file_type": "code",
       "norm_label": "eslint",
       "source_file": "vazy-app/package.json",
-      "source_location": "L35"
+      "source_location": "L37"
     },
     {
       "id": "vazy_app_package_devdependencies_eslint_config_expo",
@@ -361,7 +361,7 @@
       "file_type": "code",
       "norm_label": "eslint-config-expo",
       "source_file": "vazy-app/package.json",
-      "source_location": "L36"
+      "source_location": "L38"
     },
     {
       "id": "vazy_app_package_devdependencies_types_react",
@@ -372,7 +372,7 @@
       "file_type": "code",
       "norm_label": "@types/react",
       "source_file": "vazy-app/package.json",
-      "source_location": "L34"
+      "source_location": "L36"
     },
     {
       "id": "vazy_app_package_devdependencies_typescript",
@@ -383,7 +383,7 @@
       "file_type": "code",
       "norm_label": "typescript",
       "source_file": "vazy-app/package.json",
-      "source_location": "L37"
+      "source_location": "L39"
     },
     {
       "id": "vazy_app_package_main",
@@ -416,7 +416,7 @@
       "file_type": "code",
       "norm_label": "private",
       "source_file": "vazy-app/package.json",
-      "source_location": "L47"
+      "source_location": "L49"
     },
     {
       "id": "vazy_app_package_scripts",
@@ -427,7 +427,7 @@
       "file_type": "code",
       "norm_label": "scripts",
       "source_file": "vazy-app/package.json",
-      "source_location": "L39"
+      "source_location": "L41"
     },
     {
       "id": "vazy_app_package_scripts_android",
@@ -438,7 +438,7 @@
       "file_type": "code",
       "norm_label": "android",
       "source_file": "vazy-app/package.json",
-      "source_location": "L42"
+      "source_location": "L44"
     },
     {
       "id": "vazy_app_package_scripts_ios",
@@ -449,7 +449,7 @@
       "file_type": "code",
       "norm_label": "ios",
       "source_file": "vazy-app/package.json",
-      "source_location": "L43"
+      "source_location": "L45"
     },
     {
       "id": "vazy_app_package_scripts_lint",
@@ -460,7 +460,7 @@
       "file_type": "code",
       "norm_label": "lint",
       "source_file": "vazy-app/package.json",
-      "source_location": "L45"
+      "source_location": "L47"
     },
     {
       "id": "vazy_app_package_scripts_reset_project",
@@ -471,7 +471,7 @@
       "file_type": "code",
       "norm_label": "reset-project",
       "source_file": "vazy-app/package.json",
-      "source_location": "L41"
+      "source_location": "L43"
     },
     {
       "id": "vazy_app_package_scripts_start",
@@ -482,7 +482,7 @@
       "file_type": "code",
       "norm_label": "start",
       "source_file": "vazy-app/package.json",
-      "source_location": "L40"
+      "source_location": "L42"
     },
     {
       "id": "vazy_app_package_scripts_web",
@@ -493,7 +493,7 @@
       "file_type": "code",
       "norm_label": "web",
       "source_file": "vazy-app/package.json",
-      "source_location": "L44"
+      "source_location": "L46"
     },
     {
       "id": "vazy_app_package_version",
@@ -507,6 +507,39 @@
       "source_location": "L4"
     },
     {
+      "id": "vazy_app_src_lib_firebase",
+      "label": "firebase.ts",
+      "_origin": "ast",
+      "community": 0,
+      "community_name": "vazy-app/package.json",
+      "file_type": "code",
+      "norm_label": "firebase.ts",
+      "source_file": "vazy-app/src/lib/firebase.ts",
+      "source_location": "L1"
+    },
+    {
+      "id": "vazy_app_src_lib_firebase_app",
+      "label": "app",
+      "_origin": "ast",
+      "community": 0,
+      "community_name": "vazy-app/package.json",
+      "file_type": "code",
+      "norm_label": "app",
+      "source_file": "vazy-app/src/lib/firebase.ts",
+      "source_location": "L7"
+    },
+    {
+      "id": "vazy_app_src_lib_firebase_auth",
+      "label": "auth",
+      "_origin": "ast",
+      "community": 0,
+      "community_name": "vazy-app/package.json",
+      "file_type": "code",
+      "norm_label": "auth",
+      "source_file": "vazy-app/src/lib/firebase.ts",
+      "source_location": "L16"
+    },
+    {
       "id": "ref_eslint",
       "label": "eslint",
       "_origin": "ast",
@@ -515,7 +548,7 @@
       "file_type": "concept",
       "norm_label": "eslint",
       "source_file": "vazy-app/package.json",
-      "source_location": "L35"
+      "source_location": "L37"
     },
     {
       "id": "ref_eslint_config_expo",
@@ -526,7 +559,7 @@
       "file_type": "concept",
       "norm_label": "eslint-config-expo",
       "source_file": "vazy-app/package.json",
-      "source_location": "L36"
+      "source_location": "L38"
     },
     {
       "id": "ref_expo",
@@ -537,7 +570,7 @@
       "file_type": "concept",
       "norm_label": "expo",
       "source_file": "vazy-app/package.json",
-      "source_location": "L8"
+      "source_location": "L9"
     },
     {
       "id": "ref_expo_build_properties",
@@ -548,7 +581,7 @@
       "file_type": "concept",
       "norm_label": "expo-build-properties",
       "source_file": "vazy-app/package.json",
-      "source_location": "L9"
+      "source_location": "L10"
     },
     {
       "id": "ref_expo_constants",
@@ -559,7 +592,7 @@
       "file_type": "concept",
       "norm_label": "expo-constants",
       "source_file": "vazy-app/package.json",
-      "source_location": "L10"
+      "source_location": "L11"
     },
     {
       "id": "ref_expo_dev_client",
@@ -570,7 +603,7 @@
       "file_type": "concept",
       "norm_label": "expo-dev-client",
       "source_file": "vazy-app/package.json",
-      "source_location": "L11"
+      "source_location": "L12"
     },
     {
       "id": "ref_expo_device",
@@ -581,7 +614,7 @@
       "file_type": "concept",
       "norm_label": "expo-device",
       "source_file": "vazy-app/package.json",
-      "source_location": "L12"
+      "source_location": "L13"
     },
     {
       "id": "ref_expo_glass_effect",
@@ -592,7 +625,7 @@
       "file_type": "concept",
       "norm_label": "expo-glass-effect",
       "source_file": "vazy-app/package.json",
-      "source_location": "L14"
+      "source_location": "L15"
     },
     {
       "id": "ref_expo_image",
@@ -603,7 +636,7 @@
       "file_type": "concept",
       "norm_label": "expo-image",
       "source_file": "vazy-app/package.json",
-      "source_location": "L15"
+      "source_location": "L16"
     },
     {
       "id": "ref_expo_linking",
@@ -614,7 +647,7 @@
       "file_type": "concept",
       "norm_label": "expo-linking",
       "source_file": "vazy-app/package.json",
-      "source_location": "L16"
+      "source_location": "L17"
     },
     {
       "id": "ref_expo_symbols",
@@ -625,7 +658,7 @@
       "file_type": "concept",
       "norm_label": "expo-symbols",
       "source_file": "vazy-app/package.json",
-      "source_location": "L20"
+      "source_location": "L21"
     },
     {
       "id": "ref_expo_system_ui",
@@ -636,7 +669,7 @@
       "file_type": "concept",
       "norm_label": "expo-system-ui",
       "source_file": "vazy-app/package.json",
-      "source_location": "L21"
+      "source_location": "L22"
     },
     {
       "id": "ref_expo_ui",
@@ -658,7 +691,18 @@
       "file_type": "concept",
       "norm_label": "expo-web-browser",
       "source_file": "vazy-app/package.json",
-      "source_location": "L22"
+      "source_location": "L23"
+    },
+    {
+      "id": "ref_firebase",
+      "label": "firebase",
+      "_origin": "ast",
+      "community": 0,
+      "community_name": "vazy-app/package.json",
+      "file_type": "concept",
+      "norm_label": "firebase",
+      "source_file": "vazy-app/package.json",
+      "source_location": "L24"
     },
     {
       "id": "ref_maplibre_maplibre_react_native",
@@ -680,7 +724,18 @@
       "file_type": "concept",
       "norm_label": "react-dom",
       "source_file": "vazy-app/package.json",
-      "source_location": "L24"
+      "source_location": "L26"
+    },
+    {
+      "id": "ref_react_native_async_storage_async_storage",
+      "label": "@react-native-async-storage/async-storage",
+      "_origin": "ast",
+      "community": 0,
+      "community_name": "vazy-app/package.json",
+      "file_type": "concept",
+      "norm_label": "@react-native-async-storage/async-storage",
+      "source_file": "vazy-app/package.json",
+      "source_location": "L8"
     },
     {
       "id": "ref_react_native_gesture_handler",
@@ -691,7 +746,7 @@
       "file_type": "concept",
       "norm_label": "react-native-gesture-handler",
       "source_file": "vazy-app/package.json",
-      "source_location": "L26"
+      "source_location": "L28"
     },
     {
       "id": "ref_react_native_reanimated",
@@ -702,7 +757,7 @@
       "file_type": "concept",
       "norm_label": "react-native-reanimated",
       "source_file": "vazy-app/package.json",
-      "source_location": "L27"
+      "source_location": "L29"
     },
     {
       "id": "ref_react_native_screens",
@@ -713,7 +768,7 @@
       "file_type": "concept",
       "norm_label": "react-native-screens",
       "source_file": "vazy-app/package.json",
-      "source_location": "L29"
+      "source_location": "L31"
     },
     {
       "id": "ref_react_native_web",
@@ -724,7 +779,7 @@
       "file_type": "concept",
       "norm_label": "react-native-web",
       "source_file": "vazy-app/package.json",
-      "source_location": "L30"
+      "source_location": "L32"
     },
     {
       "id": "ref_react_native_worklets",
@@ -735,7 +790,7 @@
       "file_type": "concept",
       "norm_label": "react-native-worklets",
       "source_file": "vazy-app/package.json",
-      "source_location": "L31"
+      "source_location": "L33"
     },
     {
       "id": "ref_types_react",
@@ -746,7 +801,7 @@
       "file_type": "concept",
       "norm_label": "@types/react",
       "source_file": "vazy-app/package.json",
-      "source_location": "L34"
+      "source_location": "L36"
     },
     {
       "id": "vazy_app_package_json_ref_typescript",
@@ -757,7 +812,7 @@
       "file_type": "concept",
       "norm_label": "typescript",
       "source_file": "vazy-app/package.json",
-      "source_location": "L37"
+      "source_location": "L39"
     },
     {
       "id": "specs_009_ride_map_screen_checklists_requirements",
@@ -1112,7 +1167,7 @@
       "label": "vazy-app/tsconfig.json",
       "_origin": "ast",
       "community": 10,
-      "community_name": "tsconfig.json",
+      "community_name": "vazy-app/tsconfig.json",
       "file_type": "code",
       "norm_label": "vazy-app/tsconfig.json",
       "source_file": "vazy-app/tsconfig.json",
@@ -1123,7 +1178,7 @@
       "label": "compilerOptions",
       "_origin": "ast",
       "community": 10,
-      "community_name": "tsconfig.json",
+      "community_name": "vazy-app/tsconfig.json",
       "file_type": "code",
       "norm_label": "compileroptions",
       "source_file": "vazy-app/tsconfig.json",
@@ -1134,7 +1189,7 @@
       "label": "allowImportingTsExtensions",
       "_origin": "ast",
       "community": 10,
-      "community_name": "tsconfig.json",
+      "community_name": "vazy-app/tsconfig.json",
       "file_type": "code",
       "norm_label": "allowimportingtsextensions",
       "source_file": "vazy-app/tsconfig.json",
@@ -1145,7 +1200,7 @@
       "label": "paths",
       "_origin": "ast",
       "community": 10,
-      "community_name": "tsconfig.json",
+      "community_name": "vazy-app/tsconfig.json",
       "file_type": "code",
       "norm_label": "paths",
       "source_file": "vazy-app/tsconfig.json",
@@ -1156,7 +1211,7 @@
       "label": "strict",
       "_origin": "ast",
       "community": 10,
-      "community_name": "tsconfig.json",
+      "community_name": "vazy-app/tsconfig.json",
       "file_type": "code",
       "norm_label": "strict",
       "source_file": "vazy-app/tsconfig.json",
@@ -1167,18 +1222,18 @@
       "label": "exclude",
       "_origin": "ast",
       "community": 10,
-      "community_name": "tsconfig.json",
+      "community_name": "vazy-app/tsconfig.json",
       "file_type": "code",
       "norm_label": "exclude",
       "source_file": "vazy-app/tsconfig.json",
-      "source_location": "L21"
+      "source_location": "L25"
     },
     {
       "id": "vazy_app_tsconfig_extends",
       "label": "extends",
       "_origin": "ast",
       "community": 10,
-      "community_name": "tsconfig.json",
+      "community_name": "vazy-app/tsconfig.json",
       "file_type": "code",
       "norm_label": "extends",
       "source_file": "vazy-app/tsconfig.json",
@@ -1189,29 +1244,40 @@
       "label": "include",
       "_origin": "ast",
       "community": 10,
-      "community_name": "tsconfig.json",
+      "community_name": "vazy-app/tsconfig.json",
       "file_type": "code",
       "norm_label": "include",
       "source_file": "vazy-app/tsconfig.json",
-      "source_location": "L15"
+      "source_location": "L19"
     },
     {
       "id": "vazy_app_tsconfig_paths_assets",
       "label": "@/assets/*",
       "_origin": "ast",
       "community": 10,
-      "community_name": "tsconfig.json",
+      "community_name": "vazy-app/tsconfig.json",
       "file_type": "code",
       "norm_label": "@/assets/*",
       "source_file": "vazy-app/tsconfig.json",
       "source_location": "L10"
     },
     {
+      "id": "vazy_app_tsconfig_paths_firebase_auth",
+      "label": "@firebase/auth",
+      "_origin": "ast",
+      "community": 10,
+      "community_name": "vazy-app/tsconfig.json",
+      "file_type": "code",
+      "norm_label": "@firebase/auth",
+      "source_file": "vazy-app/tsconfig.json",
+      "source_location": "L14"
+    },
+    {
       "id": "ref_expo_tsconfig_base",
       "label": "expo/tsconfig.base",
       "_origin": "ast",
       "community": 10,
-      "community_name": "tsconfig.json",
+      "community_name": "vazy-app/tsconfig.json",
       "file_type": "concept",
       "norm_label": "expo/tsconfig.base",
       "source_file": "vazy-app/tsconfig.json",
@@ -3898,7 +3964,7 @@
       "file_type": "code",
       "norm_label": "expo",
       "source_file": "vazy-app/package.json",
-      "source_location": "L8"
+      "source_location": "L9"
     },
     {
       "id": "vazy_app_package_dependencies_expo_build_properties",
@@ -3909,7 +3975,7 @@
       "file_type": "code",
       "norm_label": "expo-build-properties",
       "source_file": "vazy-app/package.json",
-      "source_location": "L9"
+      "source_location": "L10"
     },
     {
       "id": "vazy_app_package_dependencies_expo_constants",
@@ -3920,7 +3986,7 @@
       "file_type": "code",
       "norm_label": "expo-constants",
       "source_file": "vazy-app/package.json",
-      "source_location": "L10"
+      "source_location": "L11"
     },
     {
       "id": "vazy_app_package_dependencies_expo_dev_client",
@@ -3931,7 +3997,7 @@
       "file_type": "code",
       "norm_label": "expo-dev-client",
       "source_file": "vazy-app/package.json",
-      "source_location": "L11"
+      "source_location": "L12"
     },
     {
       "id": "vazy_app_package_dependencies_expo_device",
@@ -3942,7 +4008,7 @@
       "file_type": "code",
       "norm_label": "expo-device",
       "source_file": "vazy-app/package.json",
-      "source_location": "L12"
+      "source_location": "L13"
     },
     {
       "id": "vazy_app_package_dependencies_expo_font",
@@ -3953,7 +4019,7 @@
       "file_type": "code",
       "norm_label": "expo-font",
       "source_file": "vazy-app/package.json",
-      "source_location": "L13"
+      "source_location": "L14"
     },
     {
       "id": "vazy_app_package_dependencies_expo_glass_effect",
@@ -3964,7 +4030,7 @@
       "file_type": "code",
       "norm_label": "expo-glass-effect",
       "source_file": "vazy-app/package.json",
-      "source_location": "L14"
+      "source_location": "L15"
     },
     {
       "id": "vazy_app_package_dependencies_expo_image",
@@ -3975,7 +4041,7 @@
       "file_type": "code",
       "norm_label": "expo-image",
       "source_file": "vazy-app/package.json",
-      "source_location": "L15"
+      "source_location": "L16"
     },
     {
       "id": "vazy_app_package_dependencies_expo_linking",
@@ -3986,7 +4052,7 @@
       "file_type": "code",
       "norm_label": "expo-linking",
       "source_file": "vazy-app/package.json",
-      "source_location": "L16"
+      "source_location": "L17"
     },
     {
       "id": "vazy_app_package_dependencies_expo_router",
@@ -3997,7 +4063,7 @@
       "file_type": "code",
       "norm_label": "expo-router",
       "source_file": "vazy-app/package.json",
-      "source_location": "L17"
+      "source_location": "L18"
     },
     {
       "id": "vazy_app_package_dependencies_expo_splash_screen",
@@ -4008,7 +4074,7 @@
       "file_type": "code",
       "norm_label": "expo-splash-screen",
       "source_file": "vazy-app/package.json",
-      "source_location": "L18"
+      "source_location": "L19"
     },
     {
       "id": "vazy_app_package_dependencies_expo_status_bar",
@@ -4019,7 +4085,7 @@
       "file_type": "code",
       "norm_label": "expo-status-bar",
       "source_file": "vazy-app/package.json",
-      "source_location": "L19"
+      "source_location": "L20"
     },
     {
       "id": "vazy_app_package_dependencies_expo_symbols",
@@ -4030,7 +4096,7 @@
       "file_type": "code",
       "norm_label": "expo-symbols",
       "source_file": "vazy-app/package.json",
-      "source_location": "L20"
+      "source_location": "L21"
     },
     {
       "id": "vazy_app_package_dependencies_expo_system_ui",
@@ -4041,7 +4107,7 @@
       "file_type": "code",
       "norm_label": "expo-system-ui",
       "source_file": "vazy-app/package.json",
-      "source_location": "L21"
+      "source_location": "L22"
     },
     {
       "id": "vazy_app_package_dependencies_expo_ui",
@@ -4063,7 +4129,18 @@
       "file_type": "code",
       "norm_label": "expo-web-browser",
       "source_file": "vazy-app/package.json",
-      "source_location": "L22"
+      "source_location": "L23"
+    },
+    {
+      "id": "vazy_app_package_dependencies_firebase",
+      "label": "firebase",
+      "_origin": "ast",
+      "community": 24,
+      "community_name": "dependencies",
+      "file_type": "code",
+      "norm_label": "firebase",
+      "source_file": "vazy-app/package.json",
+      "source_location": "L24"
     },
     {
       "id": "vazy_app_package_dependencies_maplibre_maplibre_react_native",
@@ -4085,7 +4162,7 @@
       "file_type": "code",
       "norm_label": "react",
       "source_file": "vazy-app/package.json",
-      "source_location": "L23"
+      "source_location": "L25"
     },
     {
       "id": "vazy_app_package_dependencies_react_dom",
@@ -4096,7 +4173,7 @@
       "file_type": "code",
       "norm_label": "react-dom",
       "source_file": "vazy-app/package.json",
-      "source_location": "L24"
+      "source_location": "L26"
     },
     {
       "id": "vazy_app_package_dependencies_react_native",
@@ -4107,7 +4184,18 @@
       "file_type": "code",
       "norm_label": "react-native",
       "source_file": "vazy-app/package.json",
-      "source_location": "L25"
+      "source_location": "L27"
+    },
+    {
+      "id": "vazy_app_package_dependencies_react_native_async_storage_async_storage",
+      "label": "@react-native-async-storage/async-storage",
+      "_origin": "ast",
+      "community": 24,
+      "community_name": "dependencies",
+      "file_type": "code",
+      "norm_label": "@react-native-async-storage/async-storage",
+      "source_file": "vazy-app/package.json",
+      "source_location": "L8"
     },
     {
       "id": "vazy_app_package_dependencies_react_native_gesture_handler",
@@ -4118,7 +4206,7 @@
       "file_type": "code",
       "norm_label": "react-native-gesture-handler",
       "source_file": "vazy-app/package.json",
-      "source_location": "L26"
+      "source_location": "L28"
     },
     {
       "id": "vazy_app_package_dependencies_react_native_reanimated",
@@ -4129,7 +4217,7 @@
       "file_type": "code",
       "norm_label": "react-native-reanimated",
       "source_file": "vazy-app/package.json",
-      "source_location": "L27"
+      "source_location": "L29"
     },
     {
       "id": "vazy_app_package_dependencies_react_native_safe_area_context",
@@ -4140,7 +4228,7 @@
       "file_type": "code",
       "norm_label": "react-native-safe-area-context",
       "source_file": "vazy-app/package.json",
-      "source_location": "L28"
+      "source_location": "L30"
     },
     {
       "id": "vazy_app_package_dependencies_react_native_screens",
@@ -4151,7 +4239,7 @@
       "file_type": "code",
       "norm_label": "react-native-screens",
       "source_file": "vazy-app/package.json",
-      "source_location": "L29"
+      "source_location": "L31"
     },
     {
       "id": "vazy_app_package_dependencies_react_native_web",
@@ -4162,7 +4250,7 @@
       "file_type": "code",
       "norm_label": "react-native-web",
       "source_file": "vazy-app/package.json",
-      "source_location": "L30"
+      "source_location": "L32"
     },
     {
       "id": "vazy_app_package_dependencies_react_native_worklets",
@@ -4173,7 +4261,7 @@
       "file_type": "code",
       "norm_label": "react-native-worklets",
       "source_file": "vazy-app/package.json",
-      "source_location": "L31"
+      "source_location": "L33"
     },
     {
       "id": "specs_007_fix_tracking_layout_checklists_requirements",
@@ -7836,7 +7924,7 @@
       "file_type": "concept",
       "norm_label": "expo-font",
       "source_file": "vazy-app/package.json",
-      "source_location": "L13"
+      "source_location": "L14"
     },
     {
       "id": "ref_expo_router",
@@ -7847,7 +7935,7 @@
       "file_type": "concept",
       "norm_label": "expo-router",
       "source_file": "vazy-app/package.json",
-      "source_location": "L17"
+      "source_location": "L18"
     },
     {
       "id": "ref_expo_splash_screen",
@@ -7858,7 +7946,7 @@
       "file_type": "concept",
       "norm_label": "expo-splash-screen",
       "source_file": "vazy-app/package.json",
-      "source_location": "L18"
+      "source_location": "L19"
     },
     {
       "id": "ref_expo_status_bar",
@@ -7869,7 +7957,7 @@
       "file_type": "concept",
       "norm_label": "expo-status-bar",
       "source_file": "vazy-app/package.json",
-      "source_location": "L19"
+      "source_location": "L20"
     },
     {
       "id": "ref_react",
@@ -7880,7 +7968,7 @@
       "file_type": "concept",
       "norm_label": "react",
       "source_file": "vazy-app/package.json",
-      "source_location": "L23"
+      "source_location": "L25"
     },
     {
       "id": "ref_react_native",
@@ -7891,7 +7979,7 @@
       "file_type": "concept",
       "norm_label": "react-native",
       "source_file": "vazy-app/package.json",
-      "source_location": "L25"
+      "source_location": "L27"
     },
     {
       "id": "ref_react_native_safe_area_context",
@@ -7902,7 +7990,7 @@
       "file_type": "concept",
       "norm_label": "react-native-safe-area-context",
       "source_file": "vazy-app/package.json",
-      "source_location": "L28"
+      "source_location": "L30"
     },
     {
       "id": "claude_plans_map_destination_search_reused",
@@ -12937,6 +13025,174 @@
       "source_location": "L11"
     },
     {
+      "id": "claude_plans_auth_email_password",
+      "label": "auth-email-password.md",
+      "_origin": "ast",
+      "community": 86,
+      "community_name": "Steps, in order",
+      "file_type": "document",
+      "node_kind": "page",
+      "norm_label": "auth-email-password.md",
+      "source_file": ".claude/plans/auth-email-password.md",
+      "source_location": "L1"
+    },
+    {
+      "id": "claude_plans_auth_email_password_1_spec_speckit",
+      "label": "1. Spec (speckit)",
+      "_origin": "ast",
+      "community": 86,
+      "community_name": "Steps, in order",
+      "file_type": "document",
+      "node_kind": "heading",
+      "norm_label": "1. spec (speckit)",
+      "source_file": ".claude/plans/auth-email-password.md",
+      "source_location": "L21"
+    },
+    {
+      "id": "claude_plans_auth_email_password_2_firebase_project_console_done_by_the_owner_free_spark_plan",
+      "label": "2. Firebase project (console, done by the owner, free Spark plan)",
+      "_origin": "ast",
+      "community": 86,
+      "community_name": "Steps, in order",
+      "file_type": "document",
+      "node_kind": "heading",
+      "norm_label": "2. firebase project (console, done by the owner, free spark plan)",
+      "source_file": ".claude/plans/auth-email-password.md",
+      "source_location": "L27"
+    },
+    {
+      "id": "claude_plans_auth_email_password_3_app_sdk_setup_vazy_app_done_2026_11_16",
+      "label": "3. App: SDK setup (`vazy-app/`), done 2026-11-16",
+      "_origin": "ast",
+      "community": 86,
+      "community_name": "Steps, in order",
+      "file_type": "document",
+      "node_kind": "heading",
+      "norm_label": "3. app: sdk setup (`vazy-app/`), done 2026-11-16",
+      "source_file": ".claude/plans/auth-email-password.md",
+      "source_location": "L34"
+    },
+    {
+      "id": "claude_plans_auth_email_password_4_app_screens_ui_first_constitution_iii",
+      "label": "4. App: screens, UI first (constitution III)",
+      "_origin": "ast",
+      "community": 86,
+      "community_name": "Steps, in order",
+      "file_type": "document",
+      "node_kind": "heading",
+      "norm_label": "4. app: screens, ui first (constitution iii)",
+      "source_file": ".claude/plans/auth-email-password.md",
+      "source_location": "L48"
+    },
+    {
+      "id": "claude_plans_auth_email_password_5_app_wire_it_up",
+      "label": "5. App: wire it up",
+      "_origin": "ast",
+      "community": 86,
+      "community_name": "Steps, in order",
+      "file_type": "document",
+      "node_kind": "heading",
+      "norm_label": "5. app: wire it up",
+      "source_file": ".claude/plans/auth-email-password.md",
+      "source_location": "L68"
+    },
+    {
+      "id": "claude_plans_auth_email_password_6_app_keep_the_session",
+      "label": "6. App: keep the session",
+      "_origin": "ast",
+      "community": 86,
+      "community_name": "Steps, in order",
+      "file_type": "document",
+      "node_kind": "heading",
+      "norm_label": "6. app: keep the session",
+      "source_file": ".claude/plans/auth-email-password.md",
+      "source_location": "L73"
+    },
+    {
+      "id": "claude_plans_auth_email_password_7_end_to_end_demo",
+      "label": "7. End-to-end demo",
+      "_origin": "ast",
+      "community": 86,
+      "community_name": "Steps, in order",
+      "file_type": "document",
+      "node_kind": "heading",
+      "norm_label": "7. end-to-end demo",
+      "source_file": ".claude/plans/auth-email-password.md",
+      "source_location": "L79"
+    },
+    {
+      "id": "claude_plans_auth_email_password_key_decisions",
+      "label": "Key decisions",
+      "_origin": "ast",
+      "community": 86,
+      "community_name": "Steps, in order",
+      "file_type": "document",
+      "node_kind": "heading",
+      "norm_label": "key decisions",
+      "source_file": ".claude/plans/auth-email-password.md",
+      "source_location": "L5"
+    },
+    {
+      "id": "claude_plans_auth_email_password_not_doing_now",
+      "label": "Not doing now",
+      "_origin": "ast",
+      "community": 86,
+      "community_name": "Steps, in order",
+      "file_type": "document",
+      "node_kind": "heading",
+      "norm_label": "not doing now",
+      "source_file": ".claude/plans/auth-email-password.md",
+      "source_location": "L89"
+    },
+    {
+      "id": "claude_plans_auth_email_password_owner_decisions_2026_11_16",
+      "label": "Owner decisions (2026-11-16)",
+      "_origin": "ast",
+      "community": 86,
+      "community_name": "Steps, in order",
+      "file_type": "document",
+      "node_kind": "heading",
+      "norm_label": "owner decisions (2026-11-16)",
+      "source_file": ".claude/plans/auth-email-password.md",
+      "source_location": "L94"
+    },
+    {
+      "id": "claude_plans_auth_email_password_plan_email_password_authentication_login_sign_up",
+      "label": "Plan: email + password authentication (login + sign-up)",
+      "_origin": "ast",
+      "community": 86,
+      "community_name": "Steps, in order",
+      "file_type": "document",
+      "node_kind": "heading",
+      "norm_label": "plan: email + password authentication (login + sign-up)",
+      "source_file": ".claude/plans/auth-email-password.md",
+      "source_location": "L1"
+    },
+    {
+      "id": "claude_plans_auth_email_password_steps_in_order",
+      "label": "Steps, in order",
+      "_origin": "ast",
+      "community": 86,
+      "community_name": "Steps, in order",
+      "file_type": "document",
+      "node_kind": "heading",
+      "norm_label": "steps, in order",
+      "source_file": ".claude/plans/auth-email-password.md",
+      "source_location": "L19"
+    },
+    {
+      "id": "claude_plans_auth_email_password_the_flow",
+      "label": "The flow",
+      "_origin": "ast",
+      "community": 86,
+      "community_name": "Steps, in order",
+      "file_type": "document",
+      "node_kind": "heading",
+      "norm_label": "the flow",
+      "source_file": ".claude/plans/auth-email-password.md",
+      "source_location": "L11"
+    },
+    {
       "id": "agents_skills_speckit_tasks_skill",
       "label": "speckit-tasks/SKILL.md",
       "_origin": "ast",
@@ -13401,7 +13657,7 @@
     },
     {
       "source": "vazy_app_package",
-      "target": "ref_expo_constants",
+      "target": "ref_expo_build_properties",
       "relation": "imports",
       "_origin": "ast",
       "confidence": "EXTRACTED",
@@ -13413,7 +13669,7 @@
     },
     {
       "source": "vazy_app_package",
-      "target": "ref_expo_dev_client",
+      "target": "ref_expo_constants",
       "relation": "imports",
       "_origin": "ast",
       "confidence": "EXTRACTED",
@@ -13425,7 +13681,7 @@
     },
     {
       "source": "vazy_app_package",
-      "target": "ref_expo_device",
+      "target": "ref_expo_dev_client",
       "relation": "imports",
       "_origin": "ast",
       "confidence": "EXTRACTED",
@@ -13437,7 +13693,7 @@
     },
     {
       "source": "vazy_app_package",
-      "target": "ref_expo_font",
+      "target": "ref_expo_device",
       "relation": "imports",
       "_origin": "ast",
       "confidence": "EXTRACTED",
@@ -13449,7 +13705,7 @@
     },
     {
       "source": "vazy_app_package",
-      "target": "ref_expo_glass_effect",
+      "target": "ref_expo_font",
       "relation": "imports",
       "_origin": "ast",
       "confidence": "EXTRACTED",
@@ -13461,7 +13717,7 @@
     },
     {
       "source": "vazy_app_package",
-      "target": "ref_expo_image",
+      "target": "ref_expo_glass_effect",
       "relation": "imports",
       "_origin": "ast",
       "confidence": "EXTRACTED",
@@ -13473,7 +13729,7 @@
     },
     {
       "source": "vazy_app_package",
-      "target": "ref_expo_linking",
+      "target": "ref_expo_image",
       "relation": "imports",
       "_origin": "ast",
       "confidence": "EXTRACTED",
@@ -13485,7 +13741,7 @@
     },
     {
       "source": "vazy_app_package",
-      "target": "ref_expo_router",
+      "target": "ref_expo_linking",
       "relation": "imports",
       "_origin": "ast",
       "confidence": "EXTRACTED",
@@ -13497,7 +13753,7 @@
     },
     {
       "source": "vazy_app_package",
-      "target": "ref_expo_splash_screen",
+      "target": "ref_expo_router",
       "relation": "imports",
       "_origin": "ast",
       "confidence": "EXTRACTED",
@@ -13509,7 +13765,7 @@
     },
     {
       "source": "vazy_app_package",
-      "target": "ref_expo_status_bar",
+      "target": "ref_expo_splash_screen",
       "relation": "imports",
       "_origin": "ast",
       "confidence": "EXTRACTED",
@@ -13521,7 +13777,7 @@
     },
     {
       "source": "vazy_app_package",
-      "target": "ref_expo_symbols",
+      "target": "ref_expo_status_bar",
       "relation": "imports",
       "_origin": "ast",
       "confidence": "EXTRACTED",
@@ -13533,7 +13789,7 @@
     },
     {
       "source": "vazy_app_package",
-      "target": "ref_expo_system_ui",
+      "target": "ref_expo_symbols",
       "relation": "imports",
       "_origin": "ast",
       "confidence": "EXTRACTED",
@@ -13545,7 +13801,7 @@
     },
     {
       "source": "vazy_app_package",
-      "target": "ref_expo_web_browser",
+      "target": "ref_expo_system_ui",
       "relation": "imports",
       "_origin": "ast",
       "confidence": "EXTRACTED",
@@ -13557,7 +13813,7 @@
     },
     {
       "source": "vazy_app_package",
-      "target": "ref_react",
+      "target": "ref_expo_web_browser",
       "relation": "imports",
       "_origin": "ast",
       "confidence": "EXTRACTED",
@@ -13569,7 +13825,7 @@
     },
     {
       "source": "vazy_app_package",
-      "target": "ref_react_dom",
+      "target": "ref_firebase",
       "relation": "imports",
       "_origin": "ast",
       "confidence": "EXTRACTED",
@@ -13581,7 +13837,7 @@
     },
     {
       "source": "vazy_app_package",
-      "target": "ref_react_native",
+      "target": "ref_react",
       "relation": "imports",
       "_origin": "ast",
       "confidence": "EXTRACTED",
@@ -13593,7 +13849,7 @@
     },
     {
       "source": "vazy_app_package",
-      "target": "ref_react_native_gesture_handler",
+      "target": "ref_react_dom",
       "relation": "imports",
       "_origin": "ast",
       "confidence": "EXTRACTED",
@@ -13605,7 +13861,7 @@
     },
     {
       "source": "vazy_app_package",
-      "target": "ref_react_native_reanimated",
+      "target": "ref_react_native",
       "relation": "imports",
       "_origin": "ast",
       "confidence": "EXTRACTED",
@@ -13617,7 +13873,7 @@
     },
     {
       "source": "vazy_app_package",
-      "target": "ref_react_native_safe_area_context",
+      "target": "ref_react_native_gesture_handler",
       "relation": "imports",
       "_origin": "ast",
       "confidence": "EXTRACTED",
@@ -13629,7 +13885,7 @@
     },
     {
       "source": "vazy_app_package",
-      "target": "ref_react_native_screens",
+      "target": "ref_react_native_reanimated",
       "relation": "imports",
       "_origin": "ast",
       "confidence": "EXTRACTED",
@@ -13641,7 +13897,7 @@
     },
     {
       "source": "vazy_app_package",
-      "target": "ref_react_native_web",
+      "target": "ref_react_native_safe_area_context",
       "relation": "imports",
       "_origin": "ast",
       "confidence": "EXTRACTED",
@@ -13653,7 +13909,7 @@
     },
     {
       "source": "vazy_app_package",
-      "target": "ref_react_native_worklets",
+      "target": "ref_react_native_screens",
       "relation": "imports",
       "_origin": "ast",
       "confidence": "EXTRACTED",
@@ -13665,31 +13921,31 @@
     },
     {
       "source": "vazy_app_package",
+      "target": "ref_react_native_web",
+      "relation": "imports",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "import",
+      "source_file": "vazy-app/package.json",
+      "source_location": "L32",
+      "weight": 1.0
+    },
+    {
+      "source": "vazy_app_package",
+      "target": "ref_react_native_worklets",
+      "relation": "imports",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "import",
+      "source_file": "vazy-app/package.json",
+      "source_location": "L33",
+      "weight": 1.0
+    },
+    {
+      "source": "vazy_app_package",
       "target": "ref_types_react",
-      "relation": "imports",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "context": "import",
-      "source_file": "vazy-app/package.json",
-      "source_location": "L34",
-      "weight": 1.0
-    },
-    {
-      "source": "vazy_app_package",
-      "target": "ref_eslint",
-      "relation": "imports",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "context": "import",
-      "source_file": "vazy-app/package.json",
-      "source_location": "L35",
-      "weight": 1.0
-    },
-    {
-      "source": "vazy_app_package",
-      "target": "ref_eslint_config_expo",
       "relation": "imports",
       "_origin": "ast",
       "confidence": "EXTRACTED",
@@ -13701,7 +13957,7 @@
     },
     {
       "source": "vazy_app_package",
-      "target": "vazy_app_package_json_ref_typescript",
+      "target": "ref_eslint",
       "relation": "imports",
       "_origin": "ast",
       "confidence": "EXTRACTED",
@@ -13709,6 +13965,30 @@
       "context": "import",
       "source_file": "vazy-app/package.json",
       "source_location": "L37",
+      "weight": 1.0
+    },
+    {
+      "source": "vazy_app_package",
+      "target": "ref_eslint_config_expo",
+      "relation": "imports",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "import",
+      "source_file": "vazy-app/package.json",
+      "source_location": "L38",
+      "weight": 1.0
+    },
+    {
+      "source": "vazy_app_package",
+      "target": "vazy_app_package_json_ref_typescript",
+      "relation": "imports",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "import",
+      "source_file": "vazy-app/package.json",
+      "source_location": "L39",
       "weight": 1.0
     },
     {
@@ -13737,7 +14017,7 @@
     },
     {
       "source": "vazy_app_package",
-      "target": "ref_expo",
+      "target": "ref_react_native_async_storage_async_storage",
       "relation": "imports",
       "_origin": "ast",
       "confidence": "EXTRACTED",
@@ -13749,7 +14029,7 @@
     },
     {
       "source": "vazy_app_package",
-      "target": "ref_expo_build_properties",
+      "target": "ref_expo",
       "relation": "imports",
       "_origin": "ast",
       "confidence": "EXTRACTED",
@@ -15065,6 +15345,42 @@
       "context": "import",
       "source_file": "vazy-app/src/components/themed-text.tsx",
       "source_location": "L3",
+      "weight": 1.0
+    },
+    {
+      "source": "vazy_app_src_lib_firebase",
+      "target": "ref_react_native_async_storage_async_storage",
+      "relation": "imports_from",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "import",
+      "source_file": "vazy-app/src/lib/firebase.ts",
+      "source_location": "L1",
+      "weight": 1.0
+    },
+    {
+      "source": "vazy_app_src_lib_firebase",
+      "target": "ref_firebase",
+      "relation": "imports_from",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "import",
+      "source_file": "vazy-app/src/lib/firebase.ts",
+      "source_location": "L3",
+      "weight": 1.0
+    },
+    {
+      "source": "vazy_app_src_lib_firebase",
+      "target": "ref_react_native",
+      "relation": "imports_from",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "import",
+      "source_file": "vazy-app/src/lib/firebase.ts",
+      "source_location": "L4",
       "weight": 1.0
     },
     {
@@ -16706,6 +17022,149 @@
       "confidence_score": 1.0,
       "source_file": "backend/tsconfig.json",
       "source_location": "L9",
+      "weight": 1.0
+    },
+    {
+      "source": "claude_plans_auth_email_password",
+      "target": "claude_plans_auth_email_password_plan_email_password_authentication_login_sign_up",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": ".claude/plans/auth-email-password.md",
+      "source_location": "L1",
+      "weight": 1.0
+    },
+    {
+      "source": "claude_plans_auth_email_password_plan_email_password_authentication_login_sign_up",
+      "target": "claude_plans_auth_email_password_the_flow",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": ".claude/plans/auth-email-password.md",
+      "source_location": "L11",
+      "weight": 1.0
+    },
+    {
+      "source": "claude_plans_auth_email_password_plan_email_password_authentication_login_sign_up",
+      "target": "claude_plans_auth_email_password_steps_in_order",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": ".claude/plans/auth-email-password.md",
+      "source_location": "L19",
+      "weight": 1.0
+    },
+    {
+      "source": "claude_plans_auth_email_password_plan_email_password_authentication_login_sign_up",
+      "target": "claude_plans_auth_email_password_key_decisions",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": ".claude/plans/auth-email-password.md",
+      "source_location": "L5",
+      "weight": 1.0
+    },
+    {
+      "source": "claude_plans_auth_email_password_plan_email_password_authentication_login_sign_up",
+      "target": "claude_plans_auth_email_password_not_doing_now",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": ".claude/plans/auth-email-password.md",
+      "source_location": "L89",
+      "weight": 1.0
+    },
+    {
+      "source": "claude_plans_auth_email_password_plan_email_password_authentication_login_sign_up",
+      "target": "claude_plans_auth_email_password_owner_decisions_2026_11_16",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": ".claude/plans/auth-email-password.md",
+      "source_location": "L94",
+      "weight": 1.0
+    },
+    {
+      "source": "claude_plans_auth_email_password_steps_in_order",
+      "target": "claude_plans_auth_email_password_1_spec_speckit",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": ".claude/plans/auth-email-password.md",
+      "source_location": "L21",
+      "weight": 1.0
+    },
+    {
+      "source": "claude_plans_auth_email_password_steps_in_order",
+      "target": "claude_plans_auth_email_password_2_firebase_project_console_done_by_the_owner_free_spark_plan",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": ".claude/plans/auth-email-password.md",
+      "source_location": "L27",
+      "weight": 1.0
+    },
+    {
+      "source": "claude_plans_auth_email_password_steps_in_order",
+      "target": "claude_plans_auth_email_password_3_app_sdk_setup_vazy_app_done_2026_11_16",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": ".claude/plans/auth-email-password.md",
+      "source_location": "L34",
+      "weight": 1.0
+    },
+    {
+      "source": "claude_plans_auth_email_password_steps_in_order",
+      "target": "claude_plans_auth_email_password_4_app_screens_ui_first_constitution_iii",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": ".claude/plans/auth-email-password.md",
+      "source_location": "L48",
+      "weight": 1.0
+    },
+    {
+      "source": "claude_plans_auth_email_password_steps_in_order",
+      "target": "claude_plans_auth_email_password_5_app_wire_it_up",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": ".claude/plans/auth-email-password.md",
+      "source_location": "L68",
+      "weight": 1.0
+    },
+    {
+      "source": "claude_plans_auth_email_password_steps_in_order",
+      "target": "claude_plans_auth_email_password_6_app_keep_the_session",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": ".claude/plans/auth-email-password.md",
+      "source_location": "L73",
+      "weight": 1.0
+    },
+    {
+      "source": "claude_plans_auth_email_password_steps_in_order",
+      "target": "claude_plans_auth_email_password_7_end_to_end_demo",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": ".claude/plans/auth-email-password.md",
+      "source_location": "L79",
       "weight": 1.0
     },
     {
@@ -24526,18 +24985,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "vazy-app/package.json",
-      "source_location": "L33",
-      "weight": 1.0
-    },
-    {
-      "source": "vazy_app_package",
-      "target": "vazy_app_package_scripts",
-      "relation": "contains",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "vazy-app/package.json",
-      "source_location": "L39",
+      "source_location": "L35",
       "weight": 1.0
     },
     {
@@ -24553,13 +25001,24 @@
     },
     {
       "source": "vazy_app_package",
+      "target": "vazy_app_package_scripts",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "vazy-app/package.json",
+      "source_location": "L41",
+      "weight": 1.0
+    },
+    {
+      "source": "vazy_app_package",
       "target": "vazy_app_package_private",
       "relation": "contains",
       "_origin": "ast",
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "vazy-app/package.json",
-      "source_location": "L47",
+      "source_location": "L49",
       "weight": 1.0
     },
     {
@@ -24575,7 +25034,7 @@
     },
     {
       "source": "vazy_app_package_dependencies",
-      "target": "vazy_app_package_dependencies_expo_constants",
+      "target": "vazy_app_package_dependencies_expo_build_properties",
       "relation": "contains",
       "_origin": "ast",
       "confidence": "EXTRACTED",
@@ -24586,7 +25045,7 @@
     },
     {
       "source": "vazy_app_package_dependencies",
-      "target": "vazy_app_package_dependencies_expo_dev_client",
+      "target": "vazy_app_package_dependencies_expo_constants",
       "relation": "contains",
       "_origin": "ast",
       "confidence": "EXTRACTED",
@@ -24597,7 +25056,7 @@
     },
     {
       "source": "vazy_app_package_dependencies",
-      "target": "vazy_app_package_dependencies_expo_device",
+      "target": "vazy_app_package_dependencies_expo_dev_client",
       "relation": "contains",
       "_origin": "ast",
       "confidence": "EXTRACTED",
@@ -24608,7 +25067,7 @@
     },
     {
       "source": "vazy_app_package_dependencies",
-      "target": "vazy_app_package_dependencies_expo_font",
+      "target": "vazy_app_package_dependencies_expo_device",
       "relation": "contains",
       "_origin": "ast",
       "confidence": "EXTRACTED",
@@ -24619,7 +25078,7 @@
     },
     {
       "source": "vazy_app_package_dependencies",
-      "target": "vazy_app_package_dependencies_expo_glass_effect",
+      "target": "vazy_app_package_dependencies_expo_font",
       "relation": "contains",
       "_origin": "ast",
       "confidence": "EXTRACTED",
@@ -24630,7 +25089,7 @@
     },
     {
       "source": "vazy_app_package_dependencies",
-      "target": "vazy_app_package_dependencies_expo_image",
+      "target": "vazy_app_package_dependencies_expo_glass_effect",
       "relation": "contains",
       "_origin": "ast",
       "confidence": "EXTRACTED",
@@ -24641,7 +25100,7 @@
     },
     {
       "source": "vazy_app_package_dependencies",
-      "target": "vazy_app_package_dependencies_expo_linking",
+      "target": "vazy_app_package_dependencies_expo_image",
       "relation": "contains",
       "_origin": "ast",
       "confidence": "EXTRACTED",
@@ -24652,7 +25111,7 @@
     },
     {
       "source": "vazy_app_package_dependencies",
-      "target": "vazy_app_package_dependencies_expo_router",
+      "target": "vazy_app_package_dependencies_expo_linking",
       "relation": "contains",
       "_origin": "ast",
       "confidence": "EXTRACTED",
@@ -24663,7 +25122,7 @@
     },
     {
       "source": "vazy_app_package_dependencies",
-      "target": "vazy_app_package_dependencies_expo_splash_screen",
+      "target": "vazy_app_package_dependencies_expo_router",
       "relation": "contains",
       "_origin": "ast",
       "confidence": "EXTRACTED",
@@ -24674,7 +25133,7 @@
     },
     {
       "source": "vazy_app_package_dependencies",
-      "target": "vazy_app_package_dependencies_expo_status_bar",
+      "target": "vazy_app_package_dependencies_expo_splash_screen",
       "relation": "contains",
       "_origin": "ast",
       "confidence": "EXTRACTED",
@@ -24685,7 +25144,7 @@
     },
     {
       "source": "vazy_app_package_dependencies",
-      "target": "vazy_app_package_dependencies_expo_symbols",
+      "target": "vazy_app_package_dependencies_expo_status_bar",
       "relation": "contains",
       "_origin": "ast",
       "confidence": "EXTRACTED",
@@ -24696,7 +25155,7 @@
     },
     {
       "source": "vazy_app_package_dependencies",
-      "target": "vazy_app_package_dependencies_expo_system_ui",
+      "target": "vazy_app_package_dependencies_expo_symbols",
       "relation": "contains",
       "_origin": "ast",
       "confidence": "EXTRACTED",
@@ -24707,7 +25166,7 @@
     },
     {
       "source": "vazy_app_package_dependencies",
-      "target": "vazy_app_package_dependencies_expo_web_browser",
+      "target": "vazy_app_package_dependencies_expo_system_ui",
       "relation": "contains",
       "_origin": "ast",
       "confidence": "EXTRACTED",
@@ -24718,7 +25177,7 @@
     },
     {
       "source": "vazy_app_package_dependencies",
-      "target": "vazy_app_package_dependencies_react",
+      "target": "vazy_app_package_dependencies_expo_web_browser",
       "relation": "contains",
       "_origin": "ast",
       "confidence": "EXTRACTED",
@@ -24729,7 +25188,7 @@
     },
     {
       "source": "vazy_app_package_dependencies",
-      "target": "vazy_app_package_dependencies_react_dom",
+      "target": "vazy_app_package_dependencies_firebase",
       "relation": "contains",
       "_origin": "ast",
       "confidence": "EXTRACTED",
@@ -24740,7 +25199,7 @@
     },
     {
       "source": "vazy_app_package_dependencies",
-      "target": "vazy_app_package_dependencies_react_native",
+      "target": "vazy_app_package_dependencies_react",
       "relation": "contains",
       "_origin": "ast",
       "confidence": "EXTRACTED",
@@ -24751,7 +25210,7 @@
     },
     {
       "source": "vazy_app_package_dependencies",
-      "target": "vazy_app_package_dependencies_react_native_gesture_handler",
+      "target": "vazy_app_package_dependencies_react_dom",
       "relation": "contains",
       "_origin": "ast",
       "confidence": "EXTRACTED",
@@ -24762,7 +25221,7 @@
     },
     {
       "source": "vazy_app_package_dependencies",
-      "target": "vazy_app_package_dependencies_react_native_reanimated",
+      "target": "vazy_app_package_dependencies_react_native",
       "relation": "contains",
       "_origin": "ast",
       "confidence": "EXTRACTED",
@@ -24773,7 +25232,7 @@
     },
     {
       "source": "vazy_app_package_dependencies",
-      "target": "vazy_app_package_dependencies_react_native_safe_area_context",
+      "target": "vazy_app_package_dependencies_react_native_gesture_handler",
       "relation": "contains",
       "_origin": "ast",
       "confidence": "EXTRACTED",
@@ -24784,7 +25243,7 @@
     },
     {
       "source": "vazy_app_package_dependencies",
-      "target": "vazy_app_package_dependencies_react_native_screens",
+      "target": "vazy_app_package_dependencies_react_native_reanimated",
       "relation": "contains",
       "_origin": "ast",
       "confidence": "EXTRACTED",
@@ -24795,7 +25254,7 @@
     },
     {
       "source": "vazy_app_package_dependencies",
-      "target": "vazy_app_package_dependencies_react_native_web",
+      "target": "vazy_app_package_dependencies_react_native_safe_area_context",
       "relation": "contains",
       "_origin": "ast",
       "confidence": "EXTRACTED",
@@ -24806,13 +25265,35 @@
     },
     {
       "source": "vazy_app_package_dependencies",
-      "target": "vazy_app_package_dependencies_react_native_worklets",
+      "target": "vazy_app_package_dependencies_react_native_screens",
       "relation": "contains",
       "_origin": "ast",
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "vazy-app/package.json",
       "source_location": "L31",
+      "weight": 1.0
+    },
+    {
+      "source": "vazy_app_package_dependencies",
+      "target": "vazy_app_package_dependencies_react_native_web",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "vazy-app/package.json",
+      "source_location": "L32",
+      "weight": 1.0
+    },
+    {
+      "source": "vazy_app_package_dependencies",
+      "target": "vazy_app_package_dependencies_react_native_worklets",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "vazy-app/package.json",
+      "source_location": "L33",
       "weight": 1.0
     },
     {
@@ -24839,7 +25320,7 @@
     },
     {
       "source": "vazy_app_package_dependencies",
-      "target": "vazy_app_package_dependencies_expo",
+      "target": "vazy_app_package_dependencies_react_native_async_storage_async_storage",
       "relation": "contains",
       "_origin": "ast",
       "confidence": "EXTRACTED",
@@ -24850,7 +25331,7 @@
     },
     {
       "source": "vazy_app_package_dependencies",
-      "target": "vazy_app_package_dependencies_expo_build_properties",
+      "target": "vazy_app_package_dependencies_expo",
       "relation": "contains",
       "_origin": "ast",
       "confidence": "EXTRACTED",
@@ -24867,7 +25348,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "vazy-app/package.json",
-      "source_location": "L34",
+      "source_location": "L36",
       "weight": 1.0
     },
     {
@@ -24878,7 +25359,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "vazy-app/package.json",
-      "source_location": "L35",
+      "source_location": "L37",
       "weight": 1.0
     },
     {
@@ -24889,7 +25370,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "vazy-app/package.json",
-      "source_location": "L36",
+      "source_location": "L38",
       "weight": 1.0
     },
     {
@@ -24900,7 +25381,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "vazy-app/package.json",
-      "source_location": "L37",
+      "source_location": "L39",
       "weight": 1.0
     },
     {
@@ -24911,7 +25392,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "vazy-app/package.json",
-      "source_location": "L40",
+      "source_location": "L42",
       "weight": 1.0
     },
     {
@@ -24922,7 +25403,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "vazy-app/package.json",
-      "source_location": "L41",
+      "source_location": "L43",
       "weight": 1.0
     },
     {
@@ -24933,7 +25414,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "vazy-app/package.json",
-      "source_location": "L42",
+      "source_location": "L44",
       "weight": 1.0
     },
     {
@@ -24944,7 +25425,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "vazy-app/package.json",
-      "source_location": "L43",
+      "source_location": "L45",
       "weight": 1.0
     },
     {
@@ -24955,7 +25436,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "vazy-app/package.json",
-      "source_location": "L44",
+      "source_location": "L46",
       "weight": 1.0
     },
     {
@@ -24966,7 +25447,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "vazy-app/package.json",
-      "source_location": "L45",
+      "source_location": "L47",
       "weight": 1.0
     },
     {
@@ -25377,6 +25858,28 @@
       "weight": 1.0
     },
     {
+      "source": "vazy_app_src_lib_firebase",
+      "target": "vazy_app_src_lib_firebase_auth",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "vazy-app/src/lib/firebase.ts",
+      "source_location": "L16",
+      "weight": 1.0
+    },
+    {
+      "source": "vazy_app_src_lib_firebase",
+      "target": "vazy_app_src_lib_firebase_app",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "vazy-app/src/lib/firebase.ts",
+      "source_location": "L7",
+      "weight": 1.0
+    },
+    {
       "source": "vazy_app_src_lib_route",
       "target": "vazy_app_src_lib_route_neareststop",
       "relation": "contains",
@@ -25450,7 +25953,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "vazy-app/tsconfig.json",
-      "source_location": "L15",
+      "source_location": "L19",
       "weight": 1.0
     },
     {
@@ -25472,7 +25975,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "vazy-app/tsconfig.json",
-      "source_location": "L21",
+      "source_location": "L25",
       "weight": 1.0
     },
     {
@@ -25528,6 +26031,17 @@
       "confidence_score": 1.0,
       "source_file": "vazy-app/tsconfig.json",
       "source_location": "L10",
+      "weight": 1.0
+    },
+    {
+      "source": "vazy_app_tsconfig_compileroptions_paths",
+      "target": "vazy_app_tsconfig_paths_firebase_auth",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "vazy-app/tsconfig.json",
+      "source_location": "L14",
       "weight": 1.0
     },
     {
@@ -26120,5 +26634,5 @@
     }
   ],
   "hyperedges": [],
-  "built_at_commit": "744439b531e84f3bd72d68dcd4a16f94c1699845"
+  "built_at_commit": "b750b51c726f4a9a29efb383ad24bf608994e951"
 }

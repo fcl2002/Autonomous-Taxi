@@ -1,17 +1,17 @@
 # Graph Report - Autonomous-Taxi  (2026-11-16)
 
 ## Corpus Check
-- 136 files · ~81,608 words
+- 138 files · ~82,601 words
 - Verdict: corpus is large enough that graph structure adds value.
 - Unclassified: 25 file(s) not represented in the graph (top: .ttf 19, (none) 6)
 
 ## Summary
-- 1103 nodes · 1165 edges · 86 communities (78 shown, 8 thin omitted)
+- 1125 nodes · 1188 edges · 87 communities (79 shown, 8 thin omitted)
 - Extraction: 98% EXTRACTED · 2% INFERRED · 0% AMBIGUOUS · INFERRED: 27 edges (avg confidence: 0.95)
 - Token cost: 0 input · 0 output
 
 ## Graph Freshness
-- Built from commit: `744439b5`
+- Built from commit: `b750b51c`
 - Run `git rev-parse HEAD` and compare to check if the graph is stale.
 - Run `graphify update .` after code changes (no API cost).
 
@@ -26,7 +26,7 @@
 - speckit-plan/SKILL.md
 - speckit-specify/SKILL.md
 - speckit-tasks/SKILL.md
-- tsconfig.json
+- vazy-app/tsconfig.json
 - speckit-checklist/SKILL.md
 - speckit-clarify/SKILL.md
 - speckit-implement/SKILL.md
@@ -98,6 +98,7 @@
 - 007-fix-tracking-layout/data-model.md
 - backend/package.json
 - compilerOptions
+- Steps, in order
 
 ## God Nodes (most connected - your core abstractions)
 1. `ThemedText()` - 25 edges
@@ -105,9 +106,9 @@
 3. `Tasks: [FEATURE NAME]` - 13 edges
 4. `expo` - 12 edges
 5. `Tasks: Onboarding Entry Screen` - 12 edges
-6. `Tasks: Onboarding Tracking Screen` - 11 edges
-7. `Tasks: Onboarding Location Consent Screen` - 11 edges
-8. `react-native` - 10 edges
+6. `react-native` - 11 edges
+7. `Tasks: Onboarding Tracking Screen` - 11 edges
+8. `Tasks: Onboarding Location Consent Screen` - 11 edges
 9. `Handoff: Vazy app, state after the map/circuit work (2026-11-16)` - 10 edges
 10. `Tasks: Phone Login Entry Screen` - 10 edges
 
@@ -126,11 +127,11 @@
 ## Import Cycles
 - None detected.
 
-## Communities (86 total, 8 thin omitted)
+## Communities (87 total, 8 thin omitted)
 
 ### Community 0 - "vazy-app/package.json"
-Cohesion: 0.05
-Nodes (41): eslint, eslint-config-expo, expo, expo-build-properties, expo-constants, expo-dev-client, expo-device, expo-glass-effect (+33 more)
+Cohesion: 0.04
+Nodes (45): eslint, eslint-config-expo, expo, expo-build-properties, expo-constants, expo-dev-client, expo-device, expo-glass-effect (+37 more)
 
 ### Community 1 - "Implementation Plan: Ride Map Screen"
 Cohesion: 0.07
@@ -168,9 +169,9 @@ Nodes (10): Completion Report, Done When, For AI Generation, Mandatory Post-Exec
 Cohesion: 0.18
 Nodes (10): Checklist Format (REQUIRED), Completion Report, Done When, Mandatory Post-Execution Hooks, Outline, Phase Structure, Pre-Execution Checks, Task Generation Rules (+2 more)
 
-### Community 10 - "tsconfig.json"
-Cohesion: 0.20
-Nodes (9): expo/tsconfig.base, compilerOptions, allowImportingTsExtensions, paths, strict, exclude, extends, include (+1 more)
+### Community 10 - "vazy-app/tsconfig.json"
+Cohesion: 0.18
+Nodes (10): expo/tsconfig.base, compilerOptions, allowImportingTsExtensions, paths, strict, exclude, extends, include (+2 more)
 
 ### Community 11 - "speckit-checklist/SKILL.md"
 Cohesion: 0.25
@@ -222,7 +223,7 @@ Nodes (24): Content Quality, Feature Readiness, Notes, Requirement Completeness,
 
 ### Community 24 - "dependencies"
 Cohesion: 0.07
-Nodes (27): dependencies, expo, expo-build-properties, expo-constants, expo-dev-client, expo-device, expo-font, expo-glass-effect (+19 more)
+Nodes (29): dependencies, expo, expo-build-properties, expo-constants, expo-dev-client, expo-device, expo-font, expo-glass-effect (+21 more)
 
 ### Community 25 - "Implementation Plan: Fix Tracking Layout"
 Cohesion: 0.08
@@ -440,24 +441,28 @@ Nodes (13): devDependencies, @types/node, typescript, engines, node, typescript,
 Cohesion: 0.20
 Nodes (9): compilerOptions, allowImportingTsExtensions, erasableSyntaxOnly, module, noEmit, strict, target, types (+1 more)
 
+### Community 86 - "Steps, in order"
+Cohesion: 0.14
+Nodes (13): 1. Spec (speckit), 2. Firebase project (console, done by the owner, free Spark plan), 3. App: SDK setup (`vazy-app/`), done 2026-11-16, 4. App: screens, UI first (constitution III), 5. App: wire it up, 6. App: keep the session, 7. End-to-end demo, Key decisions (+5 more)
+
 ## Knowledge Gaps
-- **710 isolated node(s):** `name`, `private`, `type`, `node`, `start` (+705 more)
-  These have ≤1 connection - possible missing edges or undocumented components. (Counts symbols only; 774 node(s) total have ≤1 connection when file, concept and rationale nodes are included.)
+- **726 isolated node(s):** `name`, `private`, `type`, `node`, `start` (+721 more)
+  These have ≤1 connection - possible missing edges or undocumented components. (Counts symbols only; 791 node(s) total have ≤1 connection when file, concept and rationale nodes are included.)
 - **8 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
 
 ## Suggested Questions
 _Questions this graph is uniquely positioned to answer:_
 
-- **Why does `dependencies` connect `dependencies` to `vazy-app/package.json`?**
-  _High betweenness centrality (0.014) - this node is a cross-community bridge._
+- **Why does `ThemedText()` connect `map.tsx` to `route.ts`, `Research: Ride Map Screen`?**
+  _High betweenness centrality (0.018) - this node is a cross-community bridge._
 - **Are the 8 inferred relationships involving `ThemedText()` (e.g. with `Reused` and `Decision 1: Share only repeated text and button presentation`) actually correct?**
   _`ThemedText()` has 8 INFERRED edges - model-reasoned connections that need verification._
 - **What connects `name`, `private`, `type` to the rest of the system?**
-  _710 weakly-connected nodes found - possible documentation gaps or missing edges._
+  _726 weakly-connected nodes found - possible documentation gaps or missing edges._
 - **Should `vazy-app/package.json` be split into smaller, more focused modules?**
-  _Cohesion score 0.047619047619047616 - nodes in this community are weakly interconnected._
-- **Why does `ThemedText()` connect `map.tsx` to `route.ts`, `Research: Ride Map Screen`?**
-  _High betweenness centrality (0.013) - this node is a cross-community bridge._
+  _Cohesion score 0.04343971631205674 - nodes in this community are weakly interconnected._
+- **Why does `dependencies` connect `dependencies` to `vazy-app/package.json`?**
+  _High betweenness centrality (0.015) - this node is a cross-community bridge._
 - **Are the 9 inferred relationships involving `ThemedButton()` (e.g. with `Changes (one file: `vazy-app/src/app/map.tsx`)` and `Reused`) actually correct?**
   _`ThemedButton()` has 9 INFERRED edges - model-reasoned connections that need verification._
 - **Should `Implementation Plan: Ride Map Screen` be split into smaller, more focused modules?**

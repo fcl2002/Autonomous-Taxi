@@ -162,14 +162,14 @@
     "semantic_hash": ""
   },
   "vazy-app/package.json": {
-    "mtime": 1794832271.5708845,
-    "seen": 1794832939.1884956,
-    "ast_hash": "7516b1b5800c63dbaf838ac457114d35",
+    "mtime": 1794836427.7915833,
+    "seen": 1794836756.158071,
+    "ast_hash": "9ae0123f9c8de434d1c2a2bca81244b1",
     "semantic_hash": ""
   },
   "vazy-app/src/app/_layout.tsx": {
-    "mtime": 1794832271.5759058,
-    "seen": 1794832939.188523,
+    "mtime": 1794836695.2870736,
+    "seen": 1794836756.1580775,
     "ast_hash": "5103b3069b0875a1b6a0d26382537e54",
     "semantic_hash": ""
   },
@@ -240,9 +240,9 @@
     "semantic_hash": ""
   },
   "vazy-app/tsconfig.json": {
-    "mtime": 1794832271.6029031,
-    "seen": 1794832939.1886158,
-    "ast_hash": "d3371b82d6be3cca9a0757877c7c5539",
+    "mtime": 1794836522.6631107,
+    "seen": 1794836756.1581004,
+    "ast_hash": "423d39a7329ba223a575119e08aabcb1",
     "semantic_hash": ""
   },
   ".claude/plans/map-destination-search.md": {
@@ -897,6 +897,18 @@
     "mtime": 1794832920.0214145,
     "seen": 1794832939.188689,
     "ast_hash": "3c2df26bd975adfa44d1b4c3b3b6c8ac",
+    "semantic_hash": ""
+  },
+  "vazy-app/src/lib/firebase.ts": {
+    "mtime": 1794836672.206284,
+    "seen": 1794836756.1580973,
+    "ast_hash": "59b4bcdfcfecd175893630b46b5eab8b",
+    "semantic_hash": ""
+  },
+  ".claude/plans/auth-email-password.md": {
+    "mtime": 1794836744.7535734,
+    "seen": 1794836756.1581168,
+    "ast_hash": "8cac64757bfd00af9f6fa5e7cbaacb76",
     "semantic_hash": ""
   }
 }

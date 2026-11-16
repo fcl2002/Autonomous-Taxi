@@ -9,7 +9,7 @@
   "7": "speckit-plan/SKILL.md",
   "8": "speckit-specify/SKILL.md",
   "9": "speckit-tasks/SKILL.md",
-  "10": "tsconfig.json",
+  "10": "vazy-app/tsconfig.json",
   "11": "speckit-checklist/SKILL.md",
   "12": "speckit-clarify/SKILL.md",
   "13": "speckit-implement/SKILL.md",
@@ -84,5 +84,6 @@
   "82": "setup-plan.ps1",
   "83": "setup-tasks.ps1",
   "84": "backend/package.json",
-  "85": "compilerOptions"
+  "85": "compilerOptions",
+  "86": "Steps, in order"
 }

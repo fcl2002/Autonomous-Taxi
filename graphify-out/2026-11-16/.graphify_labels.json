@@ -1,9 +1,9 @@
 {
-  "0": "package.json",
+  "0": "vazy-app/package.json",
   "1": "Implementation Plan: Ride Map Screen",
   "2": "Execution Steps",
   "3": "Implementation Plan: Vazy Splash Screen",
-  "4": "map.tsx",
+  "4": "ThemedText",
   "5": "speckit-analyze/SKILL.md",
   "6": "Implementation Plan: Phone Login Entry Screen",
   "7": "speckit-plan/SKILL.md",
@@ -39,7 +39,7 @@
   "37": "Tasks: Fix Tracking Layout",
   "38": "Feature Specification: [FEATURE NAME]",
   "39": "Tasks: Shared Themed Entry-Flow Components",
-  "40": "Core Principles",
+  "40": "Build list",
   "41": "Core Principles",
   "42": "Fixed circuit with 9 stops (replaces address search)",
   "43": "Implementation Plan: [FEATURE]",
@@ -49,7 +49,7 @@
   "47": "Quickstart: Validate the Onboarding Entry Screen",
   "48": "Research: Onboarding Entry Screen",
   "49": "Research: Onboarding Location Consent Screen",
-  "50": "route.ts",
+  "50": "map.tsx",
   "51": "Quickstart: Validate the Vazy Splash Screen",
   "52": "UI Contract: Splash to First Onboarding Page",
   "53": "Research: Onboarding Tracking Screen",
@@ -82,5 +82,7 @@
   "80": "check-prerequisites.ps1",
   "81": "resolve-template.ps1",
   "82": "setup-plan.ps1",
-  "83": "setup-tasks.ps1"
+  "83": "setup-tasks.ps1",
+  "84": "backend/package.json",
+  "85": "compilerOptions"
 }
