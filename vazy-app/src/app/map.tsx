@@ -1,23 +1,19 @@
 import { Camera, Map, Marker, type CameraRef, type ViewStateChangeEvent } from "@maplibre/maplibre-react-native";
+import { router, useLocalSearchParams } from "expo-router";
 import { StatusBar } from "expo-status-bar";
 import { SymbolView } from "expo-symbols";
-import { useCallback, useRef, useState } from "react";
-import { Keyboard, KeyboardAvoidingView, type NativeSyntheticEvent, Pressable, StyleSheet, TextInput, View } from "react-native";
+import { useCallback, useEffect, useRef, useState } from "react";
+import { type NativeSyntheticEvent, Pressable, StyleSheet, View } from "react-native";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
 import { ThemedButton } from "@/components/themed-button";
 import { ThemedText } from "@/components/themed-text";
+import { PICKUP } from "@/constants/pickup";
 import { Colors, Fonts } from "@/constants/theme";
 
 // OpenFreeMap serves the "Liberty" style with no API key or usage limits.
 const LIBERTY_MAP_STYLE = "https://tiles.openfreemap.org/styles/liberty";
 
-// The app's location: Place Jussieu, main entrance of Sorbonne Université's Jussieu campus (OSM).
-const MAP_CENTER: [number, number] = [2.3547629, 48.846255];
-const PICKUP_LABEL = "Sorbonne Université · 4 Place Jussieu, 75005 Paris";
-
-// shortcut: Nominatim public API, 1 req/s and no SLA; move to a paid or self-hosted geocoder before launch.
-const SEARCH_URL =
-  "https://nominatim.openstreetmap.org/search?format=json&limit=1&accept-language=fr&countrycodes=fr&viewbox=2.22,48.90,2.47,48.81&q=";
+const MAP_CENTER = PICKUP.lngLat;
 
 // Neighborhood and street detail, the level most ride-hailing maps settle on.
 const FOCUS_ZOOM = 19;
@@ -25,23 +21,32 @@ const MIN_ZOOM = 2;
 const MAX_ZOOM = 21;
 const ZOOM_STEP = 1;
 
-type Destination = { name: string; address: string; lngLat: [number, number] };
-type SearchStatus = "idle" | "searching" | "notFound" | "error";
-
-const STATUS_MESSAGE: Partial<Record<SearchStatus, string>> = {
-  searching: "Searching…",
-  notFound: "No place found, try another address.",
-  error: "Search failed, check your connection.",
-};
-
 export default function MapScreen() {
   const cameraRef = useRef<CameraRef>(null);
   const insets = useSafeAreaInsets();
   const zoomRef = useRef(FOCUS_ZOOM);
   const [sheetHeight, setSheetHeight] = useState(201);
-  const [query, setQuery] = useState("");
-  const [destination, setDestination] = useState<Destination | null>(null);
-  const [status, setStatus] = useState<SearchStatus>("idle");
+
+  // Set by select-location; params are strings and can come from a deep link, so validate them.
+  const params = useLocalSearchParams<{ name?: string; address?: string; lng?: string; lat?: string }>();
+  const lngLat: [number, number] = [Number(params.lng), Number(params.lat)];
+  const destination =
+    params.name && params.lng && params.lat && lngLat.every(Number.isFinite)
+      ? { name: params.name, address: params.address ?? "", lngLat }
+      : null;
+
+  // The destination, once picked, is the map's center; before that, the user's location.
+  const center = destination?.lngLat ?? MAP_CENTER;
+  // Center within the part of the map the bottom sheet leaves visible.
+  const padding = { bottom: sheetHeight };
+
+  useEffect(() => {
+    if (destination) {
+      cameraRef.current?.flyTo({ center: destination.lngLat, zoom: FOCUS_ZOOM, padding, duration: 900 });
+    }
+    // Re-center when a new destination arrives or the sheet resizes for it, not on every render.
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [params.lng, params.lat, sheetHeight]);
 
   const handleRegionDidChange = useCallback(
     (event: NativeSyntheticEvent<ViewStateChangeEvent>) => {
@@ -54,9 +59,10 @@ export default function MapScreen() {
     cameraRef.current?.flyTo({
       center: MAP_CENTER,
       zoom: FOCUS_ZOOM,
+      padding: { bottom: sheetHeight },
       duration: 900,
     });
-  }, []);
+  }, [sheetHeight]);
 
   const zoomBy = useCallback((delta: number) => {
     const nextZoom = Math.min(
@@ -66,35 +72,6 @@ export default function MapScreen() {
 
     cameraRef.current?.zoomTo(nextZoom, { duration: 250 });
   }, []);
-
-  const search = async () => {
-    const text = query.trim();
-    if (!text || status === "searching") return;
-
-    Keyboard.dismiss();
-    setStatus("searching");
-    try {
-      const res = await fetch(SEARCH_URL + encodeURIComponent(text), {
-        headers: { "User-Agent": "Vazy/0.1 (prototype)" },
-      });
-      if (!res.ok) throw new Error(`HTTP ${res.status}`);
-      const [r] = await res.json();
-      if (!r) {
-        setStatus("notFound");
-        return;
-      }
-      const lngLat: [number, number] = [Number(r.lon), Number(r.lat)];
-      setDestination({
-        name: r.name || r.display_name.split(",")[0],
-        address: r.display_name,
-        lngLat,
-      });
-      setStatus("idle");
-      cameraRef.current?.flyTo({ center: lngLat, zoom: FOCUS_ZOOM, duration: 900 });
-    } catch {
-      setStatus("error");
-    }
-  };
 
   return (
     <View style={styles.container}>
@@ -114,8 +91,9 @@ export default function MapScreen() {
         <Camera
           ref={cameraRef}
           initialViewState={{
-            center: MAP_CENTER,
+            center,
             zoom: FOCUS_ZOOM,
+            padding,
             pitch: 0,
             bearing: 0,
           }}
@@ -183,11 +161,10 @@ export default function MapScreen() {
         </Pressable>
       </View>
 
-      <KeyboardAvoidingView behavior="padding" style={styles.sheetWrapper}>
-        <View
-          onLayout={(e) => setSheetHeight(e.nativeEvent.layout.height)}
-          style={[styles.sheet, { paddingBottom: insets.bottom + 24 }]}
-        >
+      <View
+        onLayout={(e) => setSheetHeight(e.nativeEvent.layout.height)}
+        style={[styles.sheet, { paddingBottom: insets.bottom + 24 }]}
+      >
           <ThemedText style={styles.left} variant="bodyLarge">
             Where do you want to go?
           </ThemedText>
@@ -200,45 +177,39 @@ export default function MapScreen() {
               tintColor={Colors.accent}
             />
             <ThemedText numberOfLines={1} style={styles.rowText}>
-              {PICKUP_LABEL}
+              {PICKUP.label}
             </ThemedText>
           </View>
 
           <View style={styles.divider} />
 
-          <View style={styles.row}>
+          <Pressable
+            accessibilityLabel={destination ? `Destination: ${destination.name}. Change` : "Search destination"}
+            accessibilityRole="button"
+            onPress={() => router.push("/select-location")}
+            style={({ pressed }) => [styles.row, pressed && styles.pressed]}
+          >
             <SymbolView
               name={{ ios: "mappin", android: "location_on", web: "location_on" }}
               size={24}
               style={styles.pin}
               tintColor="#000000"
             />
-            <TextInput
-              accessibilityLabel="Destination"
-              onChangeText={setQuery}
-              onSubmitEditing={search}
-              placeholder="Search Destination"
-              placeholderTextColor="#A5A5A5"
-              returnKeyType="search"
-              style={[styles.rowText, styles.input]}
-              value={query}
-            />
-          </View>
-
-          {STATUS_MESSAGE[status] && (
-            <ThemedText style={[styles.left, styles.result]} variant="body">
-              {STATUS_MESSAGE[status]}
+            <ThemedText
+              numberOfLines={1}
+              style={[styles.rowText, !destination && styles.placeholder]}
+            >
+              {destination?.name ?? "Search Destination"}
             </ThemedText>
-          )}
+          </Pressable>
 
-          {destination && status !== "searching" && (
+          {destination && (
             <View style={styles.result}>
-              <ThemedText numberOfLines={1} style={styles.left} variant="bodyLarge">
-                {destination.name}
-              </ThemedText>
-              <ThemedText numberOfLines={2} style={styles.left} variant="body">
-                {destination.address}
-              </ThemedText>
+              {!!destination.address && (
+                <ThemedText numberOfLines={2} style={styles.left} variant="body">
+                  {destination.address}
+                </ThemedText>
+              )}
               <ThemedButton
                 label="Confirm destination"
                 onPress={() => {}}
@@ -246,8 +217,7 @@ export default function MapScreen() {
               />
             </View>
           )}
-        </View>
-      </KeyboardAvoidingView>
+      </View>
     </View>
   );
 }
@@ -358,14 +328,12 @@ const styles = StyleSheet.create({
     borderRadius: 3,
     backgroundColor: Colors.accent,
   },
-  sheetWrapper: {
+  // Figma "map" frame, node 5:1544: white sheet, 30px top corners, 0 0 30px rgba(0,0,0,0.15).
+  sheet: {
     position: "absolute",
     left: 0,
     right: 0,
     bottom: 0,
-  },
-  // Figma "map" frame, node 5:1544: white sheet, 30px top corners, 0 0 30px rgba(0,0,0,0.15).
-  sheet: {
     paddingTop: 24,
     paddingHorizontal: 24,
     borderTopLeftRadius: 30,
@@ -400,8 +368,8 @@ const styles = StyleSheet.create({
     lineHeight: 18,
     textAlign: "left",
   },
-  input: {
-    paddingVertical: 0,
+  placeholder: {
+    color: "#A5A5A5",
   },
   divider: {
     height: 1,

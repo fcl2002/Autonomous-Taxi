@@ -26,7 +26,9 @@ export default function RootLayout() {
 
   return (
     <SafeAreaProvider initialMetrics={initialWindowMetrics}>
-      <Stack screenOptions={{ headerShown: false }} />
+      <Stack screenOptions={{ headerShown: false }}>
+        <Stack.Screen name="select-location" options={{ animation: "slide_from_bottom" }} />
+      </Stack>
     </SafeAreaProvider>
   );
 }
