@@ -40,16 +40,18 @@ export default function MapScreen() {
   const insets = useSafeAreaInsets();
   const zoomRef = useRef(FOCUS_ZOOM);
   const [sheetHeight, setSheetHeight] = useState(201);
-  const [destination, setDestination] = useState<number | null>(null);
+  // Stops are tracked by their stable id (what the backend will store), never by list position.
+  const [destinationId, setDestinationId] = useState<string | null>(null);
   const [confirmed, setConfirmed] = useState(false);
 
-  const trip = confirmed && destination !== null ? tripPath(STOPS, ORIGIN.index, destination) : null;
+  const destination = STOPS.findIndex((stop) => stop.id === destinationId);
+  const trip = confirmed && destination >= 0 ? tripPath(STOPS, ORIGIN.index, destination) : null;
   // Keep the map clear of the status bar, the zoom controls and the bottom sheet.
   const framePadding = { top: insets.top + 48, right: 88, bottom: sheetHeight + 48, left: 48 };
 
-  const selectStop = (index: unknown) => {
-    if (typeof index !== "number" || index === ORIGIN.index) return;
-    setDestination(index);
+  const selectStop = (id: string) => {
+    if (id === STOPS[ORIGIN.index].id) return;
+    setDestinationId(id);
     setConfirmed(false);
   };
 
@@ -59,7 +61,7 @@ export default function MapScreen() {
     }
     // Frame the trip when it's confirmed or the sheet resizes, not on every render.
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [confirmed, destination, sheetHeight]);
+  }, [confirmed, destinationId, sheetHeight]);
 
   const handleRegionDidChange = useCallback(
     (event: NativeSyntheticEvent<ViewStateChangeEvent>) => {
@@ -138,32 +140,36 @@ export default function MapScreen() {
           </GeoJSONSource>
         )}
 
-        <GeoJSONSource
-          data={{
-            type: "FeatureCollection",
-            features: STOPS.map((stop, index) => ({
-              type: "Feature",
-              properties: {
-                index,
-                role: index === ORIGIN.index ? "origin" : index === destination ? "destination" : "stop",
-              },
-              geometry: { type: "Point", coordinates: stop.lngLat },
-            })),
-          }}
-          id="stops"
-          onPress={(e) => selectStop(e.nativeEvent.features[0]?.properties?.index)}
-        >
-          <Layer
-            id="stops-circle"
-            paint={{
-              "circle-radius": 9,
-              "circle-stroke-width": 3,
-              "circle-stroke-color": ["match", ["get", "role"], "destination", "#000000", Colors.accent],
-              "circle-color": ["match", ["get", "role"], "origin", Colors.accent, "destination", "#000000", "#FFFFFF"],
-            }}
-            type="circle"
-          />
-        </GeoJSONSource>
+        {STOPS.map((stop, index) => {
+          const isOrigin = index === ORIGIN.index;
+          const isDestination = stop.id === destinationId;
+          return (
+            <Marker
+              anchor="bottom"
+              id={`stop-${stop.id}`}
+              key={stop.id}
+              lngLat={stop.lngLat}
+              onPress={() => selectStop(stop.id)}
+            >
+              {/* Native views, unlike map layers, reach VoiceOver/TalkBack; 44pt is the minimum touch target. */}
+              <View
+                accessibilityActions={[{ name: "activate" }]}
+                accessibilityLabel={isOrigin ? `${stop.name}, your pickup stop` : stop.name}
+                accessibilityRole="button"
+                accessibilityState={{ selected: isDestination, disabled: isOrigin }}
+                accessible
+                onAccessibilityAction={() => selectStop(stop.id)}
+                style={styles.stopPin}
+              >
+                <SymbolView
+                  name={{ ios: "mappin", android: "location_on", web: "location_on" }}
+                  size={isDestination ? 40 : 32}
+                  tintColor={isOrigin ? Colors.accent : isDestination ? "#000000" : "#6B6F76"}
+                />
+              </View>
+            </Marker>
+          );
+        })}
 
         <Marker id="user-location" lngLat={MAP_CENTER}>
           <View accessible={false} style={styles.marker}>
@@ -252,13 +258,13 @@ export default function MapScreen() {
           />
           <ThemedText
             numberOfLines={1}
-            style={[styles.rowText, destination === null && styles.placeholder]}
+            style={[styles.rowText, destination < 0 && styles.placeholder]}
           >
-            {destination === null ? "Tap a stop on the map" : STOPS[destination].name}
+            {destination < 0 ? "Tap a stop on the map" : STOPS[destination].name}
           </ThemedText>
         </View>
 
-        {destination !== null && (
+        {destination >= 0 && (
           <View style={styles.result}>
             {trip ? (
               <ThemedText style={styles.left} variant="bodyLarge">
@@ -297,6 +303,12 @@ const styles = StyleSheet.create({
     shadowOpacity: 0.25,
     shadowRadius: 4,
     elevation: 4,
+  },
+  stopPin: {
+    width: 44,
+    height: 44,
+    alignItems: "center",
+    justifyContent: "flex-end",
   },
   markerDot: {
     width: 14,

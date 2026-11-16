@@ -4,7 +4,7 @@ import type { LngLat, Stop } from "@/constants/circuit";
 export type Trip = { coordinates: LngLat[]; distance: number; stops: number };
 
 // Equirectangular distance in meters, accurate enough at campus scale.
-function meters([lng1, lat1]: LngLat, [lng2, lat2]: LngLat) {
+export function meters([lng1, lat1]: LngLat, [lng2, lat2]: LngLat) {
   const toRad = Math.PI / 180;
   const x = (lng2 - lng1) * toRad * Math.cos(((lat1 + lat2) / 2) * toRad);
   const y = (lat2 - lat1) * toRad;

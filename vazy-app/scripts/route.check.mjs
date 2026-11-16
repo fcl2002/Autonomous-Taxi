@@ -1,6 +1,16 @@
 // Run: node scripts/route.check.mjs (Node 22.18+ strips the TS types).
 import assert from "node:assert/strict";
-import { bounds, nearestStop, summary, tripPath } from "../src/lib/route.ts";
+import { STOPS } from "../src/constants/circuit.ts";
+import { bounds, meters, nearestStop, summary, tripPath } from "../src/lib/route.ts";
+
+// Real circuit: catches stops.ts edited without re-running build-circuit.mjs.
+assert.equal(new Set(STOPS.map((s) => s.id)).size, STOPS.length, "stop ids must be unique");
+STOPS.forEach((stop, i) => {
+  const next = STOPS[(i + 1) % STOPS.length];
+  assert.ok(stop.path, `${stop.id}: no leg, re-run scripts/build-circuit.mjs`);
+  assert.ok(meters(stop.path[0], stop.lngLat) < 15, `${stop.id}: leg doesn't start at the stop, re-run build`);
+  assert.deepEqual(stop.path.at(-1), next.path[0], `${stop.id}: leg doesn't reach ${next.id}, re-run build`);
+});
 
 // Three stops on a line; each leg's path ends where the next one starts.
 const stops = [
