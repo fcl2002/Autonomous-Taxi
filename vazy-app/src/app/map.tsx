@@ -1,5 +1,12 @@
-import { Camera, Map, Marker, type CameraRef, type ViewStateChangeEvent } from "@maplibre/maplibre-react-native";
-import { router, useLocalSearchParams } from "expo-router";
+import {
+  Camera,
+  type CameraRef,
+  GeoJSONSource,
+  Layer,
+  Map,
+  Marker,
+  type ViewStateChangeEvent,
+} from "@maplibre/maplibre-react-native";
 import { StatusBar } from "expo-status-bar";
 import { SymbolView } from "expo-symbols";
 import { useCallback, useEffect, useRef, useState } from "react";
@@ -7,8 +14,10 @@ import { type NativeSyntheticEvent, Pressable, StyleSheet, View } from "react-na
 import { useSafeAreaInsets } from "react-native-safe-area-context";
 import { ThemedButton } from "@/components/themed-button";
 import { ThemedText } from "@/components/themed-text";
+import { STOPS } from "@/constants/circuit";
 import { PICKUP } from "@/constants/pickup";
 import { Colors, Fonts } from "@/constants/theme";
+import { bounds, nearestStop, summary, tripPath } from "@/lib/route";
 
 // OpenFreeMap serves the "Liberty" style with no API key or usage limits.
 const LIBERTY_MAP_STYLE = "https://tiles.openfreemap.org/styles/liberty";
@@ -21,32 +30,36 @@ const MIN_ZOOM = 2;
 const MAX_ZOOM = 21;
 const ZOOM_STEP = 1;
 
+// The whole one-way loop, each leg joined without repeating the shared point.
+const CIRCUIT = STOPS.flatMap((stop, i) => (i === 0 ? stop.path : stop.path.slice(1)));
+// shortcut: the user's location is fixed, so the origin stop is computed once; move into the component with real GPS.
+const ORIGIN = nearestStop(STOPS, MAP_CENTER);
+
 export default function MapScreen() {
   const cameraRef = useRef<CameraRef>(null);
   const insets = useSafeAreaInsets();
   const zoomRef = useRef(FOCUS_ZOOM);
   const [sheetHeight, setSheetHeight] = useState(201);
+  const [destination, setDestination] = useState<number | null>(null);
+  const [confirmed, setConfirmed] = useState(false);
 
-  // Set by select-location; params are strings and can come from a deep link, so validate them.
-  const params = useLocalSearchParams<{ name?: string; address?: string; lng?: string; lat?: string }>();
-  const lngLat: [number, number] = [Number(params.lng), Number(params.lat)];
-  const destination =
-    params.name && params.lng && params.lat && lngLat.every(Number.isFinite)
-      ? { name: params.name, address: params.address ?? "", lngLat }
-      : null;
+  const trip = confirmed && destination !== null ? tripPath(STOPS, ORIGIN.index, destination) : null;
+  // Keep the map clear of the status bar, the zoom controls and the bottom sheet.
+  const framePadding = { top: insets.top + 48, right: 88, bottom: sheetHeight + 48, left: 48 };
 
-  // The destination, once picked, is the map's center; before that, the user's location.
-  const center = destination?.lngLat ?? MAP_CENTER;
-  // Center within the part of the map the bottom sheet leaves visible.
-  const padding = { bottom: sheetHeight };
+  const selectStop = (index: unknown) => {
+    if (typeof index !== "number" || index === ORIGIN.index) return;
+    setDestination(index);
+    setConfirmed(false);
+  };
 
   useEffect(() => {
-    if (destination) {
-      cameraRef.current?.flyTo({ center: destination.lngLat, zoom: FOCUS_ZOOM, padding, duration: 900 });
+    if (trip) {
+      cameraRef.current?.fitBounds(bounds(trip.coordinates), { padding: framePadding, duration: 900 });
     }
-    // Re-center when a new destination arrives or the sheet resizes for it, not on every render.
+    // Frame the trip when it's confirmed or the sheet resizes, not on every render.
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [params.lng, params.lat, sheetHeight]);
+  }, [confirmed, destination, sheetHeight]);
 
   const handleRegionDidChange = useCallback(
     (event: NativeSyntheticEvent<ViewStateChangeEvent>) => {
@@ -91,25 +104,72 @@ export default function MapScreen() {
         <Camera
           ref={cameraRef}
           initialViewState={{
-            center,
-            zoom: FOCUS_ZOOM,
-            padding,
-            pitch: 0,
-            bearing: 0,
+            // Open on the whole circuit plus the user, so every stop is tappable right away.
+            bounds: bounds([...CIRCUIT, MAP_CENTER]),
+            padding: framePadding,
           }}
           maxZoom={MAX_ZOOM}
           minZoom={MIN_ZOOM}
         />
+
+        <GeoJSONSource
+          data={{ type: "Feature", properties: {}, geometry: { type: "LineString", coordinates: CIRCUIT } }}
+          id="circuit"
+        >
+          <Layer
+            id="circuit-line"
+            layout={{ "line-cap": "round", "line-join": "round" }}
+            paint={{ "line-color": "#9AA0A6", "line-width": 3 }}
+            type="line"
+          />
+        </GeoJSONSource>
+
+        {trip && (
+          <GeoJSONSource
+            data={{ type: "Feature", properties: {}, geometry: { type: "LineString", coordinates: trip.coordinates } }}
+            id="trip"
+          >
+            <Layer
+              id="trip-line"
+              layout={{ "line-cap": "round", "line-join": "round" }}
+              paint={{ "line-color": Colors.accent, "line-width": 6 }}
+              type="line"
+            />
+          </GeoJSONSource>
+        )}
+
+        <GeoJSONSource
+          data={{
+            type: "FeatureCollection",
+            features: STOPS.map((stop, index) => ({
+              type: "Feature",
+              properties: {
+                index,
+                role: index === ORIGIN.index ? "origin" : index === destination ? "destination" : "stop",
+              },
+              geometry: { type: "Point", coordinates: stop.lngLat },
+            })),
+          }}
+          id="stops"
+          onPress={(e) => selectStop(e.nativeEvent.features[0]?.properties?.index)}
+        >
+          <Layer
+            id="stops-circle"
+            paint={{
+              "circle-radius": 9,
+              "circle-stroke-width": 3,
+              "circle-stroke-color": ["match", ["get", "role"], "destination", "#000000", Colors.accent],
+              "circle-color": ["match", ["get", "role"], "origin", Colors.accent, "destination", "#000000", "#FFFFFF"],
+            }}
+            type="circle"
+          />
+        </GeoJSONSource>
+
         <Marker id="user-location" lngLat={MAP_CENTER}>
           <View accessible={false} style={styles.marker}>
             <View style={styles.markerDot} />
           </View>
         </Marker>
-        {destination && (
-          <Marker id="destination" lngLat={destination.lngLat}>
-            <View accessible={false} style={styles.destinationMarker} />
-          </Marker>
-        )}
       </Map>
 
       <View style={[styles.controls, { bottom: sheetHeight + 40 }]}>
@@ -165,58 +225,50 @@ export default function MapScreen() {
         onLayout={(e) => setSheetHeight(e.nativeEvent.layout.height)}
         style={[styles.sheet, { paddingBottom: insets.bottom + 24 }]}
       >
-          <ThemedText style={styles.left} variant="bodyLarge">
-            Where do you want to go?
+        <ThemedText style={styles.left} variant="bodyLarge">
+          Where do you want to go?
+        </ThemedText>
+
+        <View style={[styles.row, styles.pickupRow]}>
+          <SymbolView
+            name={{ ios: "house.fill", android: "home", web: "home" }}
+            size={24}
+            style={styles.pin}
+            tintColor={Colors.accent}
+          />
+          <ThemedText numberOfLines={1} style={styles.rowText}>
+            {`${STOPS[ORIGIN.index].name} · ${ORIGIN.distance} m from you`}
           </ThemedText>
+        </View>
 
-          <View style={[styles.row, styles.pickupRow]}>
-            <SymbolView
-              name={{ ios: "house.fill", android: "home", web: "home" }}
-              size={24}
-              style={styles.pin}
-              tintColor={Colors.accent}
-            />
-            <ThemedText numberOfLines={1} style={styles.rowText}>
-              {PICKUP.label}
-            </ThemedText>
-          </View>
+        <View style={styles.divider} />
 
-          <View style={styles.divider} />
-
-          <Pressable
-            accessibilityLabel={destination ? `Destination: ${destination.name}. Change` : "Search destination"}
-            accessibilityRole="button"
-            onPress={() => router.push("/select-location")}
-            style={({ pressed }) => [styles.row, pressed && styles.pressed]}
+        <View style={styles.row}>
+          <SymbolView
+            name={{ ios: "mappin", android: "location_on", web: "location_on" }}
+            size={24}
+            style={styles.pin}
+            tintColor="#000000"
+          />
+          <ThemedText
+            numberOfLines={1}
+            style={[styles.rowText, destination === null && styles.placeholder]}
           >
-            <SymbolView
-              name={{ ios: "mappin", android: "location_on", web: "location_on" }}
-              size={24}
-              style={styles.pin}
-              tintColor="#000000"
-            />
-            <ThemedText
-              numberOfLines={1}
-              style={[styles.rowText, !destination && styles.placeholder]}
-            >
-              {destination?.name ?? "Search Destination"}
-            </ThemedText>
-          </Pressable>
+            {destination === null ? "Tap a stop on the map" : STOPS[destination].name}
+          </ThemedText>
+        </View>
 
-          {destination && (
-            <View style={styles.result}>
-              {!!destination.address && (
-                <ThemedText numberOfLines={2} style={styles.left} variant="body">
-                  {destination.address}
-                </ThemedText>
-              )}
-              <ThemedButton
-                label="Confirm destination"
-                onPress={() => {}}
-                style={styles.confirm}
-              />
-            </View>
-          )}
+        {destination !== null && (
+          <View style={styles.result}>
+            {trip ? (
+              <ThemedText style={styles.left} variant="bodyLarge">
+                {summary(trip)}
+              </ThemedText>
+            ) : (
+              <ThemedButton label="Confirm destination" onPress={() => setConfirmed(true)} />
+            )}
+          </View>
+        )}
       </View>
     </View>
   );
@@ -251,19 +303,6 @@ const styles = StyleSheet.create({
     height: 14,
     borderRadius: 7,
     backgroundColor: Colors.accent,
-  },
-  destinationMarker: {
-    width: 20,
-    height: 20,
-    borderRadius: 10,
-    borderWidth: 4,
-    borderColor: "#FFFFFF",
-    backgroundColor: "#000000",
-    shadowColor: "#000000",
-    shadowOffset: { width: 0, height: 2 },
-    shadowOpacity: 0.25,
-    shadowRadius: 4,
-    elevation: 4,
   },
   controls: {
     position: "absolute",
@@ -378,9 +417,6 @@ const styles = StyleSheet.create({
     backgroundColor: "#DFE9F0",
   },
   result: {
-    marginTop: 16,
-  },
-  confirm: {
     marginTop: 16,
   },
 });
