@@ -8,6 +8,8 @@ const MESSAGES: Record<string, string> = {
   "auth/missing-password": "Enter your password.",
   "auth/too-many-requests": "Too many attempts. Try again later.",
   "auth/network-request-failed": "No connection. Check your internet and try again.",
+  // Firestore: the profile write was refused by the Security Rules.
+  "permission-denied": "Couldn't save your profile. Try again.",
 };
 
 export function authErrorMessage(error: unknown) {

@@ -1,0 +1,25 @@
+rules_version = '2';
+
+// Contract: specs/011-passenger-profile/contracts/users.md (v1). Anything not matched is denied.
+service cloud.firestore {
+  match /databases/{database}/documents {
+    match /users/{uid} {
+      function isOwner() {
+        return request.auth != null && request.auth.uid == uid;
+      }
+
+      function isValidProfile(data) {
+        return data.keys().hasOnly(['fullName', 'email'])
+          && data.keys().hasAll(['fullName', 'email'])
+          && data.fullName is string
+          && data.fullName == data.fullName.trim()
+          && data.fullName.size() >= 1
+          && data.fullName.size() <= 100
+          && data.email == request.auth.token.email;
+      }
+
+      allow get: if isOwner();
+      allow create, update: if isOwner() && isValidProfile(request.resource.data);
+    }
+  }
+}

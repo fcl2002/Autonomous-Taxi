@@ -1,6 +1,7 @@
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { initializeApp } from "firebase/app";
 import { getAuth, getReactNativePersistence, initializeAuth } from "firebase/auth";
+import { getFirestore } from "firebase/firestore";
 import { Platform } from "react-native";
 
 // Web app config from the Firebase console. Not secret: access is enforced by Auth and Security Rules.
@@ -17,3 +18,6 @@ export const auth =
   Platform.OS === "web"
     ? getAuth(app)
     : initializeAuth(app, { persistence: getReactNativePersistence(AsyncStorage) });
+
+// Default memory cache: pending writes are retried while the app runs, lost if it is killed.
+export const db = getFirestore(app);

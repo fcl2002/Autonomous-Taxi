@@ -76,20 +76,20 @@ assigned ──► to_pickup ──► at_pickup ──► to_destination ──
 
 ### 1. Firebase project
 
-- [ ] Create the Firebase project and register the Android app. The iOS app is optional for now. Native config files are needed for a dev build, followed by a rebuild.
-- [ ] Choose the client SDK (`@react-native-firebase/*` or the Firebase JS SDK). Check Expo SDK 58 compatibility first.
-- [ ] Set up the Emulator Suite (Auth and Firestore) for local development and rules tests.
+- [x] Create the Firebase project (Spark plan) and its Firestore database in `europe-west9` (Paris).
+- [x] Client SDK: the Firebase JS SDK (works with Expo SDK 58, no native config files).
+- [x] Firestore emulator for rules tests: `npm run test:rules` (needs JDK 21+). Deploy rules with `npx firebase deploy --only firestore:rules`.
 - [ ] Keep only client-safe config in the app. Service accounts and broker credentials never go there.
 
 ### 2. Authentication
 
-- [ ] **Phone auth (OTP)** for the "Send Code" flow on `login.tsx`, with test phone numbers for development.
-- [ ] **Sign-up** creates `users/{uid}` with `fullName`, `email` and `phone`. Store only what the app uses.
-- [ ] Open question: phone OTP needs SMS billing and app verification. For the first ride slice, would anonymous auth be enough, with OTP added afterwards?
+- [x] Email and password login and sign-up (phone OTP dropped: SMS needs the Blaze plan).
+- [x] **Sign-up** creates `users/{uid}` with `fullName` and `email` (spec 011). A missing profile is recovered by the `complete-profile` screen.
+- [ ] Sign-out.
 
 ### 3. Firestore data model
 
-- [ ] `users/{uid}`: the profile from sign-up.
+- [x] `users/{uid}`: the profile from sign-up ([contract v1](../specs/011-passenger-profile/contracts/users.md)).
 - [ ] `rides/{rideId}`:
   - `schemaVersion`
   - `passengerUid`

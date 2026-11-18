@@ -1,6 +1,6 @@
 import { router } from "expo-router";
 import { StatusBar } from "expo-status-bar";
-import { createUserWithEmailAndPassword, updateProfile } from "firebase/auth";
+import { createUserWithEmailAndPassword } from "firebase/auth";
 import { useState } from "react";
 import {
   KeyboardAvoidingView,
@@ -16,6 +16,7 @@ import { ThemedText } from "@/components/themed-text";
 import { Colors, Fonts } from "@/constants/theme";
 import { authErrorMessage } from "@/lib/auth";
 import { auth } from "@/lib/firebase";
+import { saveProfile } from "@/lib/profile";
 
 export default function SignUp() {
   const [fullName, setFullName] = useState("");
@@ -32,8 +33,8 @@ export default function SignUp() {
     setError(null);
     try {
       const { user } = await createUserWithEmailAndPassword(auth, email.trim(), password);
-      // shortcut: if this second call fails, the account exists without a name; fine until profiles move to Firestore.
-      await updateProfile(user, { displayName: name });
+      // Not awaited: Firestore queues and retries the write; if it is lost, complete-profile asks again.
+      saveProfile(user, name).catch(console.warn);
     } catch (e) {
       setError(authErrorMessage(e));
       setLoading(false);
