@@ -9,5 +9,5 @@
     "erasableSyntaxOnly": true,
     "types": ["node"]
   },
-  "include": ["src", "firestore.rules.test.ts"]
+  "include": ["src", "firestore.rules.test.ts", "smoke.check.ts"]
 }

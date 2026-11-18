@@ -9,7 +9,9 @@ export type Mission = { rideId: string; originStopId: string; destinationStopId:
 /** `seconds`: how long until the next event, so the app can show a timer and move the car. */
 export type Report = (rideId: string, status: Status, seconds: number) => void;
 
-const wait = (seconds: number) => new Promise((resolve) => setTimeout(resolve, seconds * 1000));
+// SIM_SPEED=10 runs the fake vehicle 10x faster (used by smoke.check.ts); reported seconds are scaled too.
+const SPEED = Number(process.env.SIM_SPEED) || 1;
+const wait = (seconds: number) => new Promise((resolve) => setTimeout(resolve, (seconds / SPEED) * 1000));
 
 /** Drives the mission from `from` (a resumed ride restarts its current step) and reports each step. */
 export async function runMission(mission: Mission, from: Status, report: Report) {
@@ -23,7 +25,7 @@ export async function runMission(mission: Mission, from: Status, report: Report)
   if (resumeAt >= 0) await wait(steps[resumeAt][1]);
   await wait(1);
   for (const [status, seconds] of steps.slice(resumeAt + 1)) {
-    report(mission.rideId, status, seconds);
+    report(mission.rideId, status, seconds / SPEED);
     await wait(seconds);
   }
 }

@@ -37,7 +37,7 @@ function message(ride: Ride, now: number) {
 // The sheet content while the passenger has a ride. Status changes arrive through the ride listener.
 export function RideStatus({ ride, now, onDone }: { ride: Ride; now: number; onDone: () => void }) {
   function confirmCancel() {
-    Alert.alert("Cancel ride?", "You'll lose your place in line.", [
+    Alert.alert("Cancel ride?", ride.status === "queued" ? "You'll lose your place in line." : "Your request will be withdrawn.", [
       { text: "Keep ride", style: "cancel" },
       { text: "Cancel ride", style: "destructive", onPress: () => cancelRide(ride.id).catch(console.warn) },
     ]);
@@ -51,7 +51,7 @@ export function RideStatus({ ride, now, onDone }: { ride: Ride; now: number; onD
       <ThemedText style={styles.route} variant="bodyPrimary">
         {`${stopName(ride.originStopId)} → ${stopName(ride.destinationStopId)}`}
       </ThemedText>
-      {ride.status === "queued" && <ThemedButton label="Cancel ride" onPress={confirmCancel} style={styles.action} />}
+      {(ride.status === "requested" || ride.status === "queued") && <ThemedButton label="Cancel ride" onPress={confirmCancel} style={styles.action} />}
       {isTerminal(ride.status) && (
         <ThemedButton label={ride.status === "completed" ? "Conclude ride" : "Done"} onPress={onDone} style={styles.action} />
       )}

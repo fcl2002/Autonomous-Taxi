@@ -15,7 +15,7 @@
 | `passengerUid` | string | app (create) | `== request.auth.uid` |
 | `originStopId` | string | app (create) | one of the 9 stop ids in `vazy-app/src/constants/stops.ts` |
 | `destinationStopId` | string | app (create) | a stop id, `!= originStopId` |
-| `status` | string | app: `requested` at create, `queued → cancelled`; backend: all other changes | see the state machine below |
+| `status` | string | app: `requested` at create, `requested`/`queued → cancelled`; backend: all other changes | see the state machine below |
 | `createdAt` | timestamp | app (`serverTimestamp()`) | `== request.time` |
 | `queuePosition` | number \| null | backend | 1-based while `queued`, otherwise `null` |
 | `failureReason` | string | backend | `invalid_stops`, `same_stop`, `active_ride_exists` |
@@ -30,11 +30,11 @@ At create, the app sends exactly the first 6 fields.
 ```text
 requested ─► queued ─► assigned ─► to_pickup ─► at_pickup ─► to_destination ─► completed
     │           │
-    │           └─► cancelled   (passenger, only from queued)
+    ├───────────┴─► cancelled   (passenger, only before assigned)
     └─► failed                   (backend validation, with failureReason)
 ```
 
-Terminal statuses are `completed`, `cancelled` and `failed`. A passenger has at most one ride in a non-terminal status. The backend fails any extra one with `active_ride_exists`.
+Terminal statuses are `completed`, `cancelled` and `failed`. A passenger has at most one ride in a non-terminal status. The backend fails any extra one with `active_ride_exists`; when two arrive together, the earlier request is kept.
 
 ## Dispatch (backend)
 

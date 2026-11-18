@@ -20,18 +20,25 @@ const serial = (job: () => Promise<unknown>) => {
 
 /** Applies a status change only if the contract allows it from the ride's current status. */
 async function move(rideId: string, to: Status, extra: Record<string, unknown> = {}) {
-  return db.runTransaction(async (tx) => {
+  // Log after commit: Firestore re-runs the callback when the ride changes underneath it.
+  const from = await db.runTransaction(async (tx) => {
     const ride = await tx.get(rides.doc(rideId));
-    const from = ride.get("status") as Status | undefined;
-    if (!from || !NEXT[from].includes(to)) {
-      console.warn(`${rideId} ignored ${from}→${to}`);
-      return false;
+    const current = ride.get("status") as Status | undefined;
+    if (current && NEXT[current].includes(to)) {
+      tx.update(ride.ref, { status: to, updatedAt: FieldValue.serverTimestamp(), ...extra });
     }
-    tx.update(ride.ref, { status: to, updatedAt: FieldValue.serverTimestamp(), ...extra });
-    console.log(`${rideId} ${from}→${to}`);
-    return true;
+    return current;
   });
+  const moved = !!from && NEXT[from].includes(to);
+  if (moved) console.log(`${rideId} ${from}→${to}`);
+  else console.warn(`${rideId} ignored ${from}→${to}`);
+  return moved;
 }
+
+const isOlder = (a: DocumentSnapshot, b: DocumentSnapshot) => {
+  const [ta, tb] = [a.get("createdAt")?.toMillis() ?? 0, b.get("createdAt")?.toMillis() ?? 0];
+  return ta < tb || (ta === tb && a.id < b.id);
+};
 
 async function validate(ride: DocumentSnapshot) {
   const { originStopId, destinationStopId, passengerUid } = ride.data()!;
@@ -40,7 +47,10 @@ async function validate(ride: DocumentSnapshot) {
   else if (originStopId === destinationStopId) failureReason = "same_stop";
   else {
     const mine = await rides.where("passengerUid", "==", passengerUid).get();
-    if (mine.docs.some((d) => d.id !== ride.id && ACTIVE.includes(d.get("status")))) failureReason = "active_ride_exists";
+    // Another unchecked request only counts if it came first, so the passenger keeps their earliest request.
+    const blocking = (d: DocumentSnapshot) =>
+      d.id !== ride.id && ACTIVE.includes(d.get("status")) && (d.get("status") !== "requested" || isOlder(d, ride));
+    if (mine.docs.some(blocking)) failureReason = "active_ride_exists";
   }
   await move(ride.id, failureReason ? "failed" : "queued", failureReason ? { failureReason } : {});
 }
@@ -67,9 +77,9 @@ async function dispatch() {
       updatedAt: FieldValue.serverTimestamp(),
     });
     tx.update(vehicle, { status: "busy", rideId: next.id });
-    console.log(`${next.id} queued→assigned`);
     return { rideId: next.id, originStopId: next.originStopId, destinationStopId: next.destinationStopId, carStopId: car.get("currentStopId") };
   });
+  if (mission) console.log(`${mission.rideId} queued→assigned`);
   if (mission && SIMULATE) void runMission(mission, "assigned", report);
 
   const [car, queued] = await Promise.all([vehicle.get(), rides.where("status", "==", "queued").get()]);

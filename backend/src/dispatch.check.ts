@@ -30,8 +30,9 @@ const positions = queuePositions(
 );
 assert.deepEqual([...positions], [["C", 1], ["A", 2], ["B", 3]]);
 
-// Transitions: cancel only while queued, no going back.
+// Transitions: cancel only before the car is assigned, no going back.
 assert.ok(NEXT.queued.includes("cancelled"));
+assert.ok(NEXT.requested.includes("cancelled"));
 assert.ok(!NEXT.assigned.includes("cancelled"));
 assert.ok(!NEXT.completed.length);
 

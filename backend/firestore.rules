@@ -44,10 +44,10 @@ service cloud.firestore {
 
       allow read: if request.auth != null && resource.data.passengerUid == request.auth.uid;
       allow create: if request.auth != null && isValidRequest(request.resource.data);
-      // The only client update: cancel while queued.
+      // The only client update: cancel before the car is assigned (also frees a request stuck while the backend is down).
       allow update: if request.auth != null
         && resource.data.passengerUid == request.auth.uid
-        && resource.data.status == 'queued'
+        && resource.data.status in ['requested', 'queued']
         && request.resource.data.status == 'cancelled'
         && request.resource.data.diff(resource.data).affectedKeys().hasOnly(['status']);
     }

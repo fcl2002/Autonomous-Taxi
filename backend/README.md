@@ -16,10 +16,11 @@ Node 22.18+ runs the TypeScript directly (type stripping), the same way the app'
 
 ```
 backend/
-  package.json             npm start / check / typecheck / test:rules
+  package.json             npm start / check / typecheck / test:rules / test:smoke
   firebase.json            Firestore rules + emulator config
   firestore.rules          client access (users, rides; vehicles denied)
   firestore.rules.test.ts  allowed/denied cases, run in the emulator
+  smoke.check.ts           end-to-end: backend + 10x fake vehicle against the emulator
   src/
     index.ts               ride orchestrator: validate, queue, assign, restart recovery
     dispatch.ts            pure rules: pickNext, queuePositions, NEXT transitions
@@ -46,6 +47,7 @@ Still to add: `src/mqtt.ts` (publish missions, consume Pi events) and a standalo
    npm install
    npm run check        # dispatch rule
    npm run test:rules   # needs JDK 21+ on JAVA_HOME
+   npm run test:smoke   # whole ride flow in the emulator, ~30 s
    npx firebase deploy --only firestore:rules   # after any change to the rules
    npm start            # "vazy-backend: 9 stops, vehicle simulator on"
    ```

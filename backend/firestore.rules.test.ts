@@ -103,6 +103,11 @@ test("only the passenger reads their rides, and only with their own filter", asy
   await assertFails(getDoc(doc(anon(), "rides/r1")));
 });
 
+test("passenger can cancel while requested", async () => {
+  await seedRide("requested");
+  await assertSucceeds(updateDoc(doc(ana(), "rides/r1"), { status: "cancelled" }));
+});
+
 test("passenger can cancel only while queued, and change nothing else", async () => {
   await seedRide("queued");
   await assertFails(updateDoc(doc(bob(), "rides/r1"), { status: "cancelled" }));

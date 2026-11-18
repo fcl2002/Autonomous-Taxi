@@ -9,7 +9,7 @@ export type Status =
 
 // Allowed status changes. Anything else (duplicate or stale event) is ignored.
 export const NEXT: Record<Status, Status[]> = {
-  requested: ["queued", "failed"],
+  requested: ["queued", "failed", "cancelled"],
   queued: ["assigned", "cancelled"],
   assigned: ["to_pickup"],
   to_pickup: ["at_pickup"],
