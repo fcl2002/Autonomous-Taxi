@@ -1,6 +1,7 @@
 rules_version = '2';
 
-// Contract: specs/011-passenger-profile/contracts/users.md (v1). Anything not matched is denied.
+// Contracts: specs/011-passenger-profile/contracts/users.md (v1), docs/contracts/rides.md (v1).
+// Anything not matched is denied, including every client access to vehicles/*.
 service cloud.firestore {
   match /databases/{database}/documents {
     match /users/{uid} {
@@ -20,6 +21,35 @@ service cloud.firestore {
 
       allow get: if isOwner();
       allow create, update: if isOwner() && isValidProfile(request.resource.data);
+    }
+
+    match /rides/{rideId} {
+      // Copy of the ids in vazy-app/src/constants/stops.ts (rules can't import); firestore.rules.test.ts keeps them in sync.
+      function stopIds() {
+        return ['nw-corner', 'central-crossing', 'quai-saint-bernard', 'rue-cuvier', 'cell-dynamics',
+                'espace-langues', 'atrium-cafe', 'west-path', 'faculte'];
+      }
+
+      function isValidRequest(data) {
+        return data.keys().hasOnly(['schemaVersion', 'passengerUid', 'originStopId', 'destinationStopId', 'status', 'createdAt'])
+          && data.keys().hasAll(['schemaVersion', 'passengerUid', 'originStopId', 'destinationStopId', 'status', 'createdAt'])
+          && data.schemaVersion == 1
+          && data.passengerUid == request.auth.uid
+          && data.originStopId in stopIds()
+          && data.destinationStopId in stopIds()
+          && data.originStopId != data.destinationStopId
+          && data.status == 'requested'
+          && data.createdAt == request.time;
+      }
+
+      allow read: if request.auth != null && resource.data.passengerUid == request.auth.uid;
+      allow create: if request.auth != null && isValidRequest(request.resource.data);
+      // The only client update: cancel while queued.
+      allow update: if request.auth != null
+        && resource.data.passengerUid == request.auth.uid
+        && resource.data.status == 'queued'
+        && request.resource.data.status == 'cancelled'
+        && request.resource.data.diff(resource.data).affectedKeys().hasOnly(['status']);
     }
   }
 }

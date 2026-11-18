@@ -10,14 +10,17 @@ import {
 import { StatusBar } from "expo-status-bar";
 import { SymbolView } from "expo-symbols";
 import { useCallback, useEffect, useRef, useState } from "react";
-import { type NativeSyntheticEvent, Pressable, StyleSheet, View } from "react-native";
+import { Alert, type NativeSyntheticEvent, Pressable, StyleSheet, View } from "react-native";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
 import { AppMenu } from "@/components/app-menu";
+import { RideStatus } from "@/components/ride-status";
 import { ThemedButton } from "@/components/themed-button";
 import { ThemedText } from "@/components/themed-text";
 import { STOPS } from "@/constants/circuit";
 import { PICKUP } from "@/constants/pickup";
 import { Colors, Fonts } from "@/constants/theme";
+import { auth } from "@/lib/firebase";
+import { requestRide, useLatestRide } from "@/lib/rides";
 import { bounds, nearestStop, summary, tripPath } from "@/lib/route";
 
 // OpenFreeMap serves the "Liberty" style with no API key or usage limits.
@@ -43,26 +46,51 @@ export default function MapScreen() {
   const [sheetHeight, setSheetHeight] = useState(201);
   // Stops are tracked by their stable id (what the backend will store), never by list position.
   const [destinationId, setDestinationId] = useState<string | null>(null);
-  const [confirmed, setConfirmed] = useState(false);
+  const [originId, setOriginId] = useState(STOPS[ORIGIN.index].id);
+  const [pickingOrigin, setPickingOrigin] = useState(false);
+  const [requesting, setRequesting] = useState(false);
+  // The map is only reachable signed in (root layout guard).
+  const uid = auth.currentUser!.uid;
+  const [ride, dismissRide] = useLatestRide(uid);
 
-  const destination = STOPS.findIndex((stop) => stop.id === destinationId);
-  const trip = confirmed && destination >= 0 ? tripPath(STOPS, ORIGIN.index, destination) : null;
+  // While a ride exists, the map shows that ride's stops instead of the picker's.
+  const shownOriginId = ride?.originStopId ?? originId;
+  const shownDestinationId = ride?.destinationStopId ?? destinationId;
+  const origin = STOPS.findIndex((stop) => stop.id === shownOriginId);
+  const destination = STOPS.findIndex((stop) => stop.id === shownDestinationId);
+  const trip = destination >= 0 ? tripPath(STOPS, origin, destination) : null;
   // Keep the map clear of the status bar, the zoom controls and the bottom sheet.
   const framePadding = { top: insets.top + 48, right: 88, bottom: sheetHeight + 48, left: 48 };
 
   const selectStop = (id: string) => {
-    if (id === STOPS[ORIGIN.index].id) return;
-    setDestinationId(id);
-    setConfirmed(false);
+    if (ride) return;
+    if (pickingOrigin) {
+      if (id !== destinationId) setOriginId(id);
+      setPickingOrigin(false);
+    } else if (id !== originId) {
+      setDestinationId(id);
+    }
   };
+
+  async function request() {
+    if (!destinationId) return;
+    setRequesting(true);
+    try {
+      await requestRide(uid, originId, destinationId);
+    } catch (error) {
+      console.warn(error);
+      Alert.alert("Couldn't request ride", "Check your connection and try again.");
+    }
+    setRequesting(false);
+  }
 
   useEffect(() => {
     if (trip) {
       cameraRef.current?.fitBounds(bounds(trip.coordinates), { padding: framePadding, duration: 900 });
     }
-    // Frame the trip when it's confirmed or the sheet resizes, not on every render.
+    // Frame the trip when its stops or the sheet change, not on every render.
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [confirmed, destinationId, sheetHeight]);
+  }, [shownOriginId, shownDestinationId, sheetHeight]);
 
   const handleRegionDidChange = useCallback(
     (event: NativeSyntheticEvent<ViewStateChangeEvent>) => {
@@ -142,8 +170,8 @@ export default function MapScreen() {
         )}
 
         {STOPS.map((stop, index) => {
-          const isOrigin = index === ORIGIN.index;
-          const isDestination = stop.id === destinationId;
+          const isOrigin = index === origin;
+          const isDestination = index === destination;
           return (
             <Marker
               anchor="bottom"
@@ -234,49 +262,68 @@ export default function MapScreen() {
         onLayout={(e) => setSheetHeight(e.nativeEvent.layout.height)}
         style={[styles.sheet, { paddingBottom: insets.bottom + 24 }]}
       >
-        <ThemedText style={styles.left} variant="bodyLarge">
-          Where do you want to go?
-        </ThemedText>
+        {ride ? (
+          <RideStatus onDone={dismissRide} ride={ride} />
+        ) : (
+          <>
+            <ThemedText style={styles.left} variant="bodyLarge">
+              Where do you want to go?
+            </ThemedText>
 
-        <View style={[styles.row, styles.pickupRow]}>
-          <SymbolView
-            name={{ ios: "house.fill", android: "home", web: "home" }}
-            size={24}
-            style={styles.pin}
-            tintColor={Colors.accent}
-          />
-          <ThemedText numberOfLines={1} style={styles.rowText}>
-            {`${STOPS[ORIGIN.index].name} · ${ORIGIN.distance} m from you`}
-          </ThemedText>
-        </View>
-
-        <View style={styles.divider} />
-
-        <View style={styles.row}>
-          <SymbolView
-            name={{ ios: "mappin", android: "location_on", web: "location_on" }}
-            size={24}
-            style={styles.pin}
-            tintColor="#000000"
-          />
-          <ThemedText
-            numberOfLines={1}
-            style={[styles.rowText, destination < 0 && styles.placeholder]}
-          >
-            {destination < 0 ? "Tap a stop on the map" : STOPS[destination].name}
-          </ThemedText>
-        </View>
-
-        {destination >= 0 && (
-          <View style={styles.result}>
-            {trip ? (
-              <ThemedText style={styles.left} variant="bodyLarge">
-                {summary(trip)}
+            <Pressable
+              accessibilityHint="Then tap a stop on the map"
+              accessibilityLabel={`Pickup: ${STOPS[origin].name}. Change pickup stop`}
+              accessibilityRole="button"
+              onPress={() => setPickingOrigin(!pickingOrigin)}
+              style={({ pressed }) => [styles.row, styles.pickupRow, pressed && styles.pressed]}
+            >
+              <SymbolView
+                name={{ ios: "house.fill", android: "home", web: "home" }}
+                size={24}
+                style={styles.pin}
+                tintColor={Colors.accent}
+              />
+              <ThemedText numberOfLines={1} style={[styles.rowText, pickingOrigin && styles.placeholder]}>
+                {pickingOrigin
+                  ? "Tap your pickup stop on the map"
+                  : origin === ORIGIN.index
+                    ? `${STOPS[origin].name} · ${ORIGIN.distance} m from you`
+                    : STOPS[origin].name}
               </ThemedText>
-            ) : (
-              <ThemedButton label="Confirm destination" onPress={() => setConfirmed(true)} />
+            </Pressable>
+
+            <View style={styles.divider} />
+
+            <View style={styles.row}>
+              <SymbolView
+                name={{ ios: "mappin", android: "location_on", web: "location_on" }}
+                size={24}
+                style={styles.pin}
+                tintColor="#000000"
+              />
+              <ThemedText
+                numberOfLines={1}
+                style={[styles.rowText, destination < 0 && styles.placeholder]}
+              >
+                {destination < 0 ? "Tap a stop on the map" : STOPS[destination].name}
+              </ThemedText>
+            </View>
+
+            {trip && (
+              <View style={styles.result}>
+                <ThemedText style={styles.left} variant="bodyLarge">
+                  {summary(trip)}
+                </ThemedText>
+                <ThemedButton
+                  accessibilityState={{ busy: requesting, disabled: requesting }}
+                  disabled={requesting}
+                  label={requesting ? "Requesting…" : "Request ride"}
+                  onPress={request}
+                  style={[styles.requestButton, requesting && styles.pressed]}
+                />
+              </View>
             )}
-          </View>
+          </>
         )}
       </View>
     </View>
@@ -432,6 +479,9 @@ const styles = StyleSheet.create({
     backgroundColor: "#DFE9F0",
   },
   result: {
+    marginTop: 16,
+  },
+  requestButton: {
     marginTop: 16,
   },
 });

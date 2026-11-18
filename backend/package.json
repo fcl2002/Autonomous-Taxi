@@ -6,7 +6,8 @@
     "node": ">=22.18"
   },
   "scripts": {
-    "start": "node src/index.ts",
+    "start": "node --env-file-if-exists=.env src/index.ts",
+    "check": "node src/dispatch.check.ts",
     "typecheck": "tsc --noEmit",
     "test:rules": "firebase emulators:exec --project demo-vazy --only firestore \"node --test firestore.rules.test.ts\""
   },
@@ -16,5 +17,8 @@
     "firebase": "^12.19.0",
     "firebase-tools": "^15.36.0",
     "typescript": "~6.0.3"
+  },
+  "dependencies": {
+    "firebase-admin": "^14.5.1"
   }
 }
