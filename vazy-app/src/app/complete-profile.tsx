@@ -25,6 +25,7 @@ export default function CompleteProfile() {
     setError(null);
     try {
       // The guard moves on as soon as the write lands locally; this resolves once the server accepts it.
+      // shortcut: a rules refusal bounces back here without the message; only a broken rules deploy can cause it.
       await saveProfile(user, name);
     } catch (e) {
       setError(authErrorMessage(e));

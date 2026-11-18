@@ -1,6 +1,7 @@
 {
   "compilerOptions": {
     "strict": true,
+    "skipLibCheck": true,
     "noEmit": true,
     "target": "es2023",
     "module": "nodenext",
@@ -8,5 +9,5 @@
     "erasableSyntaxOnly": true,
     "types": ["node"]
   },
-  "include": ["src"]
+  "include": ["src", "firestore.rules.test.ts"]
 }

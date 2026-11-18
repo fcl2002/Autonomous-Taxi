@@ -65,7 +65,7 @@ As a passenger, only I can read or change my profile. Other passengers, and visi
 
 - **Account created before this feature** (test accounts with no profile): handled like User Story 2, scenario 2. The passenger is asked for their name once on the next launch.
 - **No connection when the name prompt is submitted:** the name is kept on the device and the map is shown, exactly like sign-up. The profile is saved once the connection returns while the app is open; if the app is killed first, the prompt appears again on the next online launch.
-- **Profile save refused by the access rules** (should not happen for a valid passenger): the passenger sees a generic error and can retry. The account is not deleted.
+- **Profile save refused by the access rules** (should not happen for a valid passenger, since the app enforces the same rules): the save is undone and the passenger is returned to the name prompt to retry. No message is shown (accepted, 2026-11-18). The account is not deleted.
 - **App opened offline by a signed-in passenger whose profile state is unknown:** the map is shown. The profile check waits for a connection instead of blocking the app.
 - **Sign-up fails before the account is created** (email in use, weak password, no connection): no profile is written, and the existing sign-up error messages are shown.
 

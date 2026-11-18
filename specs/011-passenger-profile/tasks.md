@@ -84,3 +84,9 @@
 ## Implementation strategy
 
 The MVP is US3 + US1: the rules, plus sign-up writing the profile. US2 adds recovery. Deploy the rules (T015) before testing any app scenario on a device.
+
+## Phase 7: Convergence
+
+- [x] T016 Add `maxLength={100}` to the Full Name input in vazy-app/src/app/signup.tsx so sign-up enforces the same 1–100 limit as the rules per FR-005 (partial)
+- [x] T017 Keep the refusal visible in vazy-app/src/app/complete-profile.tsx when a rules rejection bounces the user back to the prompt, or document the bounce as accepted, per Edge Cases "Profile save refused by the access rules" (partial)
+- [x] T018 Add `firestore.rules.test.ts` to `include` in backend/tsconfig.json so `npm run typecheck` covers the rules test per plan T014 (partial)

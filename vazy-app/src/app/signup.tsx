@@ -77,6 +77,7 @@ export default function SignUp() {
             autoCapitalize="words"
             enterKeyHint="next"
             inputMode="text"
+            maxLength={100}
             onChangeText={setFullName}
             placeholder="Full Name"
             placeholderTextColor="#A5A5A5"
