@@ -4,7 +4,8 @@ import { ThemedButton } from "@/components/themed-button";
 import { ThemedText } from "@/components/themed-text";
 import { STOPS } from "@/constants/circuit";
 import { Colors } from "@/constants/theme";
-import { cancelRide, isTerminal, type Ride } from "@/lib/rides";
+import { isTerminal } from "@/constants/ride-status";
+import { cancelRide, type Ride } from "@/lib/rides";
 
 const stopName = (id: string) => STOPS.find((stop) => stop.id === id)?.name ?? id;
 

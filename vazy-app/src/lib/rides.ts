@@ -2,11 +2,8 @@
 import { addDoc, collection, doc, onSnapshot, query, serverTimestamp, updateDoc, where } from "firebase/firestore";
 import { useEffect, useRef, useState } from "react";
 
+import { isTerminal, type RideStatus } from "@/constants/ride-status";
 import { db } from "@/lib/firebase";
-
-export type RideStatus =
-  | "requested" | "queued" | "assigned" | "to_pickup" | "at_pickup" | "to_destination"
-  | "completed" | "cancelled" | "failed";
 
 export type Ride = {
   id: string;
@@ -22,8 +19,6 @@ export type Ride = {
   updatedAt?: { toMillis(): number } | null;
 };
 
-export const isTerminal = (status: RideStatus) => ["completed", "cancelled", "failed"].includes(status);
-
 export function requestRide(passengerUid: string, originStopId: string, destinationStopId: string) {
   return addDoc(collection(db, "rides"), {
     schemaVersion: 1,
@@ -35,7 +30,8 @@ export function requestRide(passengerUid: string, originStopId: string, destinat
   });
 }
 
-export const cancelRide = (id: string) => updateDoc(doc(db, "rides", id), { status: "cancelled" });
+// Clears the place in line in the same write, so a cancelled ride never shows a stale position.
+export const cancelRide = (id: string) => updateDoc(doc(db, "rides", id), { status: "cancelled", queuePosition: null });
 
 /**
  * The ride to show: the passenger's active ride, else one that ended during this session (so they see how it ended).

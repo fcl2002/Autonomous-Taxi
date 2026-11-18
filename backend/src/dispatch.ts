@@ -1,26 +1,14 @@
 // Pure dispatch rules for one vehicle (docs/contracts/rides.md). No Firebase here, so it is checkable on its own.
+import { isTerminal, NEXT, RIDE_STATUSES, type RideStatus } from "../../vazy-app/src/constants/ride-status.ts";
 import { STOP_IDS } from "./stops.ts";
 
 export const MAX_WAIT_MS = 10 * 60 * 1000;
 
-export type Status =
-  | "requested" | "queued" | "assigned" | "to_pickup" | "at_pickup" | "to_destination"
-  | "completed" | "cancelled" | "failed";
-
-// Allowed status changes. Anything else (duplicate or stale event) is ignored.
-export const NEXT: Record<Status, Status[]> = {
-  requested: ["queued", "failed", "cancelled"],
-  queued: ["assigned", "cancelled"],
-  assigned: ["to_pickup"],
-  to_pickup: ["at_pickup"],
-  at_pickup: ["to_destination"],
-  to_destination: ["completed"],
-  completed: [],
-  cancelled: [],
-  failed: [],
-};
-
-export const ACTIVE: Status[] = ["requested", "queued", "assigned", "to_pickup", "at_pickup", "to_destination"];
+export { NEXT };
+export type Status = RideStatus;
+export const ACTIVE: Status[] = RIDE_STATUSES.filter((status) => !isTerminal(status));
+/** Statuses where the vehicle is working on the ride. */
+export const ON_VEHICLE: Status[] = ACTIVE.filter((status) => status !== "requested" && status !== "queued");
 
 export type QueuedRide = { id: string; originStopId: string; destinationStopId: string; createdAt: number };
 

@@ -4,7 +4,7 @@
   - the Vazy app creates rides and cancels them;
   - the backend (`backend/src/index.ts`) moves rides through every other status, including the simulator (`backend/src/simulator.ts`), which the MQTT adapter will replace later.
 - **Consumers:** the app's ride listener (`vazy-app/src/lib/rides.ts`) and the backend.
-- **Enforced by:** `backend/firestore.rules` (clients) and the `NEXT` table in `backend/src/dispatch.ts` (backend).
+- **Enforced by:** `backend/firestore.rules` (clients) and the `NEXT` table in `vazy-app/src/constants/ride-status.ts`, shared by the app and the backend.
 - **Correlation id:** `rideId`. It appears in every backend log line and, later, in every MQTT payload.
 
 ## Document
@@ -15,7 +15,7 @@
 | `passengerUid` | string | app (create) | `== request.auth.uid` |
 | `originStopId` | string | app (create) | one of the 9 stop ids in `vazy-app/src/constants/stops.ts` |
 | `destinationStopId` | string | app (create) | a stop id, `!= originStopId` |
-| `status` | string | app: `requested` at create, `requested`/`queued → cancelled`; backend: all other changes | see the state machine below |
+| `status` | string | app: `requested` at create, `requested`/`queued → cancelled` (clearing `queuePosition` in the same write); backend: all other changes | see the state machine below |
 | `createdAt` | timestamp | app (`serverTimestamp()`) | `== request.time` |
 | `queuePosition` | number \| null | backend | 1-based while `queued`, otherwise `null` |
 | `failureReason` | string | backend | `invalid_stops`, `same_stop`, `active_ride_exists` |

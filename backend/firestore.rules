@@ -49,7 +49,8 @@ service cloud.firestore {
         && resource.data.passengerUid == request.auth.uid
         && resource.data.status in ['requested', 'queued']
         && request.resource.data.status == 'cancelled'
-        && request.resource.data.diff(resource.data).affectedKeys().hasOnly(['status']);
+        && request.resource.data.diff(resource.data).affectedKeys().hasOnly(['status', 'queuePosition'])
+        && request.resource.data.get('queuePosition', null) == null;
     }
   }
 }

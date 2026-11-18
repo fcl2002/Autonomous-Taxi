@@ -105,15 +105,16 @@ test("only the passenger reads their rides, and only with their own filter", asy
 
 test("passenger can cancel while requested", async () => {
   await seedRide("requested");
-  await assertSucceeds(updateDoc(doc(ana(), "rides/r1"), { status: "cancelled" }));
+  await assertSucceeds(updateDoc(doc(ana(), "rides/r1"), { status: "cancelled", queuePosition: null }));
 });
 
 test("passenger can cancel only while queued, and change nothing else", async () => {
   await seedRide("queued");
   await assertFails(updateDoc(doc(bob(), "rides/r1"), { status: "cancelled" }));
-  await assertFails(updateDoc(doc(ana(), "rides/r1"), { status: "cancelled", queuePosition: null }));
+  await assertFails(updateDoc(doc(ana(), "rides/r1"), { status: "cancelled", queuePosition: 3 }));
+  await assertFails(updateDoc(doc(ana(), "rides/r1"), { status: "cancelled", failureReason: "x" }));
   await assertFails(updateDoc(doc(ana(), "rides/r1"), { status: "completed" }));
-  await assertSucceeds(updateDoc(doc(ana(), "rides/r1"), { status: "cancelled" }));
+  await assertSucceeds(updateDoc(doc(ana(), "rides/r1"), { status: "cancelled", queuePosition: null }));
   await seedRide("assigned");
   await assertFails(updateDoc(doc(ana(), "rides/r1"), { status: "cancelled" }));
   await assertFails(deleteDoc(doc(ana(), "rides/r1")));

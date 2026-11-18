@@ -2,7 +2,7 @@
 // Needs GOOGLE_APPLICATION_CREDENTIALS (service-account key) in backend/.env. Run: npm start
 import { initializeApp } from "firebase-admin/app";
 import { FieldValue, getFirestore, type DocumentSnapshot } from "firebase-admin/firestore";
-import { ACTIVE, NEXT, pickNext, queuePositions, type QueuedRide, type Status } from "./dispatch.ts";
+import { ACTIVE, NEXT, ON_VEHICLE, pickNext, queuePositions, type QueuedRide, type Status } from "./dispatch.ts";
 import { runMission, type Report } from "./simulator.ts";
 import { STOP_IDS } from "./stops.ts";
 
@@ -116,8 +116,10 @@ async function recover() {
   if (car.get("status") !== "busy") return;
   const ride = await rides.doc(car.get("rideId")).get();
   const status = ride.get("status") as Status | undefined;
-  if (!status || !["assigned", "to_pickup", "at_pickup", "to_destination"].includes(status)) {
-    await vehicle.update({ status: "idle", rideId: null });
+  if (!status || !ON_VEHICLE.includes(status)) {
+    // Crashed between completing the ride and freeing the car: the car is at that ride's destination.
+    const currentStopId = status === "completed" ? ride.get("destinationStopId") : car.get("currentStopId");
+    await vehicle.update({ status: "idle", rideId: null, currentStopId });
   } else if (SIMULATE) {
     const mission = { rideId: ride.id, originStopId: ride.get("originStopId"), destinationStopId: ride.get("destinationStopId"), carStopId: car.get("currentStopId") };
     void runMission(mission, status, report);
