@@ -1,5 +1,7 @@
-// Firebase Auth error codes -> what the user sees. Sign-up will add its own codes here.
+// Firebase Auth error codes -> what the user sees.
 const MESSAGES: Record<string, string> = {
+  "auth/email-already-in-use": "An account with this email already exists. Log in instead.",
+  "auth/password-does-not-meet-requirements": "Password must be at least 8 characters.",
   // With email enumeration protection on, a wrong email and a wrong password both come back as this code.
   "auth/invalid-credential": "Incorrect email or password.",
   "auth/invalid-email": "Enter a valid email address.",

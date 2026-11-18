@@ -1,5 +1,6 @@
-import { router, type Href } from "expo-router";
+import { router } from "expo-router";
 import { StatusBar } from "expo-status-bar";
+import { createUserWithEmailAndPassword, updateProfile } from "firebase/auth";
 import { useState } from "react";
 import {
   KeyboardAvoidingView,
@@ -13,11 +14,32 @@ import { SafeAreaView } from "react-native-safe-area-context";
 import { ThemedButton } from "@/components/themed-button";
 import { ThemedText } from "@/components/themed-text";
 import { Colors, Fonts } from "@/constants/theme";
+import { authErrorMessage } from "@/lib/auth";
+import { auth } from "@/lib/firebase";
 
 export default function SignUp() {
   const [fullName, setFullName] = useState("");
   const [email, setEmail] = useState("");
-  const [phoneNumber, setPhoneNumber] = useState("");
+  const [password, setPassword] = useState("");
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState<string | null>(null);
+
+  async function signUp() {
+    const name = fullName.trim();
+    // Firebase doesn't require a name, so check it here.
+    if (!name) return setError("Enter your full name.");
+    setLoading(true);
+    setError(null);
+    try {
+      const { user } = await createUserWithEmailAndPassword(auth, email.trim(), password);
+      // shortcut: if this second call fails, the account exists without a name; fine until profiles move to Firestore.
+      await updateProfile(user, { displayName: name });
+      router.replace("/map");
+    } catch (e) {
+      setError(authErrorMessage(e));
+      setLoading(false);
+    }
+  }
 
   return (
     <SafeAreaView style={styles.screen}>
@@ -53,7 +75,6 @@ export default function SignUp() {
           <TextInput
             accessibilityLabel="Full name"
             autoCapitalize="words"
-            autoComplete="name"
             enterKeyHint="next"
             inputMode="text"
             onChangeText={setFullName}
@@ -66,7 +87,6 @@ export default function SignUp() {
           <TextInput
             accessibilityLabel="Email address"
             autoCapitalize="none"
-            autoComplete="email"
             autoCorrect={false}
             enterKeyHint="next"
             inputMode="email"
@@ -78,24 +98,32 @@ export default function SignUp() {
           />
 
           <TextInput
-            accessibilityLabel="Phone number"
+            accessibilityHint="At least 8 characters"
+            accessibilityLabel="Password"
             autoCapitalize="none"
-            autoComplete="tel"
             autoCorrect={false}
             enterKeyHint="done"
-            inputMode="tel"
-            onChangeText={setPhoneNumber}
-            placeholder="Phone Number"
+            onChangeText={setPassword}
+            onSubmitEditing={signUp}
+            placeholder="Password (8+ characters)"
             placeholderTextColor="#A5A5A5"
+            secureTextEntry
             style={[styles.input, styles.spacedInput]}
-            value={phoneNumber}
+            value={password}
           />
 
-          {/* ponytail: prototype navigation only; add validation, account creation, Firebase Authentication, and result states when signup logic is specified. */}
+          {error && (
+            <ThemedText accessibilityRole="alert" style={styles.error} variant="bodyPrimary">
+              {error}
+            </ThemedText>
+          )}
+
           <ThemedButton
-            label="Sign Up"
-            onPress={() => router.navigate("/map" as Href)}
-            style={styles.action}
+            accessibilityState={{ busy: loading, disabled: loading }}
+            disabled={loading}
+            label={loading ? "Creating account…" : "Sign Up"}
+            onPress={signUp}
+            style={[styles.action, loading && styles.busy]}
           />
 
           <ThemedText style={styles.loginPrompt} variant="bodyPrimary">
@@ -154,10 +182,19 @@ const styles = StyleSheet.create({
   spacedInput: {
     marginTop: 20,
   },
+  error: {
+    width: "100%",
+    maxWidth: 350,
+    marginTop: 12,
+    color: "#C62828",
+  },
   action: {
     width: "100%",
     maxWidth: 350,
     marginTop: 30,
+  },
+  busy: {
+    opacity: 0.6,
   },
   loginPrompt: {
     width: "100%",
