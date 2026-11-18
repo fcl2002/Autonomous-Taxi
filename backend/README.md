@@ -85,7 +85,7 @@ assigned ──► to_pickup ──► at_pickup ──► to_destination ──
 
 - [x] Email and password login and sign-up (phone OTP dropped: SMS needs the Blaze plan).
 - [x] **Sign-up** creates `users/{uid}` with `fullName` and `email` (spec 011). A missing profile is recovered by the `complete-profile` screen.
-- [ ] Sign-out.
+- [x] Sign-out: map menu → "Log out?" → `signOut`; the route guard lands on login.
 
 ### 3. Firestore data model
 

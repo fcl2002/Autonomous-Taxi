@@ -12,6 +12,7 @@ import { SymbolView } from "expo-symbols";
 import { useCallback, useEffect, useRef, useState } from "react";
 import { type NativeSyntheticEvent, Pressable, StyleSheet, View } from "react-native";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
+import { AppMenu } from "@/components/app-menu";
 import { ThemedButton } from "@/components/themed-button";
 import { ThemedText } from "@/components/themed-text";
 import { STOPS } from "@/constants/circuit";
@@ -177,6 +178,8 @@ export default function MapScreen() {
           </View>
         </Marker>
       </Map>
+
+      <AppMenu />
 
       <View style={[styles.controls, { bottom: sheetHeight + 40 }]}>
         <View style={styles.zoomGroup}>

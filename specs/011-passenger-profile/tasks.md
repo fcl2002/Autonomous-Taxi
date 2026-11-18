@@ -31,7 +31,7 @@
 - [x] T007 [US3] Write backend/firestore.rules.test.ts using `node:test` and `@firebase/rules-unit-testing`, covering every row of contracts/users.md:
   - allowed: owner get, create and update;
   - denied: other passenger get, create, update and delete; signed-out get and write; list; owner delete; extra field; missing field; empty name; untrimmed name; 101-character name; wrong email.
-- [ ] T008 [US3] Run `npm run test:rules` in backend/. All cases pass. If the emulator refuses to start, install JDK 21 (research R5).
+- [x] T008 [US3] Run `npm run test:rules` in backend/. All cases pass. If the emulator refuses to start, install JDK 21 (research R5).
 
 ## Phase 4: User Story 1 – Sign-up creates the profile (P1)
 
