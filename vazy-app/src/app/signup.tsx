@@ -7,13 +7,13 @@ import {
   Platform,
   ScrollView,
   StyleSheet,
-  TextInput,
 } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 
 import { ThemedButton } from "@/components/themed-button";
+import { ThemedInput } from "@/components/themed-input";
 import { ThemedText } from "@/components/themed-text";
-import { Colors, Fonts } from "@/constants/theme";
+import { Colors } from "@/constants/theme";
 import { authErrorMessage } from "@/lib/auth";
 import { auth } from "@/lib/firebase";
 import { saveProfile } from "@/lib/profile";
@@ -72,7 +72,7 @@ export default function SignUp() {
             Sign Up
           </ThemedText>
 
-          <TextInput
+          <ThemedInput
             accessibilityLabel="Full name"
             autoCapitalize="words"
             enterKeyHint="next"
@@ -80,12 +80,10 @@ export default function SignUp() {
             maxLength={100}
             onChangeText={setFullName}
             placeholder="Full Name"
-            placeholderTextColor="#A5A5A5"
-            style={styles.input}
-            value={fullName}
+                        value={fullName}
           />
 
-          <TextInput
+          <ThemedInput
             accessibilityLabel="Email address"
             autoCapitalize="none"
             autoCorrect={false}
@@ -93,12 +91,11 @@ export default function SignUp() {
             inputMode="email"
             onChangeText={setEmail}
             placeholder="Email"
-            placeholderTextColor="#A5A5A5"
-            style={[styles.input, styles.spacedInput]}
+            style={styles.spacedInput}
             value={email}
           />
 
-          <TextInput
+          <ThemedInput
             accessibilityHint="At least 8 characters"
             accessibilityLabel="Password"
             autoCapitalize="none"
@@ -107,14 +104,13 @@ export default function SignUp() {
             onChangeText={setPassword}
             onSubmitEditing={signUp}
             placeholder="Password (8+ characters)"
-            placeholderTextColor="#A5A5A5"
             secureTextEntry
-            style={[styles.input, styles.spacedInput]}
+            style={styles.spacedInput}
             value={password}
           />
 
           {error && (
-            <ThemedText accessibilityRole="alert" style={styles.error} variant="bodyPrimary">
+            <ThemedText accessibilityRole="alert" style={styles.error} variant="error">
               {error}
             </ThemedText>
           )}
@@ -124,7 +120,7 @@ export default function SignUp() {
             disabled={loading}
             label={loading ? "Creating account…" : "Sign Up"}
             onPress={signUp}
-            style={[styles.action, loading && styles.busy]}
+            style={styles.action}
           />
 
           <ThemedText style={styles.loginPrompt} variant="bodyPrimary">
@@ -167,19 +163,6 @@ const styles = StyleSheet.create({
   title: {
     marginBottom: 45,
   },
-  input: {
-    width: "100%",
-    maxWidth: 350,
-    height: 55,
-    paddingHorizontal: 29,
-    borderWidth: 1,
-    borderColor: "#D1D1D1",
-    borderRadius: 50,
-    backgroundColor: "#FFFFFF",
-    color: Colors.light.text,
-    fontFamily: Fonts.regular,
-    fontSize: 14,
-  },
   spacedInput: {
     marginTop: 20,
   },
@@ -187,15 +170,11 @@ const styles = StyleSheet.create({
     width: "100%",
     maxWidth: 350,
     marginTop: 12,
-    color: "#C62828",
   },
   action: {
     width: "100%",
     maxWidth: 350,
     marginTop: 30,
-  },
-  busy: {
-    opacity: 0.6,
   },
   loginPrompt: {
     width: "100%",

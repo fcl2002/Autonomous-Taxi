@@ -351,7 +351,7 @@ export default function MapScreen() {
                   disabled={requesting}
                   label={requesting ? "Requesting…" : "Request ride"}
                   onPress={request}
-                  style={[styles.requestButton, requesting && styles.pressed]}
+                  style={styles.requestButton}
                 />
               </View>
             )}

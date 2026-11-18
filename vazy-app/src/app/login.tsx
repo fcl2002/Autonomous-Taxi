@@ -5,13 +5,13 @@ import {
   KeyboardAvoidingView,
   Platform,
   StyleSheet,
-  TextInput,
   View,
 } from "react-native";
 import { StatusBar } from "expo-status-bar";
 import { SafeAreaView } from "react-native-safe-area-context";
 
 import { ThemedButton } from "@/components/themed-button";
+import { ThemedInput } from "@/components/themed-input";
 import { ThemedText } from "@/components/themed-text";
 import { authErrorMessage } from "@/lib/auth";
 import { auth } from "@/lib/firebase";
@@ -61,7 +61,7 @@ export default function Login() {
               Login
             </ThemedText>
 
-            <TextInput
+            <ThemedInput
               accessibilityLabel="Email address"
               autoCapitalize="none"
               autoCorrect={false}
@@ -69,12 +69,10 @@ export default function Login() {
               inputMode="email"
               onChangeText={setEmail}
               placeholder="Email"
-              placeholderTextColor="#A5A5A5"
-              style={styles.input}
-              value={email}
+                            value={email}
             />
 
-            <TextInput
+            <ThemedInput
               accessibilityLabel="Password"
               autoCapitalize="none"
               autoCorrect={false}
@@ -82,14 +80,13 @@ export default function Login() {
               onChangeText={setPassword}
               onSubmitEditing={logIn}
               placeholder="Password"
-              placeholderTextColor="#A5A5A5"
               secureTextEntry
-              style={[styles.input, styles.spacedInput]}
+              style={styles.spacedInput}
               value={password}
             />
 
             {error && (
-              <ThemedText accessibilityRole="alert" style={styles.error} variant="bodyPrimary">
+              <ThemedText accessibilityRole="alert" style={styles.error} variant="error">
                 {error}
               </ThemedText>
             )}
@@ -99,7 +96,7 @@ export default function Login() {
               disabled={loading}
               label={loading ? "Logging in…" : "Log In"}
               onPress={logIn}
-              style={[styles.action, loading && styles.busy]}
+              style={styles.action}
             />
           </View>
 
@@ -149,31 +146,16 @@ const styles = StyleSheet.create({
   title: {
     marginBottom: 52,
   },
-  input: {
-    width: "100%",
-    height: 55,
-    paddingHorizontal: 29,
-    borderWidth: 1,
-    borderColor: "#D1D1D1",
-    borderRadius: 50,
-    backgroundColor: "#FFF",
-    color: "#000",
-    fontSize: 14,
-  },
   spacedInput: {
     marginTop: 20,
   },
   error: {
     width: "100%",
     marginTop: 12,
-    color: "#C62828",
   },
   action: {
     width: "100%",
     marginTop: 30,
-  },
-  busy: {
-    opacity: 0.6,
   },
   signupPrompt: {
     width: "100%",

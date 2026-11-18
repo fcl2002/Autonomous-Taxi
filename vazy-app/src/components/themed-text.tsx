@@ -10,7 +10,8 @@ export type ThemedTextVariant =
   | "bodyPrimary"
   | "bodyLarge"
   | "link"
-  | "action";
+  | "action"
+  | "error";
 
 export type ThemedTextProps = TextProps & {
   variant?: ThemedTextVariant;
@@ -25,6 +26,13 @@ export function ThemedText({
 }
 
 const styles = StyleSheet.create({
+  error: {
+    color: "#C62828",
+    fontFamily: Fonts.regular,
+    fontSize: 16,
+    lineHeight: 24,
+    textAlign: "center",
+  },
   base: {
     flexShrink: 1,
   },

@@ -30,6 +30,7 @@ export function ThemedButton({
       accessibilityRole={accessibilityRole}
       style={(state) => [
         styles.button,
+        props.disabled && styles.disabled,
         typeof style === "function" ? style(state) : style,
       ]}
     >
@@ -56,5 +57,8 @@ const styles = StyleSheet.create({
   },
   label: {
     maxWidth: "100%",
+  },
+  disabled: {
+    opacity: 0.6,
   },
 });
