@@ -1,7 +1,5 @@
 // Ride requests (contract: docs/contracts/rides.md v1). The backend moves rides past "requested".
-import {
-  addDoc, collection, doc, limit, onSnapshot, orderBy, query, serverTimestamp, updateDoc, where,
-} from "firebase/firestore";
+import { addDoc, collection, doc, onSnapshot, query, serverTimestamp, updateDoc, where } from "firebase/firestore";
 import { useEffect, useRef, useState } from "react";
 
 import { db } from "@/lib/firebase";
@@ -17,6 +15,11 @@ export type Ride = {
   destinationStopId: string;
   queuePosition?: number | null;
   failureReason?: string;
+  /** Where the car started when assigned (backend). */
+  vehicleStopId?: string;
+  /** When the current step should end, in ms (backend clock), and when it started. */
+  etaAt?: number | null;
+  updatedAt?: { toMillis(): number } | null;
 };
 
 export const isTerminal = (status: RideStatus) => ["completed", "cancelled", "failed"].includes(status);
@@ -35,22 +38,23 @@ export function requestRide(passengerUid: string, originStopId: string, destinat
 export const cancelRide = (id: string) => updateDoc(doc(db, "rides", id), { status: "cancelled" });
 
 /**
- * The passenger's latest ride while it's active, or once it ends in this session (so they see how it ended).
- * Returns the ride and `dismiss`, which hides an ended ride.
+ * The ride to show: the passenger's active ride, else one that ended during this session (so they see how it ended).
+ * Returns the ride and `dismiss`, which hides an ended ride. `uid` is undefined while signing out.
  */
-export function useLatestRide(uid: string) {
+export function useCurrentRide(uid: string | undefined) {
   const [ride, setRide] = useState<Ride | null>(null);
   const seenActive = useRef(new Set<string>());
 
   useEffect(() => {
-    const latest = query(collection(db, "rides"), where("passengerUid", "==", uid), orderBy("createdAt", "desc"), limit(1));
-    return onSnapshot(latest, (snap) => {
-      const d = snap.docs[0];
-      if (!d) return setRide(null);
-      const next = { id: d.id, ...d.data() } as Ride;
-      if (!isTerminal(next.status)) seenActive.current.add(next.id);
+    if (!uid) return;
+    // shortcut: reads all of the passenger's rides (no index needed); add status filters once histories get long.
+    const mine = query(collection(db, "rides"), where("passengerUid", "==", uid));
+    return onSnapshot(mine, (snap) => {
+      const rides = snap.docs.map((d) => ({ id: d.id, ...d.data({ serverTimestamps: "estimate" }) }) as Ride);
+      const active = rides.find((r) => !isTerminal(r.status));
+      if (active) seenActive.current.add(active.id);
       // An ended ride from an earlier session isn't news; show the picker instead.
-      setRide(isTerminal(next.status) && !seenActive.current.has(next.id) ? null : next);
+      setRide(active ?? rides.find((r) => seenActive.current.has(r.id)) ?? null);
     }, console.warn);
   }, [uid]);
 

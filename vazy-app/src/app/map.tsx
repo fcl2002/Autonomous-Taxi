@@ -16,12 +16,12 @@ import { AppMenu } from "@/components/app-menu";
 import { RideStatus } from "@/components/ride-status";
 import { ThemedButton } from "@/components/themed-button";
 import { ThemedText } from "@/components/themed-text";
-import { STOPS } from "@/constants/circuit";
+import { type LngLat, STOPS } from "@/constants/circuit";
 import { PICKUP } from "@/constants/pickup";
 import { Colors, Fonts } from "@/constants/theme";
 import { auth } from "@/lib/firebase";
-import { requestRide, useLatestRide } from "@/lib/rides";
-import { bounds, nearestStop, summary, tripPath } from "@/lib/route";
+import { requestRide, useCurrentRide } from "@/lib/rides";
+import { bounds, nearestStop, pointAlong, summary, tripPath } from "@/lib/route";
 
 // OpenFreeMap serves the "Liberty" style with no API key or usage limits.
 const LIBERTY_MAP_STYLE = "https://tiles.openfreemap.org/styles/liberty";
@@ -49,16 +49,40 @@ export default function MapScreen() {
   const [originId, setOriginId] = useState(STOPS[ORIGIN.index].id);
   const [pickingOrigin, setPickingOrigin] = useState(false);
   const [requesting, setRequesting] = useState(false);
-  // The map is only reachable signed in (root layout guard).
-  const uid = auth.currentUser!.uid;
-  const [ride, dismissRide] = useLatestRide(uid);
+  // Undefined only for the instant between signing out and the guard leaving this screen.
+  const uid = auth.currentUser?.uid;
+  const [ride, dismissRide] = useCurrentRide(uid);
+  const [now, setNow] = useState(Date.now);
+  const moving = ride?.status === "to_pickup" || ride?.status === "at_pickup" || ride?.status === "to_destination";
 
   // While a ride exists, the map shows that ride's stops instead of the picker's.
   const shownOriginId = ride?.originStopId ?? originId;
   const shownDestinationId = ride?.destinationStopId ?? destinationId;
   const origin = STOPS.findIndex((stop) => stop.id === shownOriginId);
   const destination = STOPS.findIndex((stop) => stop.id === shownDestinationId);
-  const trip = destination >= 0 ? tripPath(STOPS, origin, destination) : null;
+  const trip = origin >= 0 && destination >= 0 ? tripPath(STOPS, origin, destination) : null;
+
+  // Simulated vehicle position: along its current leg, by how much of the step's time has passed.
+  const carStop = STOPS.findIndex((stop) => stop.id === ride?.vehicleStopId);
+  let car: LngLat | null = null;
+  if (ride && origin >= 0) {
+    const started = ride.updatedAt?.toMillis() ?? now;
+    const done = ride.etaAt && ride.etaAt > started ? (now - started) / (ride.etaAt - started) : 1;
+    if ((ride.status === "assigned" || ride.status === "to_pickup") && carStop >= 0) {
+      const leg = tripPath(STOPS, carStop, origin).coordinates;
+      car = ride.status === "to_pickup" && leg.length ? pointAlong(leg, done) : STOPS[carStop].lngLat;
+    } else if (ride.status === "at_pickup") {
+      car = STOPS[origin].lngLat;
+    } else if (ride.status === "to_destination" && trip?.coordinates.length) {
+      car = pointAlong(trip.coordinates, done);
+    }
+  }
+
+  useEffect(() => {
+    if (!moving) return;
+    const timer = setInterval(() => setNow(Date.now()), 250);
+    return () => clearInterval(timer);
+  }, [moving]);
   // Keep the map clear of the status bar, the zoom controls and the bottom sheet.
   const framePadding = { top: insets.top + 48, right: 88, bottom: sheetHeight + 48, left: 48 };
 
@@ -73,7 +97,7 @@ export default function MapScreen() {
   };
 
   async function request() {
-    if (!destinationId) return;
+    if (!uid || !destinationId) return;
     setRequesting(true);
     try {
       await requestRide(uid, originId, destinationId);
@@ -200,6 +224,14 @@ export default function MapScreen() {
           );
         })}
 
+        {car && (
+          <Marker id="vehicle" lngLat={car}>
+            <View accessibilityLabel="Vazy vehicle" accessible style={styles.vehicle}>
+              <SymbolView name={{ ios: "car.fill", android: "directions_car", web: "directions_car" }} size={22} tintColor="#FFFFFF" />
+            </View>
+          </Marker>
+        )}
+
         <Marker id="user-location" lngLat={MAP_CENTER}>
           <View accessible={false} style={styles.marker}>
             <View style={styles.markerDot} />
@@ -263,7 +295,7 @@ export default function MapScreen() {
         style={[styles.sheet, { paddingBottom: insets.bottom + 24 }]}
       >
         {ride ? (
-          <RideStatus onDone={dismissRide} ride={ride} />
+          <RideStatus now={now} onDone={dismissRide} ride={ride} />
         ) : (
           <>
             <ThemedText style={styles.left} variant="bodyLarge">
@@ -483,5 +515,15 @@ const styles = StyleSheet.create({
   },
   requestButton: {
     marginTop: 16,
+  },
+  vehicle: {
+    width: 36,
+    height: 36,
+    alignItems: "center",
+    justifyContent: "center",
+    borderRadius: 18,
+    backgroundColor: Colors.accent,
+    borderWidth: 2,
+    borderColor: "#FFFFFF",
   },
 });

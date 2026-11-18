@@ -6,21 +6,24 @@ const SECONDS_PER_STOP = 3;
 const SECONDS_AT_PICKUP = 5;
 
 export type Mission = { rideId: string; originStopId: string; destinationStopId: string; carStopId: string };
+/** `seconds`: how long until the next event, so the app can show a timer and move the car. */
+export type Report = (rideId: string, status: Status, seconds: number) => void;
 
 const wait = (seconds: number) => new Promise((resolve) => setTimeout(resolve, seconds * 1000));
 
-/** Drives the mission from `from` (a resumed ride starts mid-way) and calls `report` at each step. */
-export async function runMission(mission: Mission, from: Status, report: (rideId: string, status: Status) => void) {
+/** Drives the mission from `from` (a resumed ride restarts its current step) and reports each step. */
+export async function runMission(mission: Mission, from: Status, report: Report) {
   const steps: [Status, number][] = [
-    ["to_pickup", 1],
-    ["at_pickup", SECONDS_PER_STOP * stopsAhead(mission.carStopId, mission.originStopId)],
-    ["to_destination", SECONDS_AT_PICKUP],
-    ["completed", SECONDS_PER_STOP * stopsAhead(mission.originStopId, mission.destinationStopId)],
+    ["to_pickup", SECONDS_PER_STOP * stopsAhead(mission.carStopId, mission.originStopId)],
+    ["at_pickup", SECONDS_AT_PICKUP],
+    ["to_destination", SECONDS_PER_STOP * stopsAhead(mission.originStopId, mission.destinationStopId)],
+    ["completed", 0],
   ];
-  const order: Status[] = ["assigned", "to_pickup", "at_pickup", "to_destination", "completed"];
-  for (const [status, seconds] of steps) {
-    if (order.indexOf(status) <= order.indexOf(from)) continue;
+  const resumeAt = steps.findIndex(([status]) => status === from);
+  if (resumeAt >= 0) await wait(steps[resumeAt][1]);
+  await wait(1);
+  for (const [status, seconds] of steps.slice(resumeAt + 1)) {
+    report(mission.rideId, status, seconds);
     await wait(seconds);
-    report(mission.rideId, status);
   }
 }

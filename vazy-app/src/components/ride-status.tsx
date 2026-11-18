@@ -14,14 +14,20 @@ const FAILURES: Record<string, string> = {
   invalid_stops: "That stop isn't on the circuit anymore.",
 };
 
-function message(ride: Ride) {
+// "0:07": time left in the current step, from the backend's estimate.
+function countdown(ride: Ride, now: number) {
+  const seconds = Math.max(0, Math.ceil(((ride.etaAt ?? now) - now) / 1000));
+  return `${Math.floor(seconds / 60)}:${String(seconds % 60).padStart(2, "0")}`;
+}
+
+function message(ride: Ride, now: number) {
   switch (ride.status) {
     case "requested": return "Sending request…";
     case "queued": return ride.queuePosition ? `Accepted, you're #${ride.queuePosition} in line` : "Accepted, finding your place in line…";
-    case "assigned":
-    case "to_pickup": return `Vazy is on its way to ${stopName(ride.originStopId)}`;
-    case "at_pickup": return `Vazy is waiting at ${stopName(ride.originStopId)}`;
-    case "to_destination": return `On the way to ${stopName(ride.destinationStopId)}`;
+    case "assigned": return `Vazy is on its way to ${stopName(ride.originStopId)}`;
+    case "to_pickup": return `Vazy arrives at ${stopName(ride.originStopId)} in ${countdown(ride, now)}`;
+    case "at_pickup": return `Vazy is waiting at ${stopName(ride.originStopId)}, leaving in ${countdown(ride, now)}`;
+    case "to_destination": return `Arriving at ${stopName(ride.destinationStopId)} in ${countdown(ride, now)}`;
     case "completed": return `You've arrived at ${stopName(ride.destinationStopId)}`;
     case "cancelled": return "Ride cancelled";
     case "failed": return FAILURES[ride.failureReason ?? ""] ?? "Couldn't request this ride. Try again.";
@@ -29,7 +35,7 @@ function message(ride: Ride) {
 }
 
 // The sheet content while the passenger has a ride. Status changes arrive through the ride listener.
-export function RideStatus({ ride, onDone }: { ride: Ride; onDone: () => void }) {
+export function RideStatus({ ride, now, onDone }: { ride: Ride; now: number; onDone: () => void }) {
   function confirmCancel() {
     Alert.alert("Cancel ride?", "You'll lose your place in line.", [
       { text: "Keep ride", style: "cancel" },
@@ -40,13 +46,15 @@ export function RideStatus({ ride, onDone }: { ride: Ride; onDone: () => void })
   return (
     <View>
       <ThemedText accessibilityLiveRegion="polite" style={styles.left} variant="bodyLarge">
-        {message(ride)}
+        {message(ride, now)}
       </ThemedText>
       <ThemedText style={styles.route} variant="bodyPrimary">
         {`${stopName(ride.originStopId)} → ${stopName(ride.destinationStopId)}`}
       </ThemedText>
       {ride.status === "queued" && <ThemedButton label="Cancel ride" onPress={confirmCancel} style={styles.action} />}
-      {isTerminal(ride.status) && <ThemedButton label="Done" onPress={onDone} style={styles.action} />}
+      {isTerminal(ride.status) && (
+        <ThemedButton label={ride.status === "completed" ? "Conclude ride" : "Done"} onPress={onDone} style={styles.action} />
+      )}
     </View>
   );
 }

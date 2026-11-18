@@ -43,3 +43,18 @@ export function bounds(coordinates: LngLat[]): [number, number, number, number] 
 export function summary({ stops, distance }: Trip) {
   return `${stops} ${stops === 1 ? "stop" : "stops"} · ${distance} m`;
 }
+
+// The point `fraction` (0..1) of the way along a path, by distance. Used to draw the vehicle on its route.
+export function pointAlong(coordinates: LngLat[], fraction: number): LngLat {
+  const legs = coordinates.slice(1).map((point, i) => meters(coordinates[i], point));
+  let left = Math.min(Math.max(fraction, 0), 1) * legs.reduce((a, b) => a + b, 0);
+  for (let i = 0; i < legs.length; i++) {
+    if (left <= legs[i] && legs[i] > 0) {
+      const t = left / legs[i];
+      const [[lng1, lat1], [lng2, lat2]] = [coordinates[i], coordinates[i + 1]];
+      return [lng1 + (lng2 - lng1) * t, lat1 + (lat2 - lat1) * t];
+    }
+    left -= legs[i];
+  }
+  return coordinates[coordinates.length - 1];
+}

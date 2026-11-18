@@ -1,7 +1,7 @@
 // Run: node scripts/route.check.mjs (Node 22.18+ strips the TS types).
 import assert from "node:assert/strict";
 import { STOPS } from "../src/constants/circuit.ts";
-import { bounds, meters, nearestStop, summary, tripPath } from "../src/lib/route.ts";
+import { bounds, meters, nearestStop, pointAlong, summary, tripPath } from "../src/lib/route.ts";
 
 // Real circuit: catches stops.ts edited without re-running build-circuit.mjs.
 assert.equal(new Set(STOPS.map((s) => s.id)).size, STOPS.length, "stop ids must be unique");
@@ -33,5 +33,13 @@ assert.equal(nearestStop(stops, [0, 0]).distance, 0);
 assert.deepEqual(bounds([[2.35, 48.84], [2.29, 48.86], [2.31, 48.85]]), [2.29, 48.84, 2.35, 48.86]);
 assert.equal(summary({ stops: 3, distance: 213 }), "3 stops · 213 m");
 assert.equal(summary({ stops: 1, distance: 54 }), "1 stop · 54 m");
+
+// Vehicle position along a path: ends, middle of the second (equal-length) leg, and clamping.
+const line = [[0, 0], [0.001, 0], [0.002, 0]];
+assert.deepEqual(pointAlong(line, 0), [0, 0]);
+assert.deepEqual(pointAlong(line, 1), [0.002, 0]);
+assert.ok(Math.abs(pointAlong(line, 0.75)[0] - 0.0015) < 1e-9);
+assert.deepEqual(pointAlong(line, 2), [0.002, 0]);
+assert.deepEqual(pointAlong([[1, 1]], 0.5), [1, 1]);
 
 console.log("route.check: ok");

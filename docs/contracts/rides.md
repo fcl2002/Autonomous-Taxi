@@ -20,6 +20,8 @@
 | `queuePosition` | number \| null | backend | 1-based while `queued`, otherwise `null` |
 | `failureReason` | string | backend | `invalid_stops`, `same_stop`, `active_ride_exists` |
 | `updatedAt` | timestamp | backend | server time of the last status change |
+| `vehicleStopId` | string | backend (at `assigned`) | the stop the car starts from, used to draw it driving to the pickup |
+| `etaAt` | number (ms) \| null | backend | when the current step should end, by the vehicle's estimate. Set on `to_pickup`, `at_pickup` and `to_destination`, otherwise `null`. Drives the app's countdown and car animation |
 
 At create, the app sends exactly the first 6 fields.
 
@@ -40,7 +42,7 @@ One vehicle carries one passenger at a time. When the vehicle is idle, the next 
 1. the oldest `queued` ride that has waited more than 10 minutes;
 2. otherwise, the ride whose pickup is the fewest stops ahead of the vehicle on the one-way loop, with ties going to the oldest ride.
 
-`queuePosition` is the order in which this rule would serve the rides now.
+`queuePosition` is the order in which this rule would serve the rides now, starting from where the car will next be free (the current ride's destination when busy).
 
 ## `vehicles/{vehicleId}` (backend only; clients have no access)
 

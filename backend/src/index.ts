@@ -3,7 +3,7 @@
 import { initializeApp } from "firebase-admin/app";
 import { FieldValue, getFirestore, type DocumentSnapshot } from "firebase-admin/firestore";
 import { ACTIVE, NEXT, pickNext, queuePositions, type QueuedRide, type Status } from "./dispatch.ts";
-import { runMission } from "./simulator.ts";
+import { runMission, type Report } from "./simulator.ts";
 import { STOP_IDS } from "./stops.ts";
 
 initializeApp();
@@ -60,7 +60,12 @@ async function dispatch() {
     const queued = await tx.get(rides.where("status", "==", "queued"));
     const next = pickNext(queued.docs.map(toQueued), car.get("currentStopId"), Date.now());
     if (!next) return null;
-    tx.update(rides.doc(next.id), { status: "assigned", queuePosition: null, updatedAt: FieldValue.serverTimestamp() });
+    tx.update(rides.doc(next.id), {
+      status: "assigned",
+      queuePosition: null,
+      vehicleStopId: car.get("currentStopId"), // where the car starts, so the app can draw it driving to the pickup
+      updatedAt: FieldValue.serverTimestamp(),
+    });
     tx.update(vehicle, { status: "busy", rideId: next.id });
     console.log(`${next.id} queued→assigned`);
     return { rideId: next.id, originStopId: next.originStopId, destinationStopId: next.destinationStopId, carStopId: car.get("currentStopId") };
@@ -68,24 +73,28 @@ async function dispatch() {
   if (mission && SIMULATE) void runMission(mission, "assigned", report);
 
   const [car, queued] = await Promise.all([vehicle.get(), rides.where("status", "==", "queued").get()]);
-  const positions = queuePositions(queued.docs.map(toQueued), car.get("currentStopId"), Date.now());
+  // A busy car is next free at its current ride's destination, so the line is ordered from there.
+  const freeAt = car.get("rideId")
+    ? (await rides.doc(car.get("rideId")).get()).get("destinationStopId")
+    : car.get("currentStopId");
+  const positions = queuePositions(queued.docs.map(toQueued), freeAt, Date.now());
   const batch = db.batch();
-  for (const d of queued.docs) {
-    if (d.get("queuePosition") !== positions.get(d.id)) batch.update(d.ref, { queuePosition: positions.get(d.id) });
-  }
-  await batch.commit();
+  const stale = queued.docs.filter((d) => d.get("queuePosition") !== positions.get(d.id));
+  for (const d of stale) batch.update(d.ref, { queuePosition: positions.get(d.id) });
+  if (stale.length) await batch.commit();
 }
 
 /** Vehicle events (from the simulator now, MQTT later). Completion frees the car and dispatches the next ride. */
-function report(rideId: string, status: Status) {
+const report: Report = (rideId, status, seconds) => {
   serial(async () => {
-    if (!(await move(rideId, status))) return;
+    // etaAt: when the current step should end (backend clock), for the app's timer and car animation.
+    if (!(await move(rideId, status, { etaAt: seconds ? Date.now() + seconds * 1000 : null }))) return;
     if (status !== "completed") return;
     const ride = await rides.doc(rideId).get();
     await vehicle.update({ status: "idle", currentStopId: ride.get("destinationStopId"), rideId: null });
     await dispatch();
   });
-}
+};
 
 /** Restart recovery: create the vehicle once, resume or release the ride it was on. */
 async function recover() {
