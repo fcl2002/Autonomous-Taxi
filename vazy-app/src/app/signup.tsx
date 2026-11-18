@@ -34,7 +34,6 @@ export default function SignUp() {
       const { user } = await createUserWithEmailAndPassword(auth, email.trim(), password);
       // shortcut: if this second call fails, the account exists without a name; fine until profiles move to Firestore.
       await updateProfile(user, { displayName: name });
-      router.replace("/map");
     } catch (e) {
       setError(authErrorMessage(e));
       setLoading(false);

@@ -27,7 +27,6 @@ export default function Login() {
     setError(null);
     try {
       await signInWithEmailAndPassword(auth, email.trim(), password);
-      router.replace("/map");
     } catch (e) {
       setError(authErrorMessage(e));
       setLoading(false);
