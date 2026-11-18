@@ -1,17 +1,17 @@
-# Graph Report - Autonomous-Taxi  (2026-11-16)
+# Graph Report - Autonomous-Taxi  (2026-11-18)
 
 ## Corpus Check
-- 138 files · ~82,601 words
+- 163 files · ~105,817 words
 - Verdict: corpus is large enough that graph structure adds value.
-- Unclassified: 25 file(s) not represented in the graph (top: .ttf 19, (none) 6)
+- Unclassified: 27 file(s) not represented in the graph (top: .ttf 19, (none) 7, .rules 1)
 
 ## Summary
-- 1125 nodes · 1188 edges · 87 communities (79 shown, 8 thin omitted)
-- Extraction: 98% EXTRACTED · 2% INFERRED · 0% AMBIGUOUS · INFERRED: 27 edges (avg confidence: 0.95)
+- 1310 nodes · 1402 edges · 107 communities (99 shown, 8 thin omitted)
+- Extraction: 99% EXTRACTED · 1% INFERRED · 0% AMBIGUOUS · INFERRED: 18 edges (avg confidence: 0.94)
 - Token cost: 0 input · 0 output
 
 ## Graph Freshness
-- Built from commit: `b750b51c`
+- Built from commit: `dcbe0064`
 - Run `git rev-parse HEAD` and compare to check if the graph is stale.
 - Run `graphify update .` after code changes (no API cost).
 
@@ -56,9 +56,9 @@
 - Tasks: Fix Tracking Layout
 - Feature Specification: [FEATURE NAME]
 - Tasks: Shared Themed Entry-Flow Components
-- Build list
 - Core Principles
-- Fixed circuit with 9 stops (replaces address search)
+- Core Principles
+- .claude/skills/speckit-analyze/SKILL.md
 - Implementation Plan: [FEATURE]
 - UI Contract: Phone Login Entry Screen
 - UI Contract: Vazy Splash Screen
@@ -84,7 +84,7 @@
 - Data Model: Phone Login Entry Screen
 - UI Contract: Themed Components
 - Quickstart: Validate Shared Themed Onboarding Components
-- Research: Shared Themed Entry-Flow Components
+- Execution Steps
 - UI Contract: Tracking Onboarding Layout
 - Quickstart: Validate Tracking Layout Fix
 - Research: Fix Tracking Layout
@@ -98,40 +98,60 @@
 - 007-fix-tracking-layout/data-model.md
 - backend/package.json
 - compilerOptions
-- Steps, in order
+- .claude/skills/speckit-plan/SKILL.md
+- .claude/skills/speckit-specify/SKILL.md
+- .claude/skills/speckit-tasks/SKILL.md
+- .claude/skills/speckit-checklist/SKILL.md
+- .claude/skills/speckit-clarify/SKILL.md
+- .claude/skills/speckit-implement/SKILL.md
+- .claude/skills/speckit-constitution/SKILL.md
+- .claude/skills/speckit-taskstoissues/SKILL.md
+- Implementation Plan: Signed-Out Onboarding
+- Research: Signed-Out Onboarding
+- Research: Shared Themed Entry-Flow Components
+- Data Model: Signed-Out Onboarding
+- Contract: Passenger Profile `users/{uid}` (v1)
+- Feature Specification: Passenger Profile
+- Tasks: Passenger Profile
+- Build list
+- Implementation Plan: Passenger Profile
+- Research: Passenger Profile
+- Specification Quality Checklist: Passenger Profile
+- Vazy backend (to be built)
+- Quickstart: Passenger Profile
 
 ## God Nodes (most connected - your core abstractions)
-1. `ThemedText()` - 25 edges
+1. `ThemedText()` - 26 edges
 2. `ThemedButton()` - 23 edges
 3. `Tasks: [FEATURE NAME]` - 13 edges
 4. `expo` - 12 edges
-5. `Tasks: Onboarding Entry Screen` - 12 edges
-6. `react-native` - 11 edges
-7. `Tasks: Onboarding Tracking Screen` - 11 edges
-8. `Tasks: Onboarding Location Consent Screen` - 11 edges
-9. `Handoff: Vazy app, state after the map/circuit work (2026-11-16)` - 10 edges
-10. `Tasks: Phone Login Entry Screen` - 10 edges
+5. `react-native` - 12 edges
+6. `Tasks: Onboarding Entry Screen` - 12 edges
+7. `authErrorMessage()` - 11 edges
+8. `Tasks: Onboarding Tracking Screen` - 11 edges
+9. `Tasks: Onboarding Location Consent Screen` - 11 edges
+10. `Tasks: Passenger Profile` - 11 edges
 
 ## Surprising Connections (you probably didn't know these)
-- `Changes (one file: `vazy-app/src/app/map.tsx`)` --references--> `ThemedButton()`  [INFERRED]
-  .claude/plans/map-destination-search.md → vazy-app/src/components/themed-button.tsx
 - `Decision 3: Reuse the installed image renderer` --references--> `ThemedText()`  [INFERRED]
   specs/009-ride-map-screen/research.md → vazy-app/src/components/themed-text.tsx
+- `Phase 5: User Story 2 – A dropped connection doesn't lose the profile (P1)` --references--> `authErrorMessage()`  [INFERRED]
+  specs/011-passenger-profile/tasks.md → vazy-app/src/lib/auth.ts
+- `Dependencies` --references--> `saveProfile()`  [INFERRED]
+  specs/011-passenger-profile/tasks.md → vazy-app/src/lib/profile.ts
 - `Decision 2: Keep form state transient and local` --references--> `ThemedButton()`  [INFERRED]
   specs/008-sign-up-screen/research.md → vazy-app/src/components/themed-button.tsx
-- `Open items (optional, from the last review)` --references--> `tripPath()`  [INFERRED]
-  .claude/plans/handoff-context.md → vazy-app/src/lib/route.ts
-- `Reused` --references--> `ThemedButton()`  [INFERRED]
-  .claude/plans/map-destination-search.md → vazy-app/src/components/themed-button.tsx
+- `Contract: Passenger Profile `users/{uid}` (v1)` --references--> `saveProfile()`  [INFERRED]
+  specs/011-passenger-profile/contracts/users.md → vazy-app/src/lib/profile.ts
 
 ## Import Cycles
 - None detected.
 
-## Communities (87 total, 8 thin omitted)
+## Communities (107 total, 8 thin omitted)
 
 ### Community 0 - "vazy-app/package.json"
 Cohesion: 0.04
-Nodes (45): eslint, eslint-config-expo, expo, expo-build-properties, expo-constants, expo-dev-client, expo-device, expo-glass-effect (+37 more)
+Nodes (45): eslint, eslint-config-expo, expo, expo-build-properties, expo-constants, expo-dev-client, expo-device, expo-font (+37 more)
 
 ### Community 1 - "Implementation Plan: Ride Map Screen"
 Cohesion: 0.07
@@ -147,7 +167,7 @@ Nodes (25): Content Quality, Feature Readiness, Notes, Requirement Completeness,
 
 ### Community 4 - "map.tsx"
 Cohesion: 0.08
-Nodes (45): Reused, expo-font, expo-router, expo-splash-screen, expo-status-bar, react, react-native, react-native-safe-area-context (+37 more)
+Nodes (55): expo-router, expo-status-bar, react, react-native, react-native-safe-area-context, Decision 1: Share only repeated text and button presentation, Implementation for User Story 1, Phase 2: Foundational Components (+47 more)
 
 ### Community 5 - "speckit-analyze/SKILL.md"
 Cohesion: 0.08
@@ -285,17 +305,17 @@ Nodes (12): Assumptions, Edge Cases, Feature Specification: [FEATURE NAME], Func
 Cohesion: 0.17
 Nodes (11): Complete Slice, Dependencies & Execution Order, Implementation Strategy, Notes, Parallel Opportunities, Phase 1: Setup, Phase 3: User Story 1 - Consistent entry-flow presentation (Priority: P1), Phase 4: Polish & Cross-Cutting Validation (+3 more)
 
-### Community 40 - "Build list"
-Cohesion: 0.08
-Nodes (24): 0. Contracts (`v1`), before any code, 1. Firebase project, 2. Authentication, 3. Firestore data model, 4. Security Rules (test allowed and denied cases in the emulator), 5. Backend service (ride orchestrator), 6. MQTT, 7. Checks (the smallest set that catches regressions) (+16 more)
+### Community 40 - "Core Principles"
+Cohesion: 0.20
+Nodes (10): Architecture and Technology Constraints, Autonomous Taxi Constitution, Core Principles, Delivery Workflow and Quality Gates, Governance, I. Safety Boundaries Are Non-Negotiable, II. Contracts Define Every Boundary, III. UI First, Then One Working Slice at a Time (+2 more)
 
 ### Community 41 - "Core Principles"
 Cohesion: 0.18
 Nodes (10): Core Principles, Governance, [PRINCIPLE_1_NAME], [PRINCIPLE_2_NAME], [PRINCIPLE_3_NAME], [PRINCIPLE_4_NAME], [PRINCIPLE_5_NAME], [PROJECT_NAME] Constitution (+2 more)
 
-### Community 42 - "Fixed circuit with 9 stops (replaces address search)"
-Cohesion: 0.06
-Nodes (30): Changes, Context, Delete (unused once search is gone), Fixed circuit with 9 stops (replaces address search), Left out (YAGNI), New, Review fixes (2026-11-16), Status (+22 more)
+### Community 42 - ".claude/skills/speckit-analyze/SKILL.md"
+Cohesion: 0.08
+Nodes (25): 1. Initialize Analysis Context, 2. Load Artifacts (Progressive Disclosure), 3. Build Semantic Models, 4. Detection Passes (Token-Efficient Analysis), 5. Severity Assignment, 6. Produce Compact Analysis Report, 7. Provide Next Actions, 8. Offer Remediation (+17 more)
 
 ### Community 43 - "Implementation Plan: [FEATURE]"
 Cohesion: 0.22
@@ -326,8 +346,8 @@ Cohesion: 0.25
 Nodes (7): Decision 1: Reuse Expo Router `navigate`, Decision 2: Preserve each supplied illustration layer, Decision 3: Keep permission and LGPD logic absent, Decision 4: Follow existing native accessibility patterns, Decision 5: Keep the final screen standalone, Decision 6: Stage final acceptance with the complete first flow, Research: Onboarding Location Consent Screen
 
 ### Community 50 - "route.ts"
-Cohesion: 0.09
-Nodes (27): STOP_IDS, `src/app/map.tsx`, App stack and how to verify, Decisions already made (don't revisit), Handoff: Vazy app, state after the map/circuit work (2026-11-16), Open items (optional, from the last review), Project in one paragraph, Recent commits on `vazy-ui` (+19 more)
+Cohesion: 0.13
+Nodes (16): STOP_IDS, legs, stops, MapScreen(), LEGS, Stop, STOPS, LngLat (+8 more)
 
 ### Community 51 - "Quickstart: Validate the Vazy Splash Screen"
 Cohesion: 0.29
@@ -393,9 +413,9 @@ Nodes (4): Compatibility, ThemedButton, ThemedText, UI Contract: Themed Componen
 Cohesion: 0.40
 Nodes (4): Integrated flow validation, Prerequisites, Quickstart: Validate Shared Themed Onboarding Components, Static validation
 
-### Community 68 - "Research: Shared Themed Entry-Flow Components"
-Cohesion: 0.40
-Nodes (4): Decision 2: Reuse React Native props directly, Decision 3: Keep the current theme synchronous and local, Decision 4: Validate the real flow, Research: Shared Themed Entry-Flow Components
+### Community 68 - "Execution Steps"
+Cohesion: 0.12
+Nodes (15): 1. Initialize Convergence Context, 2. Load Artifacts (Progressive Disclosure), 3. Build the Intent Inventory, 4. Assess the Codebase and Classify Findings, 5. Assign Severity, 6. Present the In-Session Findings Summary, 7. Append Convergence Tasks (or report converged), 8. Provide Next Actions (Handoff) (+7 more)
 
 ### Community 69 - "UI Contract: Tracking Onboarding Layout"
 Cohesion: 0.40
@@ -434,36 +454,116 @@ Cohesion: 0.50
 Nodes (3): Data Model: Ride Map Screen, State transitions, Static Map Preview
 
 ### Community 84 - "backend/package.json"
-Cohesion: 0.14
-Nodes (13): devDependencies, @types/node, typescript, engines, node, typescript, name, private (+5 more)
+Cohesion: 0.07
+Nodes (21): valid, devDependencies, firebase, @firebase/rules-unit-testing, firebase-tools, @types/node, typescript, engines (+13 more)
 
 ### Community 85 - "compilerOptions"
 Cohesion: 0.20
 Nodes (9): compilerOptions, allowImportingTsExtensions, erasableSyntaxOnly, module, noEmit, strict, target, types (+1 more)
 
-### Community 86 - "Steps, in order"
-Cohesion: 0.14
-Nodes (13): 1. Spec (speckit), 2. Firebase project (console, done by the owner, free Spark plan), 3. App: SDK setup (`vazy-app/`), done 2026-11-16, 4. App: screens, UI first (constitution III), 5. App: wire it up, 6. App: keep the session, 7. End-to-end demo, Key decisions (+5 more)
+### Community 86 - ".claude/skills/speckit-plan/SKILL.md"
+Cohesion: 0.18
+Nodes (10): Completion Report, Done When, Key rules, Mandatory Post-Execution Hooks, Outline, Phase 0: Outline & Research, Phase 1: Design & Contracts, Phases (+2 more)
+
+### Community 87 - ".claude/skills/speckit-specify/SKILL.md"
+Cohesion: 0.18
+Nodes (10): Completion Report, Done When, For AI Generation, Mandatory Post-Execution Hooks, Outline, Pre-Execution Checks, Quick Guidelines, Section Requirements (+2 more)
+
+### Community 88 - ".claude/skills/speckit-tasks/SKILL.md"
+Cohesion: 0.18
+Nodes (10): Checklist Format (REQUIRED), Completion Report, Done When, Mandatory Post-Execution Hooks, Outline, Phase Structure, Pre-Execution Checks, Task Generation Rules (+2 more)
+
+### Community 89 - ".claude/skills/speckit-checklist/SKILL.md"
+Cohesion: 0.25
+Nodes (7): Anti-Examples: What NOT To Do, Checklist Purpose: "Unit Tests for English", Example Checklist Types & Sample Items, Execution Steps, Post-Execution Checks, Pre-Execution Checks, User Input
+
+### Community 90 - ".claude/skills/speckit-clarify/SKILL.md"
+Cohesion: 0.29
+Nodes (6): Completion Report, Done When, Mandatory Post-Execution Hooks, Outline, Pre-Execution Checks, User Input
+
+### Community 91 - ".claude/skills/speckit-implement/SKILL.md"
+Cohesion: 0.29
+Nodes (6): Completion Report, Done When, Mandatory Post-Execution Hooks, Outline, Pre-Execution Checks, User Input
+
+### Community 92 - ".claude/skills/speckit-constitution/SKILL.md"
+Cohesion: 0.33
+Nodes (5): Outline, Post-Execution Checks, Pre-Execution Checks, Scope Guard, User Input
+
+### Community 93 - ".claude/skills/speckit-taskstoissues/SKILL.md"
+Cohesion: 0.40
+Nodes (4): Outline, Post-Execution Checks, Pre-Execution Checks, User Input
+
+### Community 94 - "Implementation Plan: Signed-Out Onboarding"
+Cohesion: 0.05
+Nodes (32): Content Quality, Feature Readiness, Notes, Requirement Completeness, Specification Quality Checklist: Signed-Out Onboarding, Failure behaviour, Guarantees, Navigation Contract: Signed-Out Onboarding (v1) (+24 more)
+
+### Community 95 - "Research: Signed-Out Onboarding"
+Cohesion: 0.33
+Nodes (5): R1. How routes are gated by session, R2. Knowing the session at launch without flashing a screen, R3. Navigation after login and sign-up, R4. Logout and invalidation, Research: Signed-Out Onboarding
+
+### Community 96 - "Research: Shared Themed Entry-Flow Components"
+Cohesion: 0.40
+Nodes (4): Decision 2: Reuse React Native props directly, Decision 3: Keep the current theme synchronous and local, Decision 4: Validate the real flow, Research: Shared Themed Entry-Flow Components
+
+### Community 97 - "Data Model: Signed-Out Onboarding"
+Cohesion: 0.50
+Nodes (3): Data Model: Signed-Out Onboarding, Passenger session (in memory, in the root layout), Transitions
+
+### Community 98 - "Contract: Passenger Profile `users/{uid}` (v1)"
+Cohesion: 0.15
+Nodes (8): Contract: Passenger Profile `users/{uid}` (v1), Document, Idempotency and failure behaviour, Operations, Data Model: Passenger Profile, Profile state in the root layout (in memory), Transitions, `users/{uid}` (Firestore, `europe-west9`)
+
+### Community 99 - "Feature Specification: Passenger Profile"
+Cohesion: 0.17
+Nodes (12): Assumptions, Edge Cases, Feature Specification: Passenger Profile, Functional Requirements, Key Entities, Measurable Outcomes, Requirements *(mandatory)*, Success Criteria *(mandatory)* (+4 more)
+
+### Community 100 - "Tasks: Passenger Profile"
+Cohesion: 0.17
+Nodes (11): Dependencies, Format: `[ID] [P?] [Story] Description`, Implementation strategy, Parallel opportunities, Phase 1: Setup, Phase 2: Foundational, Phase 3: User Story 3 – Profiles are private (P1), Phase 4: User Story 1 – Sign-up creates the profile (P1) (+3 more)
+
+### Community 101 - "Build list"
+Cohesion: 0.22
+Nodes (9): 0. Contracts (`v1`), before any code, 1. Firebase project, 2. Authentication, 3. Firestore data model, 4. Security Rules (test allowed and denied cases in the emulator), 5. Backend service (ride orchestrator), 6. MQTT, 7. Checks (the smallest set that catches regressions) (+1 more)
+
+### Community 102 - "Implementation Plan: Passenger Profile"
+Cohesion: 0.25
+Nodes (8): Complexity Tracking, Constitution Check, Documentation (this feature), Implementation Plan: Passenger Profile, Project Structure, Source Code (repository root), Summary, Technical Context
+
+### Community 103 - "Research: Passenger Profile"
+Cohesion: 0.25
+Nodes (7): R1. Making sign-up "not lost" without a server step, R2. The write must be safe to repeat, R3. Detecting a missing profile without false prompts, R4. Routing to the name prompt, R5. Rules tests on the free plan, R6. React Native transport, Research: Passenger Profile
+
+### Community 104 - "Specification Quality Checklist: Passenger Profile"
+Cohesion: 0.29
+Nodes (5): Content Quality, Feature Readiness, Notes, Requirement Completeness, Specification Quality Checklist: Passenger Profile
+
+### Community 105 - "Vazy backend (to be built)"
+Cohesion: 0.40
+Nodes (5): Frontend work that depends on this (for reference), Layout, Open questions for the owner, Vazy backend (to be built), Where the app stands
+
+### Community 106 - "Quickstart: Passenger Profile"
+Cohesion: 0.40
+Nodes (5): Deploy rules, Prerequisites, Quickstart: Passenger Profile, Scenarios, Static and rules checks
 
 ## Knowledge Gaps
-- **726 isolated node(s):** `name`, `private`, `type`, `node`, `start` (+721 more)
-  These have ≤1 connection - possible missing edges or undocumented components. (Counts symbols only; 791 node(s) total have ≤1 connection when file, concept and rationale nodes are included.)
+- **855 isolated node(s):** `valid`, `name`, `private`, `type`, `node` (+850 more)
+  These have ≤1 connection - possible missing edges or undocumented components. (Counts symbols only; 924 node(s) total have ≤1 connection when file, concept and rationale nodes are included.)
 - **8 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
 
 ## Suggested Questions
 _Questions this graph is uniquely positioned to answer:_
 
-- **Why does `ThemedText()` connect `map.tsx` to `route.ts`, `Research: Ride Map Screen`?**
-  _High betweenness centrality (0.018) - this node is a cross-community bridge._
-- **Are the 8 inferred relationships involving `ThemedText()` (e.g. with `Reused` and `Decision 1: Share only repeated text and button presentation`) actually correct?**
-  _`ThemedText()` has 8 INFERRED edges - model-reasoned connections that need verification._
-- **What connects `name`, `private`, `type` to the rest of the system?**
-  _726 weakly-connected nodes found - possible documentation gaps or missing edges._
+- **Why does `saveProfile()` connect `map.tsx` to `Contract: Passenger Profile `users/{uid}` (v1)`, `Tasks: Passenger Profile`?**
+  _High betweenness centrality (0.023) - this node is a cross-community bridge._
+- **Are the 7 inferred relationships involving `ThemedText()` (e.g. with `Decision 1: Share only repeated text and button presentation` and `Implementation for User Story 1`) actually correct?**
+  _`ThemedText()` has 7 INFERRED edges - model-reasoned connections that need verification._
+- **What connects `valid`, `name`, `private` to the rest of the system?**
+  _855 weakly-connected nodes found - possible documentation gaps or missing edges._
 - **Should `vazy-app/package.json` be split into smaller, more focused modules?**
-  _Cohesion score 0.04343971631205674 - nodes in this community are weakly interconnected._
-- **Why does `dependencies` connect `dependencies` to `vazy-app/package.json`?**
-  _High betweenness centrality (0.015) - this node is a cross-community bridge._
-- **Are the 9 inferred relationships involving `ThemedButton()` (e.g. with `Changes (one file: `vazy-app/src/app/map.tsx`)` and `Reused`) actually correct?**
-  _`ThemedButton()` has 9 INFERRED edges - model-reasoned connections that need verification._
+  _Cohesion score 0.043478260869565216 - nodes in this community are weakly interconnected._
+- **Why does `Contract: Passenger Profile `users/{uid}` (v1)` connect `Contract: Passenger Profile `users/{uid}` (v1)` to `map.tsx`?**
+  _High betweenness centrality (0.021) - this node is a cross-community bridge._
+- **Are the 7 inferred relationships involving `ThemedButton()` (e.g. with `Decision 1: Share only repeated text and button presentation` and `Implementation for User Story 1`) actually correct?**
+  _`ThemedButton()` has 7 INFERRED edges - model-reasoned connections that need verification._
 - **Should `Implementation Plan: Ride Map Screen` be split into smaller, more focused modules?**
   _Cohesion score 0.06896551724137931 - nodes in this community are weakly interconnected._
