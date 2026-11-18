@@ -63,7 +63,7 @@ export default function OnboardingLocation() {
 
       {/* ponytail: UI-only navigation; request location permission and record the consent outcome before continuing when the data flow is implemented. */}
       <ThemedButton
-        accessibilityLabel="Allow location and continue to phone login"
+        accessibilityLabel="Allow location and continue to login"
         label="Allow Location"
         onPress={() => router.navigate("/login")}
         style={styles.action}

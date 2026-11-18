@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { router } from "expo-router";
+import { signInWithEmailAndPassword } from "firebase/auth";
 import {
   KeyboardAvoidingView,
   Platform,
@@ -12,9 +13,26 @@ import { SafeAreaView } from "react-native-safe-area-context";
 
 import { ThemedButton } from "@/components/themed-button";
 import { ThemedText } from "@/components/themed-text";
+import { authErrorMessage } from "@/lib/auth";
+import { auth } from "@/lib/firebase";
 
 export default function Login() {
-  const [phoneNumber, setPhoneNumber] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState<string | null>(null);
+
+  async function logIn() {
+    setLoading(true);
+    setError(null);
+    try {
+      await signInWithEmailAndPassword(auth, email.trim(), password);
+      router.replace("/map");
+    } catch (e) {
+      setError(authErrorMessage(e));
+      setLoading(false);
+    }
+  }
 
   return (
     <SafeAreaView style={styles.screen}>
@@ -44,26 +62,46 @@ export default function Login() {
               Login
             </ThemedText>
 
-            <ThemedText style={styles.guidance} variant="bodyPrimary">
-              Login with your phone number
-            </ThemedText>
-
             <TextInput
-              accessibilityLabel="Phone number"
+              accessibilityLabel="Email address"
               autoCapitalize="none"
-              autoComplete="tel"
               autoCorrect={false}
-              enterKeyHint="done"
-              inputMode="tel"
-              onChangeText={setPhoneNumber}
-              placeholder="Phone Number"
+              enterKeyHint="next"
+              inputMode="email"
+              onChangeText={setEmail}
+              placeholder="Email"
               placeholderTextColor="#A5A5A5"
               style={styles.input}
-              value={phoneNumber}
+              value={email}
             />
 
-            {/* ponytail: visual-only; add validation, OTP delivery, Firebase Authentication, and result states when the login logic is specified. */}
-            <ThemedButton label="Send Code" style={styles.action} />
+            <TextInput
+              accessibilityLabel="Password"
+              autoCapitalize="none"
+              autoCorrect={false}
+              enterKeyHint="done"
+              onChangeText={setPassword}
+              onSubmitEditing={logIn}
+              placeholder="Password"
+              placeholderTextColor="#A5A5A5"
+              secureTextEntry
+              style={[styles.input, styles.spacedInput]}
+              value={password}
+            />
+
+            {error && (
+              <ThemedText accessibilityRole="alert" style={styles.error} variant="bodyPrimary">
+                {error}
+              </ThemedText>
+            )}
+
+            <ThemedButton
+              accessibilityState={{ busy: loading, disabled: loading }}
+              disabled={loading}
+              label={loading ? "Logging in…" : "Log In"}
+              onPress={logIn}
+              style={[styles.action, loading && styles.busy]}
+            />
           </View>
 
           <ThemedText style={styles.signupPrompt} variant="bodyPrimary">
@@ -112,10 +150,6 @@ const styles = StyleSheet.create({
   title: {
     marginBottom: 52,
   },
-  guidance: {
-    width: "100%",
-    marginBottom: 25,
-  },
   input: {
     width: "100%",
     height: 55,
@@ -127,9 +161,20 @@ const styles = StyleSheet.create({
     color: "#000",
     fontSize: 14,
   },
+  spacedInput: {
+    marginTop: 20,
+  },
+  error: {
+    width: "100%",
+    marginTop: 12,
+    color: "#C62828",
+  },
   action: {
     width: "100%",
     marginTop: 30,
+  },
+  busy: {
+    opacity: 0.6,
   },
   signupPrompt: {
     width: "100%",
